@@ -33,7 +33,7 @@
 
         <h3>Example:</h3>
 
-        <p class="example">header#header>nav.navbar.navbar-inverse>div.container>div.navbar-header>button[type="button"].navbar-toggle>span.sr-only{Toggle navigation}^span.icon-bar*3^a.navbar-brand[href="index.php"]>img[src="imgs/logo.png" alt=""]^^div.collapse>ul.nav.navbar-nav>li>a.link[href="indexx.html"]{Inicio}^li.active.link>a[href="login.html"]{Ingresar}^li>a.link[href="registro.html"]{Registrarsee}^li>a.link[href="contacto.html"]{Contacto}</p>
+        <p class="example">header#header>nav.navbar.navbar-inverse>div.container>(div.navbar-header>(button:button.navbar-toggle>span.sr-only{toggle navigation}+span.icon-bar*3)+(a.navbar-brand[href=index.php]>img[src=imgs/logo.png]))+(div.collapse>ul.nav.navbar-nav>li>a.link[href=index.html]{Inicio}^(li.active.link>a[href=login.html]{regresar})+(li>a.link[href=registro.html]{registrarse})+(li>a.link[href=contacto.html]{Contacto}))</p>
 
         <h3>Result:</h3>
 
@@ -41,16 +41,15 @@
 <header id="header">
     <nav class="navbar navbar-inverse">
         <div class="container">
-            <div class="navbar-header"><button type="button" class="navbar-toggle"><span class="sr-only">Toggle navigation</span></button><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></div>
-            <a href="index.php" class="navbar-brand"><img src="imgs/logo.png" alt=""></a>
-        </div>
-        <div class="collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="indexx.html" class="link">Inicio</a></li>
-                <li class="active link"><a href="login.html">Ingresar</a></li>
-                <li><a href="registro.html" class="link">Registrarsee</a></li>
-                <li><a href="contacto.html" class="link">Contacto</a></li>
-            </ul>
+            <div class="navbar-header"><button type="button" class="navbar-toggle"><span class="sr-only">toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="index.php" class="navbar-brand"><img src="imgs/logo.png" alt=""></a></div>
+            <div class="collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html" class="link">Inicio</a></li>
+                    <li class="active link"><a href="login.html">regresar</a></li>
+                    <li><a href="registro.html" class="link">registrarse</a></li>
+                    <li><a href="contacto.html" class="link">ContactO</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
