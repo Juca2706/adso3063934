@@ -58,3 +58,9 @@ function countRemains() {
     //set LocalStorage
     localStorage.setItem('todoList',$('.list').html())
 }
+$('main').on('click','#eliminar',function(){
+    $('.list').html('')
+    localStorage.removeItem('todolist')
+    countTasks()
+    countRemains()
+})
