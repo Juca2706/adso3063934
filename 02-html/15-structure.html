@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15- Structure</title>
+    <link rel="shortcut icon" href="favicon.ico" type="imagen/x-icon">
+    <link rel="stylesheet" href="../css/master.css">
+    <style>
+        .section {
+            color: white;
+            border-radius: 5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main2 {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid white;
+            color: black;
+        }
+
+        .header2 {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid white;
+        }
+
+        .nav2 {
+            background-color: #444;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid white;
+        }
+
+        .content {
+            display: grid;
+            grid-template-areas: "left  right";
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto;
+            height: 300px;
+            border: 1px solid white;
+        }
+
+        .section2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            flex: 1;
+            padding: 20px;
+            height: 150px;
+            border: 1px solid white;
+        }
+
+        .article {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e0e0e0;
+            flex: 2;
+            padding: 20px;
+            height: 150px;
+            border: 1px solid white;
+        }
+
+        .aside {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            flex: 1;
+            padding: 20px;
+            height: 300px;
+            border: 1px solid white;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+
+<body class="html">
+    <nav class="nav">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header class="header">
+            <h1>15- Structure</h1>
+            <p>Defines layout with non-semantic tags (old style).</p>
+        </header>
+        <section class="section">
+            <div class="main2">
+                <div class="header2">Header</div>
+                <div class="nav2">Nav</div>
+                <div class="content">
+                    <div class="left">
+                        <div class="section2">Section</div>
+                        <div class="article">Article</div>
+                    </div>
+                    <div class="right">
+                        <div class="aside">Aside</div>
+                    </div>
+                </div>
+                <div class="footer">Footer</div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
