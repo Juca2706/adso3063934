@@ -44,6 +44,11 @@ $(function () {
         countTasks()
         countRemains()
     })
+    $('body').on('click', '#reset', function () {
+        $('.list').html('')
+        countTasks();
+        countRemains();
+    });
 })
 //Count Tasks
 function countTasks() {
@@ -56,9 +61,9 @@ function countRemains() {
     $('.num-remains').text($remain)
     $('.title-remains').text($remain > 1 ? 'Remains' : 'Remain')
     //set LocalStorage
-    localStorage.setItem('todoList',$('.list').html())
+    localStorage.setItem('todoList', $('.list').html())
 }
-$('main').on('click','#eliminar',function(){
+$('main').on('click', '#eliminar', function () {
     $('.list').html('')
     localStorage.removeItem('todolist')
     countTasks()
