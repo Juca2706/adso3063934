@@ -6,6 +6,33 @@
     <title>09- Set Get</title>
     <link rel="shortcut icon" href="../Images/jquery.ico" type="imagen/x-icon">
     <link rel="stylesheet" href="../css/master.css">
+    <style>
+        section {
+            textarea.text-area {
+                border-radius: 0.4rem;
+                width: 100%;
+                resize: none;
+                min-height: 160px;
+            }
+            div.actions {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.4rem;
+                button {
+                    border: none;
+                    border-radius: 0.4rem;
+                    background-color: #fff9;;
+                    cursor: pointer;
+                    padding: 0.8rem;
+                    transition: transform 0.4s ease-in;
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                }
+
+            }
+        }
+    </style>
 </head>
 <body class="jquery">
     <nav class="nav">
@@ -15,12 +42,64 @@
     </nav>
     <main>
         <header class="header">
-            <h1>09- Set Get</h1>
+            <h1>09- Set  & Get</h1>
             <p>Set or get values and attributes of elements.</p>
         </header>
         <section class="section">
-            
+            <textarea class="text-area rows="10"></textarea>
+            <div class="actions">
+                <button class="set-html">Set HTML</button>
+                <button class="get-html">Get HTML</button>
+                <button class="set-text">Set Text</button>
+                <button class="get-text">Get Text</button>
+                <button class="set-attr">Set Attribute</button>
+                <button class="get-attr">Get Attribute</button>
+                <button class="set-value">Set Value</button>
+                <button class="get-value">Get value</button>
+            </div>
         </section>
     </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Set
+            $('section').on('click', '.set-html', function () {
+                $('.text-area').html(`<ul>
+<li>Apple</li>
+<li>Pear</li>
+<li>Orange</li>
+</ul>`)
+            })
+
+            $('section').on('click', '.set-text', function () {
+                $('.text-area').text(`Lorem ipsum dolor sit amet consectetur adipisicing elit.`)
+            })
+
+            $('section').on('click', '.set-attr', function () {
+                $('.text-area').attr('rows', '20')
+            })
+
+            $('section').on('click', '.set-value', function () {
+                $('.text-area').val(`Memento Mori`)
+            })
+
+            // Get
+            $('section').on('click', '.get-html', function () {
+                alert($('.actions').html())
+            })
+
+            $('section').on('click', '.get-text', function () {
+                alert($('header p').text())
+            })
+
+            $('section').on('click', '.get-attr', function () {
+                alert($('.text-area').attr('rows'))
+            })
+
+            $('section').on('click', '.get-value', function () {
+                alert($('.text-area').val())
+            })
+        })
+    </script>
 </body>
 </html>

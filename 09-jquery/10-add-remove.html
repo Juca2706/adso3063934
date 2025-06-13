@@ -6,6 +6,64 @@
     <title>10- Add Remove</title>
     <link rel="shortcut icon" href="../Images/jquery.ico" type="imagen/x-icon">
     <link rel="stylesheet" href="../css/master.css">
+    <style>
+        section {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+            div {
+                background-color: #0006;
+                border-radius: 0.4rem;
+                min-height: 230px;
+                width: 120px;
+
+                h4 {
+                    background-color: #fff4;
+                    border-radius: 0.4rem 0.4rem 0 0;
+                    color: #fff9;
+                    padding: 0.4rem;
+                    margin-bottom: 0.2rem;
+                    text-align: center;
+                }
+                label {
+                    border-bottom: 1px dotted #fff6;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+                    zoom: 1.6;
+                    justify-content: center;
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                }
+            }
+            div.actions {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+
+                button {
+                    border: none;
+                    background-color: #75ec9199;
+                    border-radius: 0.4rem;
+                    cursor: pointer;
+                    display: flex;
+                    margin-inline: auto;
+                    justify-content: center;
+                    padding: 0.4rem;
+                    width: 80%;
+                    transition: transform 0.2s ease-in;
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                    &.empty {
+                        background-color: #ec7d7599;
+                    }
+                }
+            }
+        }
+    </style>
 </head>
 <body class="jquery">
     <nav class="nav">
@@ -19,7 +77,36 @@
             <p>Add or remove elements from the DOM.</p>
         </header>
         <section class="section">
-            
+            <div class="fruits">
+                <h4>Fruits</h4>
+                <label>
+                    <input type="radio" name="fruit" value="🍎">
+                    🍎
+                </label>
+                <label>
+                    <input type="radio" name="fruit" value="🍊">
+                    🍊
+                </label>
+                <label>
+                    <input type="radio" name="fruit" value="🍐">
+                    🍐
+                </label>
+                <label>
+                    <input type="radio" name="fruit" value="🍒">
+                    🍒
+                </label>
+            </div>
+            <div class="actions">
+                <h4>Actions</h4>
+                <button class="append">Append</button>
+                <button class="prepend">Prepend</button>
+                <button class="after">After</button>
+                <button class="before">Before</button>
+                <button class="empty">Empty</button>
+            </div>
+            <div class="list">
+                <h4>List</h4>
+            </div>
         </section>
     </main>
 </body>
