@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "'Dank Mono','MonoLisa'"
+    "editor.fontFamily": "'Dank Mono','MonoLisa'",
+    "liveServer.settings.port": 5501
 }
