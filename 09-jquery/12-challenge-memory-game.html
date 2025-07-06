@@ -1,16 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12- Challenge Memory Game</title>
     <link rel="shortcut icon" href="../Images/jquery.ico" type="imagen/x-icon">
     <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+    <style>
+        section.section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 44% !important;
+        }
+
+        #memory-game {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 60rem;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+
+            background-color: #00001C;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(315,768,365)'%3E%3Cstop offset='0' stop-color='%2300001C'/%3E%3Cstop offset='1' stop-color='%23082D66'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='401' height='334.2' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        #memory-game h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #80d4ff;
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 20px auto;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 50, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: 2px solid #80d4ff;
+            padding: 10px 20px;
+            color: white;
+            box-shadow: 0 0 8px rgba(128, 212, 255, 0.5);
+            min-width: 15em;
+            justify-content: center;
+        }
+
+        .stat-box i {
+            color: #80d4ff;
+        }
+
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(7, auto);
+            /* columnas con tamaño automático */
+            gap: 20px;
+            justify-content: center;
+            /* centra todo el grid */
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+
+        .card {
+            width: 90px;
+            height: 90px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .card.revealed .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-front {
+            background: linear-gradient(145deg, #0d47a1, #1976d2);
+            border: 2px solid #2196f3;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .card-back {
+            background: linear-gradient(145deg, #0d47a1, #1976d2);
+            transform: rotateY(180deg);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .card-back img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .card.matched .card-inner {
+            box-shadow: 0 0 15px 3px #00ffcc;
+            cursor: default;
+        }
+
+        #restart {
+            background: linear-gradient(to right, #1976d2, #2196f3);
+            font-size: 1rem;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+
+        #restart:hover {
+            background: linear-gradient(to right, #0f2027, #203a43, #082D66);
+        }
+
+        .restart-container {
+            display: flex;
+            justify-content: center;
+
+            #restart {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+                color: #fff;
+
+                &:hover {
+                    box-shadow: #80d4ff 0px 0px 8px 8px;
+                }
+            }
+        }
+
+        .card-front img.front-icon {
+            width: 50%;
+            height: auto;
+            filter: drop-shadow(0 0 4px white);
+        }
+    </style>
+
 </head>
+
 <body class="jquery">
     <nav class="nav">
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+            </svg>
         </a>
     </nav>
     <main>
@@ -19,8 +195,153 @@
             <p>Build a memory game using jQuery.</p>
         </header>
         <section class="section">
-            
+            <section id="memory-game">
+                <h2>!Encuentra las Esferas del Dragón¡ 🐉</h2>
+                <div class="stats">
+                    <div class="stats">
+                        <div class="stat-box">
+                            <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                            <span id="moves">Movimientos: 0</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-solid fa-hourglass-start"></i>
+                            <span id="timer">Tiempo: 0:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid"></div>
+                <div class="restart-container">
+                    <button id="restart"> <i class="fa-solid fa-repeat"></i> Reiniciar</button>
+                </div>
+            </section>
         </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).ready(function () {
+            const esferas = ['1', '2', '3', '4', '5', '6', '7'];
+            let cards = [...esferas, ...esferas];
+            let selected = [];
+            let matchedCount = 0;
+            let moves = 0;
+            let seconds = 0;
+            let timerInterval;
+
+            function shuffle(array) {
+                return array.sort(() => Math.random() - 0.5);
+            }
+
+            function startTimer() {
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    const mins = Math.floor(seconds / 60);
+                    const secs = seconds % 60;
+                    $('#timer').text(`Tiempo: ${mins}:${secs.toString().padStart(2, '0')}`);
+                }, 1000);
+            }
+
+            function stopTimer() {
+                clearInterval(timerInterval);
+            }
+
+            function initGame() {
+                matchedCount = 0;
+                moves = 0;
+                seconds = 0;
+                stopTimer();
+                $('#moves').text('Movimientos: 0');
+                $('#timer').text('Tiempo: 0:00');
+                $('.grid').empty();
+                selected = [];
+                cards = shuffle(cards);
+
+                cards.forEach(esfera => {
+                    const card = $(`
+                    <div class="card" data-esfera="${esfera}">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="img/pregunta-icon.png" alt="Pregunta" class="front-icon">
+                            </div>
+                            <div class="card-back">
+                                <img src="img/esfera-${esfera}.png" alt="Esfera ${esfera}">
+                            </div>
+                        </div>
+                    </div>
+                `);
+                    $('.grid').append(card);
+                });
+
+                // Mostrar todas reveladas por 3 segundos
+                $('.card').addClass('revealed');
+
+                setTimeout(() => {
+                    $('.card').removeClass('revealed');
+                    startTimer();
+                }, 2000); // espera 3 segundos
+            }
+
+            function checkMatch() {
+                const [first, second] = selected;
+                const firstEsfera = first.data('esfera');
+                const secondEsfera = second.data('esfera');
+
+                if (firstEsfera === secondEsfera) {
+                    first.addClass('matched');
+                    second.addClass('matched');
+                    matchedCount++;
+                } else {
+                    setTimeout(() => {
+                        first.removeClass('revealed');
+                        second.removeClass('revealed');
+                    }, 700);
+                }
+
+                selected = [];
+                moves++;
+                $('#moves').text(`Movimientos: ${moves}`);
+
+                if (matchedCount === 7) {
+                    stopTimer();
+                    setTimeout(() => {
+                        Swal.fire({
+                            title: '¡Felicidades!',
+                            html: `Terminaste en <b>${moves}</b> movimientos<br>Tiempo: <b>${Math.floor(seconds / 60)}:${(seconds % 60).toString().padStart(2, '0')}</b>`,
+                            icon: 'success',
+                            background: '#1e1e2f',
+                            color: '#fff',
+                            confirmButtonText: 'Jugar de nuevo',
+                            confirmButtonColor: '#3085d6'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                initGame();
+                            }
+                        });
+                    }, 400);
+                }
+            }
+
+            $('.grid').on('click', '.card', function () {
+                const card = $(this);
+                if (card.hasClass('revealed') || card.hasClass('matched') || selected.length === 2) return;
+
+                card.addClass('revealed');
+                selected.push(card);
+
+                if (selected.length === 2) {
+                    checkMatch();
+                }
+            });
+
+            $('#restart').on('click', function () {
+                initGame();
+            });
+
+            initGame();
+        });
+    </script>
+
 </body>
+
 </html>
