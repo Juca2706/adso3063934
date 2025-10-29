@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
-{   
+{
     use HasFactory;
     /**
      * The attributes that are mass assignable.
@@ -25,4 +25,11 @@ class Pet extends Model
         'active',
         'status'
     ];
+
+    // RelationShips
+    // Pet hasOne Adoption
+    public function adoption()
+    {
+        return $this->belongsTo(Adoption::class);
+    }
 }
