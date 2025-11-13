@@ -15,14 +15,17 @@
         </div>
     </div>
 </x-app-layout> --}}
+@extends('layouts.dashboard')
+@section('title', 'Dashboard: ADMIN: Larapets 🐻‍❄️')
 
-<h1>Dashboard</h1>
-
-<h2>{{ Auth::user()->fullname }}</h2>
-<form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <a href="javascript:," onclick="event.preventDefault(),
-        this.closest('form').submit();">
-        Log Out
-    </a>
-</form>
+@section('content')
+    {{-- <h1>Dashboard</h1>
+    <h2>{{ Auth::user()->fullname }}</h2>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <a href="{{ route('logout')  }}" onclick="event.preventDefault(),
+            this.closest('form').submit();">
+            Log Out
+        </a>
+    </form> --}}
+@endsection
