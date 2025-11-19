@@ -23,7 +23,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // User creation form view
+        return view('users.create');
     }
 
     /**
