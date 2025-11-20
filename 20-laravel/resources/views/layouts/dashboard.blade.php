@@ -22,6 +22,7 @@
 <body class="min-h-[100dvh] bg-[url({{ asset($image) }})] bg-black bg-fixed bg-center bg-cover w-full flex flex-col gap-4 items-center justify-center p-8 pt-20">
     @include('layouts.navbar')
     @yield('content') 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     @yield('js')
 </body>
 </html>
