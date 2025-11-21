@@ -133,7 +133,8 @@
                         </svg>
                     </a>
 
-                    <a href="javascript:;" class="btn btn-outline btn-error btn-xs rounded-full p-3 mb-1">
+                    <a href="javascript:;" data-fullname="{{ $user->fullname }}"
+                        class="btn btn-outline btn-error btn-xs btn-delete rounded-full p-3 mb-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="currentColor"
                             viewBox="0 0 256 256">
                             <path
@@ -141,6 +142,10 @@
                             </path>
                         </svg>
                     </a>
+                    <form class="hidden" method="POST" action="{{ url('users/'.$user->id) }}">
+                        @csrf
+                        @method('delete')
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -152,9 +157,9 @@
     </table>
 </div>
 
-{{-- Modal --}}
+{{-- Modal Message Created User --}}
 <dialog id="modal_message" class="modal">
-    <div class="modal-box bg-[#fff3] text-white">
+    <div class="modal-box bg-[#0003] text-white">
         <h3 class="text-lg font-bold mb-2">Congratulations!</h3>
         <div role="alert" class="alert alert-success">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
@@ -169,15 +174,52 @@
         <button>close</button>
     </form>
 </dialog>
+
+{{-- Modal Delete --}}
+<dialog id="modal_delete" class="modal">
+    <div class="modal-box bg-[#0003] text-white">
+        <h3 class="text-lg font-bold mb-2">Are you sure?</h3>
+        <div role="alert" class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="h-6 w-6 shrink-0 stroke-current">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>You want to delete: <strong class="fullname"></strong></span>
+        </div>
+        <div class="flex gap-2 mt-4">
+            <button class="btn btn-outline btn-success btn-confirm btn-sm">Delete</button>
+            <form method="dialog">
+                <button type="submit" class="btn btn-outline btn-error btn-sm">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>Cancel</button>
+    </form>
+</dialog>
 @endsection
 
 @section( 'js')
 <script>
     $(document).ready(function () {
+        // Modal
         const modal_message = document.getElementById('modal_message')
         @if (session('message'))
             modal_message.showModal() 
         @endif
+
+        // Delete User
+        $('table').on('click', '.btn-delete', function () {
+            $fullname = $(this).data('fullname')
+            $('.fullname').text($fullname)
+            $frm = $(this).next()
+            modal_delete.showModal()
+        })
+        $('.btn-confirm').click(function (e) {
+            e.preventDefault()
+            $frm.submit()
+        })
     })
 </script>
 @endsection

@@ -90,6 +90,13 @@
 
             <li class="list-row">
                 <div>
+                    <div>Age</div>
+                    <div class="text-xs uppercase font-semibold opacity-60">{{ Carbon\Carbon::parse($user->birthdate)->age }} Years old</div>
+                </div>
+            </li>
+
+            <li class="list-row">
+                <div>
                     <div>Phone</div>
                     <div class="text-xs uppercase font-semibold opacity-60">{{ $user->phone }}</div>
                 </div>
