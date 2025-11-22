@@ -126,7 +126,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->photo != 'no-photo.png') {
+        if ($user->photo != 'no-photo.png' && file_exists(public_path('images/').$user->photo)) {
             unlink(public_path('images/') . $user->photo);
         }
         if ($user->delete()) {
