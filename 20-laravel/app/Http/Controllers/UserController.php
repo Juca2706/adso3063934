@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -126,11 +127,30 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->photo != 'no-photo.png' && file_exists(public_path('images/').$user->photo)) {
+        if ($user->photo != 'no-photo.png' && file_exists(public_path('images/') . $user->photo)) {
             unlink(public_path('images/') . $user->photo);
         }
         if ($user->delete()) {
             return redirect('users')->with('message', 'The user: ' . $user->fullname . ' was successfully deleted!');
         }
+    }
+
+    // Search by Scope
+    public function search(Request $request)
+    {
+        $users = User::names($request->q)->paginate(20);
+        return view('users.search')->with('users', $users);
+    }
+
+    // Export Users PDF 
+    public function pdf() {
+        $users = User::all();
+        $pdf = PDF::loadView('users.pdf', compact('users'));
+        return $pdf->download('allusers.pdf');
+    }
+
+    // Export Users EXCEL 
+    public function excel() {
+        return 'EXCEL'; 
     }
 }

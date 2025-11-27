@@ -16,6 +16,17 @@ Route::middleware('auth')->group(function () {
         //'pets'       => PetController::class,
         //'adoptions'  => AdoptionController::class,
     ]);
+
+    // Search Users
+    Route::post('search/users', [UserController::class, 'search']);
+
+    // Export Users PDF 
+    Route::get('export/users/pdf', [UserController::class, 'pdf']);
+    // Export Users EXCEL
+    Route::get('export/users/excel', [UserController::class, 'excel']);
+
+    // Search Pets
+    Route::post('search/users', [UserController::class, 'search']);
 });
 
 Route::get('/', function () {
