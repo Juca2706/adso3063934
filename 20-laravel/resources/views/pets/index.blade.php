@@ -145,7 +145,7 @@
                         </svg>
                     </a>
 
-                    <a href="javascript:;" data-fullname="{{ $pet->name }}"
+                    <a href="javascript:;" data-name="{{ $pet->name }}"
                         class="btn btn-outline btn-error btn-xs btn-delete rounded-full p-3 mb-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="currentColor"
                             viewBox="0 0 256 256">
@@ -197,7 +197,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span>You want to delete: <strong class="fullname"></strong></span>
+            <span>You want to delete: <strong class="name"></strong></span>
         </div>
         <div class="flex gap-2 mt-4">
             <button class="btn btn-outline btn-success btn-confirm btn-sm">Delete</button>
@@ -223,8 +223,8 @@
 
         // Delete User
         $('table').on('click', '.btn-delete', function () {
-            $fullname = $(this).data('fullname')
-            $('.fullname').text($fullname)
+            $name = $(this).data('name')
+            $('.name').text($name)
             $frm = $(this).next()
             modal_delete.showModal()
         })

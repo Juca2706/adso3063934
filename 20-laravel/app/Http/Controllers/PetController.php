@@ -104,11 +104,11 @@ class PetController extends Controller
             if ($request->hasFile('image')) {
                 $image = time() . '.' . $request->image->extension();
                 $request->image->move(public_path('images'), $image);
-                if ($request->originphoto != 'no-image.png') {
-                    unlink(public_path('images/') . $request->originphoto);
+                if ($request->originimage != 'no-image.png') {
+                    unlink(public_path('images/') . $request->originimage);
                 }
             } else {
-                $image = $request->originphoto;
+                $image = $request->originimage;
             }
         }
 

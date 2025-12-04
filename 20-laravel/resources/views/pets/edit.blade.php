@@ -85,7 +85,7 @@
                 @enderror
             </div>
             <input type="file" id="image" name="image" class="hidden" accept="image/">
-            <input type="hidden" name="originphoto" value="{{ $pet->image }}">
+            <input type="hidden" name="originimage" value="{{ $pet->image }}">
         </div>
 
         <div class="w-full md:w-[320px]">
