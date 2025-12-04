@@ -150,7 +150,7 @@ class PetController extends Controller
         return view('pets.search')->with('pets', $pets);
     }
 
-    // Export Users PDF 
+    // Export Pets PDF 
     public function pdf()
     {
         $pets = Pet::all();
@@ -158,13 +158,13 @@ class PetController extends Controller
         return $pdf->download('allpets.pdf');
     }
 
-    // Export Users EXCEL 
+    // Export Pets EXCEL 
     public function excel()
     {
         return Excel::download(new PetsExport, 'allpets.xlsx');
     }
 
-    // Import Users EXCEL
+    // Import Pets EXCEL
     public function import(Request $request)
     {
         $file = $request->file('file');
