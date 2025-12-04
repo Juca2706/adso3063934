@@ -169,7 +169,7 @@
     </table>
 </div>
 
-{{-- Modal Message Created User --}}
+{{-- Modal Message Created Pet --}}
 <dialog id="modal_message" class="modal">
     <div class="modal-box bg-[#0003] text-white">
         <h3 class="text-lg font-bold mb-2">Congratulations!</h3>
