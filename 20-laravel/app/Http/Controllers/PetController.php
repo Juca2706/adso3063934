@@ -99,6 +99,7 @@ class PetController extends Controller
             'location'     => ['required', 'string'],
             'description'  => ['required', 'string'],
             'active'       => ['required', 'integer', 'between:0,1'],
+            'status'       => ['required', 'integer', 'between:0,1'],
         ]);
         if ($validation) {
             // dd($request->all());
@@ -122,6 +123,7 @@ class PetController extends Controller
         $pet->location     = $request->location;
         $pet->description  = $request->description;
         $pet->active       = $request->active;
+        $pet->status       = $request->status;
         $pet->save();
 
         if ($pet->save()) {

@@ -170,9 +170,7 @@
                 {{ $message }}
             </small>
             @enderror
-        </div>
 
-        <div class="w-full md:w-[320px] text-white">
             {{-- Breed --}}
             <label class="label text-white"><strong>Breed:</strong></label>
             <input type="text" class="input bg-[#0009]" name="breed" placeholder="French Bulldog"
@@ -191,7 +189,9 @@
                 {{ $message }}
             </small>
             @enderror
+        </div>
 
+        <div class="w-full md:w-[320px] text-white">
             {{-- Location --}}
             <label class="label text-white"><strong>Location:</strong></label>
             <input type="text" class="input bg-[#0009]" name="location" placeholder="Paris"
@@ -238,6 +238,28 @@
                 <option value="0" @if(old('active', $pet->active)== 0) selected @endif>Inactive</option>
             </select>
             @error('active')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Status --}}
+            <label class="label text-white"><strong>Active:</strong></label>
+            <select name="status" class="select bg-[#0009]">
+                <option value="">Select...</option>
+                <option value="0" @if(old('active', $pet->status)== 0 ) selected @endif>No Adopted</option>
+                <option value="1" @if(old('active', $pet->status)== 1) selected @endif>Adopted</option>
+            </select>
+            @error('status')
             <small class="badge badge-error w-full mt-1 text-xs py-4">
                 <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g fill="currentColor">

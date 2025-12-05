@@ -14,44 +14,55 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resources([
-        'users'        => UserController::class,
-        'pets'       => PetController::class,
-        //'adoptions'  => AdoptionController::class,
-    ]);
+    Route::group(['middleware' => 'admin'],  function () {
+        Route::resources([
+            'users'        => UserController::class,
+            'pets'       => PetController::class,
+        ]);
 
+        // /==============================================================
+        // SECCION USERS
+        // ==============================================================/
+        // Search Users
+        Route::post('search/users', [UserController::class, 'search']);
 
-    // /==============================================================
-    // SECCION USERS
-    // ==============================================================/
-    // Search Users
-    Route::post('search/users', [UserController::class, 'search']);
+        // Export Users PDF 
+        Route::get('export/users/pdf', [UserController::class, 'pdf']);
+        // Export Users EXCEL
+        Route::get('export/users/excel', [UserController::class, 'excel']);
 
-    // Export Users PDF 
-    Route::get('export/users/pdf', [UserController::class, 'pdf']);
-    // Export Users EXCEL
-    Route::get('export/users/excel', [UserController::class, 'excel']);
+        // Import Users 
+        Route::post('import/users', [UserController::class, 'import']);
 
-    // Import Users 
-    Route::post('import/users', [UserController::class, 'import']);
+        // /==============================================================
+        // SECCION PETS
+        // ==============================================================/
+        // Search Pets
+        Route::post('search/pets', [PetController::class, 'search']);
 
-    // /==============================================================
-    // SECCION PETS
-    // ==============================================================/
-    // Search Pets
-    Route::post('search/pets', [PetController::class, 'search']);
+        // Export Pets PDF 
+        Route::get('export/pets/pdf', [PetController::class, 'pdf']);
+        // Export Pets EXCEL
+        Route::get('export/pets/excel', [PetController::class, 'excel']);
 
-    // Export Users PDF 
-    Route::get('export/pets/pdf', [PetController::class, 'pdf']);
-    // Export Users EXCEL
-    Route::get('export/pets/excel', [PetController::class, 'excel']);
+        // Import Pets
+        Route::post('import/pets', [PetController::class, 'import']);
 
-    // Import Users 
-    Route::post('import/pets', [PetController::class, 'import']);
+        // /==============================================================
+        // SECCION ADOPTIONS
+        // ==============================================================/
+        // Adoption 
+        Route::get('adoptions', [AdoptionController::class, 'index']);
+        Route::get('adoptions/{id}', [AdoptionController::class, 'show']);
 
-    // /==============================================================
-    // SECCION ADOPTIONS
-    // ==============================================================/
+        // Search Adoptions
+        Route::post('search/adoptions', [AdoptionController::class, 'search']);
+
+        // Export Adoptions PDF 
+        Route::get('export/adoptions/pdf', [AdoptionController::class, 'pdf']);
+        // Export Adoptions EXCEL
+        Route::get('export/adoptions/excel', [AdoptionController::class, 'excel']);
+    });
 });
 
 Route::get('/', function () {
