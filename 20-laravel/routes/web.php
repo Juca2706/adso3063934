@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,6 +64,23 @@ Route::middleware('auth')->group(function () {
         // Export Adoptions EXCEL
         Route::get('export/adoptions/excel', [AdoptionController::class, 'excel']);
     });
+
+    // /==============================================================
+    // SECCION CUSTOMER
+    // ==============================================================/
+    // My profile
+    Route::get('myprofile/', [CustomerController::class, 'myprofile']);
+    Route::put('myprofile/{id}', [CustomerController::class, 'updatemyprofile']);
+
+    // My Adoptions
+    Route::get('myadoptions/', [CustomerController::class, 'myadoptions']);
+    Route::get('myadoptions/{id}', [CustomerController::class, 'showadoption']);
+
+    // Make Adoption
+    Route::get('makeadoption/', [CustomerController::class, 'listpets']);
+    Route::get('makeadoption/{id}', [CustomerController::class, 'confirmadoption']);
+    Route::post('makeadoption/{id}', [CustomerController::class, 'makeadoption']);
+    Route::post('search/makeadoption', [CustomerController::class, 'search']);
 });
 
 Route::get('/', function () {

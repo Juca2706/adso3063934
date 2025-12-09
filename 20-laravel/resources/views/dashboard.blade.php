@@ -29,9 +29,9 @@
 </h1>
 
 {{-- Cards --}}
-<div class="flex flex-wrap gap-4 items-center justify-center">
+<div class="flex flex-wrap gap-4 items-center justify-center"> {{-- Administrador --}}
     @if(Auth::user()->role == 'Administrador')
-    {{-- Modules Users --}}
+    {{-- Module Users --}}
     <div class="card text-white bg-[#000a] w-96 shadow-sm">
         <figure class="h-[240px]">
             <img class="object-cover w-full h-full" src="images/apartado-users.png" alt="users" />
@@ -278,10 +278,117 @@
         </div>
     </div>
     @endif
+
+    {{-- Customer --}}
+    @if(Auth::user()->role == 'Customer')
+    {{-- Module My Profile --}}
+    <div class="card text-white bg-[#000a] w-96 shadow-sm">
+        <figure class="h-[240px]">
+            <img class="object-cover w-full h-full" src="images/apartado-myprofile.png" alt="users" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                        d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM68.67,208A64.36,64.36,0,0,1,87.8,182.2a64,64,0,0,1,80.4,0A64.36,64.36,0,0,1,187.33,208ZM208,208h-3.67a79.9,79.9,0,0,0-46.68-50.29,48,48,0,1,0-59.3,0A79.9,79.9,0,0,0,51.67,208H48V48H208V208Z">
+                    </path>
+                </svg>
+                My Profile
+            </h2>
+
+            <div class="card-actions justify-end">
+                <a class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-4" href="{{ url('myprofile') }}">
+                    Enter
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                            d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Module My Adoptions --}}
+    <div class="card text-white bg-[#000a] w-96 shadow-sm">
+        <figure class="h-[240px]">
+            <img class="object-cover w-full h-full" src="images/apartado-myadoptions.png" alt="pets" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                        d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z">
+                    </path>
+                </svg>
+                My Adoptions
+            </h2>
+
+            <div class="card-actions justify-end">
+                <a class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-4" href="{{ url('myadoptions') }}">
+                    Enter
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                            d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- Module Make Adoption --}}
+    <div class="card text-white bg-[#000a] w-96 shadow-sm">
+        <figure class="h-[240px]">
+            <img class="object-cover w-full h-full" src="images/apartado-makeadoption.png" alt="Shoes" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                        d="M230.33,141.06a24.34,24.34,0,0,0-18.61-4.77C230.5,117.33,240,98.48,240,80c0-26.47-21.29-48-47.46-48A47.58,47.58,0,0,0,156,48.75,47.58,47.58,0,0,0,119.46,32C93.29,32,72,53.53,72,80c0,11,3.24,21.69,10.06,33a31.87,31.87,0,0,0-14.75,8.4L44.69,144H16A16,16,0,0,0,0,160v40a16,16,0,0,0,16,16H120a7.93,7.93,0,0,0,1.94-.24l64-16a6.94,6.94,0,0,0,1.19-.4L226,182.82l.44-.2a24.6,24.6,0,0,0,3.93-41.56ZM119.46,48A31.15,31.15,0,0,1,148.6,67a8,8,0,0,0,14.8,0,31.15,31.15,0,0,1,29.14-19C209.59,48,224,62.65,224,80c0,19.51-15.79,41.58-45.66,63.9l-11.09,2.55A28,28,0,0,0,140,112H100.68C92.05,100.36,88,90.12,88,80,88,62.65,102.41,48,119.46,48ZM16,160H40v40H16Zm203.43,8.21-38,16.18L119,200H56V155.31l22.63-22.62A15.86,15.86,0,0,1,89.94,128H140a12,12,0,0,1,0,24H112a8,8,0,0,0,0,16h32a8.32,8.32,0,0,0,1.79-.2l67-15.41.31-.08a8.6,8.6,0,0,1,6.3,15.9Z">
+                    </path>
+                </svg>
+                Make Adoption
+            </h2>
+
+
+            <div class="card-actions justify-end">
+                <a class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-4" href="{{ url('makeadoption') }}">
+                    Enter
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                            d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
 
-{{-- Modal Message Error Permissions Admin --}}
+{{-- Modal Message Edited Profile --}}
 <dialog id="modal_message" class="modal">
+    <div class="modal-box bg-[#0003] text-white">
+        <h3 class="text-lg font-bold mb-2">Congratulations!</h3>
+        <div role="alert" class="alert alert-success">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ session('message') }}</span>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+</dialog>
+
+{{-- Modal Message Error Permissions Admin --}}
+<dialog id="modal_error" class="modal">
     <div class="modal-box bg-[#0003] text-white">
         <h3 class="text-lg font-bold mb-2">
             Sorry!
@@ -304,9 +411,15 @@
 @section( 'js')
 <script>
     $(document).ready(function () {
-        // Modal .....................
-        const modal_message = document.getElementById('modal_message')
+        // Modal Error .....................
+        const modal_error = document.getElementById('modal_error')
         @if(session('error'))
+            modal_error.showModal()
+        @endif
+
+        // Modal Message .....................
+        const modal_message = document.getElementById('modal_message')
+        @if(session('message'))
             modal_message.showModal()
         @endif
     })

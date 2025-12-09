@@ -1,0 +1,221 @@
+@extends('layouts.dashboard')
+
+@section('title', 'My Profile: Larapets 🐻‍❄️')
+
+@section( 'content')
+<h1 class="text-4xl text-white flex gap-2 items-center justify-center pb-4 border-b-2 border-neutral-50 mb-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="currentColor" viewBox="0 0 256 256">
+        <path
+            d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM68.67,208A64.36,64.36,0,0,1,87.8,182.2a64,64,0,0,1,80.4,0A64.36,64.36,0,0,1,187.33,208ZM208,208h-3.67a79.9,79.9,0,0,0-46.68-50.29,48,48,0,1,0-59.3,0A79.9,79.9,0,0,0,51.67,208H48V48H208V208Z">
+        </path>
+    </svg>
+    My Profile
+</h1>
+
+{{-- Breadcrumbs --}}
+<div class="breadcrumbs text-white text-sm">
+    <ul>
+        <li>
+            <a href="{{ url('dashboard') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                        d="M80,40a40,40,0,1,0,40,40A40,40,0,0,0,80,40Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,80,104Zm96,16a40,40,0,1,0-40-40A40,40,0,0,0,176,120Zm0-64a24,24,0,1,1-24,24A24,24,0,0,1,176,56ZM80,136a40,40,0,1,0,40,40A40,40,0,0,0,80,136Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,80,200Zm96-64a40,40,0,1,0,40,40A40,40,0,0,0,176,136Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,176,200Z">
+                    </path>
+                </svg>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <span class="inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                        d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM68.67,208A64.36,64.36,0,0,1,87.8,182.2a64,64,0,0,1,80.4,0A64.36,64.36,0,0,1,187.33,208ZM208,208h-3.67a79.9,79.9,0,0,0-46.68-50.29,48,48,0,1,0-59.3,0A79.9,79.9,0,0,0,51.67,208H48V48H208V208Z">
+                    </path>
+                </svg>
+                My Profile
+            </span>
+        </li>
+    </ul>
+</div>
+
+<div class="card text-white md:w-[720px] w-[320px] bg-[#0006] p-7 rounded-md">
+    {{-- Form --}}
+    <form method="POST" action="{{ url('myprofile/'.$user->id) }}" class="flex flex-col md:flex-row gap-4 mt-4"
+        enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="w-full md:w-[320px]">
+            <div
+                class="avatar flex flex-col gap-2 items-center justify-center cursor-pointer hover:scale-110 transition ease-in">
+                <div id="upload" class="mask mask-squircle w-48">
+                    <img id="preview" src="{{ asset('images/'.$user->photo) }}" />
+                </div>
+                <small class="pb-0 border-white border-b flex gap-1 items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="currentColor" viewBox="0 0 256 256">
+                        <path
+                            d="M223.16,68.42l-16-32A8,8,0,0,0,200,32H56a8,8,0,0,0-7.16,4.42l-16,32A8.08,8.08,0,0,0,32,72V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A8.08,8.08,0,0,0,223.16,68.42ZM60.94,48H195.06l8,16H52.94ZM208,208H48V80H208V208Zm-42.34-77.66a8,8,0,0,1-11.32,11.32L136,123.31V184a8,8,0,0,1-16,0V123.31l-18.34,18.35a8,8,0,0,1-11.32-11.32l32-32a8,8,0,0,1,11.32,0Z">
+                        </path>
+                    </svg>
+                    Upload Photo
+                </small>
+                @error('photo')
+                <small class="badge badge-error w-full mt-1 text-xs py-4">
+                    <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g fill="currentColor">
+                            <rect x="1.972" y="11" width="20.056" height="2"
+                                transform="translate(-4.971 12) rotate(-45)" fill="currentColor" stroke-width="0">
+                            </rect>
+                            <path
+                                d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                                stroke-width="0" fill="currentColor"></path>
+                        </g>
+                    </svg>
+                    {{ $message }}
+                </small>
+                @enderror
+            </div>
+            <input type="file" id="photo" name="photo" class="hidden" accept="image/">
+            <input type="hidden" name="originphoto" value="{{ $user->photo }}">
+        </div>
+
+        <div class="w-full md:w-[320px]">
+            {{-- Document --}}
+            <label class="label text-white"><strong>Document:</strong></label>
+            <input type="text" class="input bg-[#0009]" name="document" placeholder="750000##"
+                value="{{ old('document', $user->document) }}" />
+            @error('document')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Fullname --}}
+            <label class="label text-white"><strong>Fullname:</strong></label>
+            <input type="text" class="input bg-[#0009]" name="fullname" placeholder="Jeremias Sprinfield"
+                value="{{ old('fullname', $user->fullname) }}" />
+            @error('fullname')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Gender --}}
+            <label class="label text-white"><strong>Gender:</strong></label>
+            <select name="gender" class="select bg-[#0009]">
+                <option value="">Select...</option>
+                <option value="Female" @if(old('gender', $user->gender)=='Female' ) selected @endif>Female</option>
+                <option value="Male" @if(old('gender', $user->gender)=='Male' ) selected @endif>Male</option>
+            </select>
+            @error('gender')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+        </div>
+
+        <div class="w-full md:w-[320px] text-white">
+            {{-- Birthdate --}}
+            <label class="label text-white"><strong>Birthdate:</strong></label>
+            <input type="date" class="input bg-[#0009]" name="birthdate" placeholder="1660-01-12"
+                value="{{ old('birthdate', $user->birthdate) }}" />
+            @error('birthdate')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Phone --}}
+            <label class="label text-white"><strong>Phone:</strong></label>
+            <input type="text" class="input bg-[#0009]" name="phone" placeholder="3134520###"
+                value="{{ old('phone', $user->phone) }}" />
+            @error('phone')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Email --}}
+            <label class="label text-white"><strong>Email:</strong></label>
+            <input type="text" class="input bg-[#0009]" name="email" placeholder="emailName@example.com"
+                value="{{ old('email', $user->email) }}" />
+            @error('email')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            <button class="btn btn-outline hover:bg-[#fff6] hover:text-white w-full mt-4">Edit</button>
+        </div>
+    </form>
+</div>
+@endsection
+
+@section( 'js')
+<script>
+    $(document).ready(function (){
+        $('#upload').click(function (e) {
+            e.preventDefault()
+            $('#photo').click()
+        })
+        $('#photo').change(function (e) {
+            e.preventDefault()
+            $('#preview').attr('src', window.URL.createObjectURL($(this).prop('files')[0]))
+        })
+    })
+</script>
+@endsection
