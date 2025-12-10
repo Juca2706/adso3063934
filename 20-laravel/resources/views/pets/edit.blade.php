@@ -253,7 +253,7 @@
             @enderror
 
             {{-- Status --}}
-            <label class="label text-white"><strong>Active:</strong></label>
+            <label class="label text-white"><strong>Status:</strong></label>
             <select name="status" class="select bg-[#0009]">
                 <option value="">Select...</option>
                 <option value="0" @if(old('active', $pet->status)== 0 ) selected @endif>No Adopted</option>

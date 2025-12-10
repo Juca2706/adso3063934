@@ -49,7 +49,7 @@
 </div>
 
 <div class="card text-white md:w-[720px] w-[320px] bg-[#0006] p-7 rounded-md">
-    {{-- Form --}}  
+    {{-- Form --}}
     <form method="POST" action="{{ url('users/'.$user->id) }}" class="flex flex-col md:flex-row gap-4 mt-4"
         enctype="multipart/form-data">
         @csrf
@@ -148,9 +148,7 @@
                 {{ $message }}
             </small>
             @enderror
-        </div>
 
-        <div class="w-full md:w-[320px] text-white">
             {{-- Birthdate --}}
             <label class="label text-white"><strong>Birthdate:</strong></label>
             <input type="date" class="input bg-[#0009]" name="birthdate" placeholder="1660-01-12"
@@ -169,7 +167,9 @@
                 {{ $message }}
             </small>
             @enderror
+        </div>
 
+        <div class="w-full md:w-[320px] text-white">
             {{-- Phone --}}
             <label class="label text-white"><strong>Phone:</strong></label>
             <input type="text" class="input bg-[#0009]" name="phone" placeholder="3134520###"
@@ -194,6 +194,50 @@
             <input type="text" class="input bg-[#0009]" name="email" placeholder="emailName@example.com"
                 value="{{ old('email', $user->email) }}" />
             @error('email')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Active --}}
+            <label class="label text-white"><strong>Active:</strong></label>
+            <select name="active" class="select bg-[#0009]">
+                <option value="">Select...</option>
+                <option value="1" @if(old('active', $user->active)== 1 ) selected @endif>Active</option>
+                <option value="0" @if(old('active', $user->active)== 0) selected @endif>Inactive</option>
+            </select>
+            @error('active')
+            <small class="badge badge-error w-full mt-1 text-xs py-4">
+                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g fill="currentColor">
+                        <rect x="1.972" y="11" width="20.056" height="2" transform="translate(-4.971 12) rotate(-45)"
+                            fill="currentColor" stroke-width="0"></rect>
+                        <path
+                            d="m12,23c-6.065,0-11-4.935-11-11S5.935,1,12,1s11,4.935,11,11-4.935,11-11,11Zm0-20C7.038,3,3,7.037,3,12s4.038,9,9,9,9-4.037,9-9S16.962,3,12,3Z"
+                            stroke-width="0" fill="currentColor"></path>
+                    </g>
+                </svg>
+                {{ $message }}
+            </small>
+            @enderror
+
+            {{-- Role --}}
+            <label class="label text-white"><strong>Role:</strong></label>
+            <select name="role" class="select bg-[#0009]">
+                <option value="">Select...</option>
+                <option value="Customer" @if(old('role', $user->role)== 'Customer' ) selected @endif>Customer</option>
+                <option value="Administrador" @if(old('role', $user->role)== 'Administrador') selected @endif>Administrador</option>
+            </select>
+            @error('role')
             <small class="badge badge-error w-full mt-1 text-xs py-4">
                 <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <g fill="currentColor">

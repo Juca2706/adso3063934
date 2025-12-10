@@ -97,6 +97,8 @@ class UserController extends Controller
             'birthdate' => ['required', 'date'],
             'phone'     => ['required'],
             'email'     => ['required', 'lowercase', 'email', 'unique:' . User::class . ',email,' . $user->id],
+            'active'    => ['required', 'integer', 'between:0,1'],
+            'role'      => ['required', 'string'],
         ]);
         if ($validation) {
             // dd($request->all());
@@ -118,6 +120,8 @@ class UserController extends Controller
         $user->photo     = $photo;
         $user->phone     = $request->phone;
         $user->email     = $request->email;
+        $user->active    = $request->active;
+        $user->role      = $request->role;
         $user->save();
 
         if ($user->save()) {
@@ -146,19 +150,22 @@ class UserController extends Controller
     }
 
     // Export Users PDF 
-    public function pdf() {
+    public function pdf()
+    {
         $users = User::all();
         $pdf = PDF::loadView('users.pdf', compact('users'));
         return $pdf->download('allusers.pdf');
     }
 
     // Export Users EXCEL 
-    public function excel() {
+    public function excel()
+    {
         return Excel::download(new UsersExport, 'allusers.xlsx');
     }
 
     // Import Users EXCEL
-    public function import(Request $request) {
+    public function import(Request $request)
+    {
         $file = $request->file('file');
         Excel::import(new UsersImport, $file);
         return redirect()->back()->with('message', 'Users imported successfully');
