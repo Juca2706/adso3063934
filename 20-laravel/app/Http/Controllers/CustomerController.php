@@ -61,7 +61,7 @@ class CustomerController extends Controller
     // My Adoptions
     public function myadoptions()
     {
-        $adopts = Adoption::where('user_id', Auth::user()->id)->get();
+        $adopts = Adoption::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         //dd($adopts->toArray());
         return view('customer.myadoptions')->with('adopts', $adopts);
     }
@@ -83,14 +83,48 @@ class CustomerController extends Controller
 
     public function confirmadoption(Request $request)
     {
-        return "Confirm Adoption";
+        $pet = Pet::find($request->id);
+        //dd($pet->toArray());
+        return view('customer.confirmadoption')->with('pet', $pet);
     }
 
     public function makeadoption(Request $request)
     {
-        return "Make Adoption";
+        // Buscar mascota por id
+        $pet = Pet::find($request->id);
+        if (!$pet) {
+            return back()->with('error', 'Pet not found.');
+        }
+
+        // Valida que el estatus no este adoptado
+        if ($pet->status == 1) {
+            return back()->with('error', 'Sorry, this pet has already been adopted.');
+        }
+
+
+        // Valida que la mascota no este inactiv
+        if ($pet->active != 1) {
+            return back()->with('error', 'This pet is not available for adoption.');
+        }
+
+        // Marcar la mascota como adoptada y la desactiva
+        $pet->status = 1;
+        $pet->active = 0;
+        $pet->save();
+
+        // Registrar la adopción relacionada con el usuario autenticado
+        $adoption = new Adoption();
+        $adoption->user_id = Auth::id();
+        $adoption->pet_id  = $pet->id;
+        $adoption->save();
+
+        // Redirigir a la lista de mis adopciones con mensaje
+        return redirect()->action([CustomerController::class, 'myadoptions'])
+            ->with('message', ' ¡Thank you for adopting!');
     }
 
+
+    // Search
     public function search(Request $request)
     {
         $pets = Pet::kinds($request->q)->orderBy('id', 'DESC')->paginate(20);
