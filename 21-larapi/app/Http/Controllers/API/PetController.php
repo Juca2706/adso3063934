@@ -76,26 +76,34 @@ class PetController extends Controller
      */
     public function update(Request $request)
     {
-        $pet = Pet::find($request->id);
+        try {
+            $validation = $request->validate([
+                'name'         => ['sometimes', 'required', 'string'],
+                'kind'         => ['sometimes', 'required', 'string'],
+                'weight'       => ['sometimes', 'required', 'decimal:1'],
+                'age'          => ['sometimes', 'required', 'numeric'],
+                'breed'        => ['sometimes', 'required', 'string'],
+                'location'     => ['sometimes', 'required', 'string'],
+                'description'  => ['sometimes', 'required', 'string'],
+            ]);
 
-        $validation = $request->validate([
-            'name'         => ['sometimes', 'required', 'string'],
-            'kind'         => ['sometimes', 'required', 'string'],
-            'weight'       => ['sometimes', 'required', 'decimal:1'],
-            'age'          => ['sometimes', 'required', 'numeric'],
-            'breed'        => ['sometimes', 'required', 'string'],
-            'location'     => ['sometimes', 'required', 'string'],
-            'description'  => ['sometimes', 'required', 'string'],
-        ]);
+            $pet = Pet::find($request->id);
 
-        if ($pet) {
-            return response()->json(['error' => 'Pet not found! 🐾'], 404);
+            if (!$pet) {
+                return response()->json(['error' => 'Pet not found! 🐾'], 404);
+            }
+
+            $pet->update($request->all());
+            return response()->json([
+                'message' => 'Pet was successfully updated! 🐻‍❄️',
+                'pet'     => $pet
+            ], 200);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => 'Error in the request 🐾',
+                'errors'  => $e->errors()
+            ], 422);
         }
-        $pet->update($request->all());
-        return response()->json([
-            'message' => 'Pet was successfully updated! 🐻‍❄️',
-            'pet'     => $pet
-        ], 200);
     }
 
     /**
