@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API JS: Larapets</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.min.css">
+</head>
+
+<body>
+    <!-- View: Login -->
+    <main id="login">
+        <header>
+            <img src="imgs/title-login.png" alt="Login">
+        </header>
+        <form id="loginForm">
+            <label for="email">
+                <span>
+                    <i class="ph ph-envelope"></i> Email:
+                </span>
+                <input type="email" id="email" name="email" placeholder="Example@gmail.com" required>
+            </label>
+            <label for="password">
+                <span>
+                    <i class="ph ph-password"></i> Password:
+                </span>
+                <input type="password" id="password" name="password" placeholder="**********" required>
+            </label>
+
+            <hr class="divisor">
+
+            <button class="btn-login"><i class="ph ph-sign-in"></i> Login</button>
+            <button type="button" class="btn-register"><i class="ph ph-user-circle-plus"></i> Register</button>
+            <a href="javascript:;">Have you forgotten your password?</a>
+        </form>
+    </main>
+
+    <!-- View: Pet List -->
+    <main id="pet_list">
+        <header>
+            <img src="imgs/title-pet-list.png" alt="Pet List">
+        </header>
+        <nav>
+            <a href="javascript:;" class="btn-add">
+                <img src="imgs/btn-add.svg" alt="Add">
+            </a>
+            <a href="javascript:;" class="btn-logout">
+                <img src="imgs/btn-logout.svg" alt="Logout">
+            </a>
+        </nav>
+        <section class="list"></section>
+    </main>
+
+    <!-- View: Add Pet -->
+    <main id="add_pet">
+        <header>
+            <img src="imgs/title-add-pet.svg" alt="Add">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <form action="">
+            <label for="name">
+                <span>
+                    Name:
+                </span>
+                <input type="text" name="name" required>
+            </label>
+            <label for="kind">
+                <span>
+                    Kind:
+                </span>
+                <input type="text" name="kind" required>
+            </label>
+            <label for="weight">
+                <span>
+                    Weight:
+                </span>
+                <input type="number" name="weight" step="0.1" required>
+            </label>
+            <label for="age">
+                <span>
+                    Age:
+                </span>
+                <input type="number" name="age" required>
+            </label>
+            <label for="breed">
+                <span>
+                    Breed:
+                </span>
+                <input type="text" name="breed" required>
+            </label>
+            <label for="location">
+                <span>
+                    Location:
+                </span>
+                <input type="text" name="location" required>
+            </label>
+            <label for="description">
+                <span>
+                    Description:
+                </span>
+                <textarea name="description"></textarea>
+            </label>
+
+            <div class="actions">
+                <button type="button" class="btn-save-add"><i class="ph ph-floppy-disk-back"></i> Save</button>
+                <a href="javascript:;" class="btn-cancel"><i class="ph ph-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- View: Edit Pet -->
+    <main id="edit_pet">
+        <header>
+            <img src="imgs/title-edit-pet.svg" alt="Edit">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <form action="">
+            <label for="name">
+                <span>
+                    Name:
+                </span>
+                <input type="text" name="name" placeholder="Tucker">
+            </label>
+            <label for="kind">
+                <span>
+                    Kind:
+                </span>
+                <input type="text" name="kind" placeholder="Dog">
+            </label>
+            <label for="weight">
+                <span>
+                    Weight:
+                </span>
+                <input type="number" name="weight" step="0.1" placeholder="3.5 kls">
+            </label>
+            <label for="age">
+                <span>
+                    Age:
+                </span>
+                <input type="number" name="age" placeholder="1 years">
+            </label>
+            <label for="breed">
+                <span>
+                    Breed:
+                </span>
+                <input type="text" name="breed" placeholder="Golden Retriver">
+            </label>
+            <label for="location">
+                <span>
+                    Location:
+                </span>
+                <input type="text" name="location" placeholder="North Raymundoview">
+            </label>
+            <label for="description">
+                <span>
+                    Description:
+                </span>
+                <textarea name="description" placeholder="Nostrum voluptatem ex nulla soluta provident qui a..">
+                </textarea>
+            </label>
+
+            <div class="actions">
+                <button type="button" class="btn-save-edit"><i class="ph ph-floppy-disk-back"></i> Save</button>
+                <a href="javascript:;" class="btn-cancel"><i class="ph ph-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- View: Show Pet -->
+    <main id="show_pet">
+        <header>
+            <img src="imgs/title-show-pet.svg" alt="Show">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <section class="pet"></section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.18/dist/sweetalert2.all.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</body>
+
+</html>

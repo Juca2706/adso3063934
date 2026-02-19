@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API JS: Larapets</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+    <!-- View: Login -->
+    <main id="login">
+        <header>
+            <img src="imgs/title-login.png" alt="Login">
+        </header>
+        <form action="">
+            <label for="email">
+                <span>
+                    <i class="ph ph-envelope"></i> Email:
+                </span>
+                <input type="email" name="email" placeholder="Example@gmail.com">
+            </label>
+            <label for="password">
+                <span>
+                    <i class="ph ph-password"></i> Password:
+                </span>
+                <input type="password" name="password" placeholder="**********">
+            </label>
+
+            <hr class="divisor">
+
+            <button type="button" class="btn-login"><i class="ph ph-sign-in"></i> Login</button>
+            <button type="button" class="btn-register"><i class="ph ph-user-circle-plus"></i> Register</button>
+            <a href="javascript:;">Have you forgotten your password?</a>
+        </form>
+    </main>
+
+    <!-- View: Pet List -->
+    <main id="pet_list">
+        <header>
+            <img src="imgs/title-pet-list.png" alt="Pet List">
+        </header>
+        <nav>
+            <a href="javascript:;" class="btn-add">
+                <img src="imgs/btn-add.svg" alt="Add">
+            </a>
+            <a href="javascript:;" class="btn-logout">
+                <img src="imgs/btn-logout.svg" alt="Logout">
+            </a>
+        </nav>
+        <section class="list">
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+
+            <div class="row">
+                <img src="imgs/tucker.png" alt="tucker">
+                <div class="data">
+                    <h3>Tucker</h3>
+                    <h4>Dog, Golden Retriver</h4>
+                </div>
+                <nav class="actions">
+                    <a href="javascript:;" class="btn-show"></a>
+                    <a href="javascript:;" class="btn-edit"></a>
+                    <a href="javascript:;" class="btn-delete"></a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- View: Add Pet -->
+    <main id="add_pet">
+        <header>
+            <img src="imgs/title-add-pet.svg" alt="Add">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <form action="">
+            <label for="name">
+                <span>
+                    Name:
+                </span>
+                <input type="text" name="name">
+            </label>
+            <label for="kind">
+                <span>
+                    Kind:
+                </span>
+                <input type="text" name="kind">
+            </label>
+            <label for="weight">
+                <span>
+                    Weight:
+                </span>
+                <input type="text" name="weight">
+            </label>
+            <label for="age">
+                <span>
+                    Age:
+                </span>
+                <input type="text" name="age">
+            </label>
+            <label for="breed">
+                <span>
+                    Breed:
+                </span>
+                <input type="text" name="breed">
+            </label>
+            <label for="location">
+                <span>
+                    Location:
+                </span>
+                <input type="text" name="location">
+            </label>
+            <label for="description">
+                <span>
+                    Description:
+                </span>
+                <textarea name="description"></textarea>
+            </label>
+
+            <div class="actions">
+                <button type="button" class="btn-save"><i class="ph ph-floppy-disk-back"></i> Save</button>
+                <a href="javascript:;" class="btn-cancel"><i class="ph ph-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- View: Edit Pet -->
+    <main id="edit_pet">
+        <header>
+            <img src="imgs/title-edit-pet.svg" alt="Edit">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <form action="">
+            <label for="name">
+                <span>
+                    Name:
+                </span>
+                <input type="text" name="name" placeholder="Tucker">
+            </label>
+            <label for="kind">
+                <span>
+                    Kind:
+                </span>
+                <input type="text" name="kind" placeholder="Dog">
+            </label>
+            <label for="weight">
+                <span>
+                    Weight:
+                </span>
+                <input type="text" name="weight" placeholder="3.5 kls">
+            </label>
+            <label for="age">
+                <span>
+                    Age:
+                </span>
+                <input type="text" name="age" placeholder="1 years">
+            </label>
+            <label for="breed">
+                <span>
+                    Breed:
+                </span>
+                <input type="text" name="breed" placeholder="Golden Retriver">
+            </label>
+            <label for="location">
+                <span>
+                    Location:
+                </span>
+                <input type="text" name="location" placeholder="North Raymundoview">
+            </label>
+            <label for="description">
+                <span>
+                    Description:
+                </span>
+                <textarea name="description" placeholder="Nostrum voluptatem ex nulla soluta provident qui a..">
+                </textarea>
+            </label>
+
+            <div class="actions">
+                <button type="button" class="btn-save"><i class="ph ph-floppy-disk-back"></i> Save</button>
+                <a href="javascript:;" class="btn-cancel"><i class="ph ph-x-circle"></i> Cancel</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- View: Show Pet -->
+    <main id="show_pet">
+        <header>
+            <img src="imgs/title-show-pet.svg" alt="Show">
+        </header>
+
+        <nav>
+            <a href="javascript:;" class="btn-back">
+                <img src="imgs/btn-back.svg" alt="Back">
+            </a>
+        </nav>
+
+        <section class="pet">
+            <img src="imgs/tucker.svg" alt="tucker">
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Name:</h3>
+                    <h4>Tucker</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Kind:</h3>
+                    <h4>Dog</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Weight:</h3>
+                    <h4>3.5 kls</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Age:</h3>
+                    <h4>1 years</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Breed:</h3>
+                    <h4>Golden Retriver</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row location-especial">
+                <div class="data">
+                    <h3>Location:</h3>
+                    <h4>North Raymundoview</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row descripcion-especial">
+                <div class="data">
+                    <h3>Description:</h3>
+                    <h4>Nostrum voluptatem ex nulla soluta provident qui a..</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Active:</h3>
+                    <h4>Inactive</h4>
+                </div>
+            </div>
+
+            <hr class="divisor">
+
+            <div class="row">
+                <div class="data">
+                    <h3>Status:</h3>
+                    <h4>Adopted</h4>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="js/layout.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</body>
+
+</html>
