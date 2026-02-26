@@ -5,7 +5,7 @@ function Example2JSX() {
     // JS variables
     const pkName = 'Pikachu';
     const pkType = 'Electric';
-    const pkLevel = 81;
+    const pkLevel = 5;
     const pkAbilities = ['Static Electricity', 'Volt Absorb'];
     const pkImg = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png';
 
@@ -42,7 +42,7 @@ function Example2JSX() {
         <div className="container">
             <BtnBack />
             <h2>Example 2: JSX</h2>
-            <p>Writting HTML-like code whitin JavaScript using curly braces { } for JS expresions.</p>
+            <p>Writting HTML-like code whitin JavaScript using curly braces ( ) for JS expresions.</p>
             <div style={style.container}>
                 <h3 style={style.title}>{pkName} (Lvl. {pkLevel})</h3>
                 <img
