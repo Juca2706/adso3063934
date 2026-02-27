@@ -48,9 +48,9 @@ function Example4StateHooks() {
     ];
 
     // 1. ESTADOS
-    const [wildPokemon, setWildPokemon] = useState(null); // Pokémon que aparece
-    const [myPokedex, setMyPokedex] = useState([]); // Pokémon capturados
-    const [isCapturing, setIsCapturing] = useState(false); // Estado del botón
+    const [wildPokemon, setWildPokemon] = useState(null);   // Pokémon que aparece
+    const [myPokedex, setMyPokedex] = useState([]);         // Pokémon capturados
+    const [isCapturing, setIsCapturing] = useState(false);  // Estado del botón
 
     // 2. BUSCAR POKEMON
     const disponibles = pokemons.filter(p => !myPokedex.some(c => c.id === p.id));
