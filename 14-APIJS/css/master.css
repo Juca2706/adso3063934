@@ -24,12 +24,12 @@ body {
         height: 526px;
         width: 246px;
 
-        /* Hide ----------------------- */
+        /* Hide ------------------------- */
         &.hide {
             display: none;
         }
 
-        /* Login ----------------------- */
+        /* Login ------------------------- */
         &#login {
             background: url(../imgs/bg-fondo.png);
             background-size: contain;
@@ -111,7 +111,7 @@ body {
             }
         }
 
-        /* Pet List ----------------------- */
+        /* Pet List ---------------------- */
         &#pet_list {
             background: url(../imgs/bg-fondo.png);
             background-size: contain;
@@ -127,6 +127,7 @@ body {
                 a:visited {
                     background-color: #0000005d;
                     color: #E0D9D9;
+                    cursor: pointer;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -159,6 +160,7 @@ body {
                     height: 20px;
                     object-fit: cover;
                     border-radius: 5px;
+                    margin-left: 0.5rem;
                 }
 
                 div.row {
@@ -343,6 +345,7 @@ body {
                         border: 2px solid #FF0000;
                         color: #FF0000;
                         text-decoration: none;
+                        gap: 4px;
                         font-size: 0.8rem;
                         display: flex;
                         height: 30px;
@@ -358,7 +361,7 @@ body {
 
         }
 
-        /* Edit Pet ----------------------- */
+        /* Edit Pet ---------------------- */
         &#edit_pet {
             background: url(../imgs/bg-fondo.png);
             background-size: contain;
@@ -463,6 +466,7 @@ body {
                         border: 2px solid #FF0000;
                         color: #FF0000;
                         text-decoration: none;
+                        gap: 4px;
                         font-size: 0.8rem;
                         display: flex;
                         height: 30px;
@@ -478,7 +482,7 @@ body {
 
         }
 
-        /* Show Pet ----------------------- */
+        /* Show Pet ---------------------- */
         &#show_pet {
             background: url(../imgs/bg-fondo.png);
             background-size: contain;
@@ -614,7 +618,7 @@ body {
             }
         }
 
-        /* header ----------------------- */
+        /* header ------------------------ */
         header {
             background-color: #000000;
             border-radius: 5px 5px 0 0;
