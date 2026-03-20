@@ -1,8 +1,9 @@
 import { stackServerApp } from "@/stack/server";
 import { redirect } from "next/navigation";
 import SideBar from "@/components/SideBar";
+import GamesInfo from "@/components/GamesInfo";
 
-export default async function DashboardPage({children}:{ children: React.ReactNode; }) {
+export default async function GamesPage({ children }:{ children: React.ReactNode; }) {
     const user = await stackServerApp.getUser();
 
     if (!user) {
@@ -10,8 +11,8 @@ export default async function DashboardPage({children}:{ children: React.ReactNo
     }
 
     return (
-        <SideBar currentPath={"/dashboard"}>
-            {children}
+        <SideBar currentPath={"/games"}>
+            <GamesInfo />
         </SideBar>
     );
 }

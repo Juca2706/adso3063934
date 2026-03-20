@@ -1,9 +1,10 @@
 "use client";
+import React from "react";
 import { UserButton } from "@stackframe/stack";
 import Link from "next/link";
 import { SquaresFourIcon, JoystickIcon, PlusIcon, GearIcon, GameControllerIcon, ListIcon } from "@phosphor-icons/react";
 
-export default function SideBar({ currentPath = "/dashboard" }: { currentPath: string }) {
+export default function SideBar({ currentPath = "/dashboard", children }: { currentPath: string; children: React.ReactNode; }) {
     const navigation = [
         { name: "Dashboard",    href: "/dashboard",     icon: SquaresFourIcon },
         { name: "Games",        href: "/games",         icon: JoystickIcon },
@@ -27,10 +28,10 @@ export default function SideBar({ currentPath = "/dashboard" }: { currentPath: s
                     </div>
                 </nav>
                 {/* Page content here */}
-                <div className="p-4">Page Content</div>
+                <div className="p-4">{children}</div>
             </div>
 
-            <div className="drawer-side is-drawer-close:overflow-visible">
+            <div className="drawer-side z-[999] is-drawer-close:overflow-visible">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
                     <div className="menu w-full grow space-y-2">
