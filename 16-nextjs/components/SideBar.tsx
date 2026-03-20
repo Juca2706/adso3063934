@@ -2,13 +2,13 @@
 import React from "react";
 import { UserButton } from "@stackframe/stack";
 import Link from "next/link";
-import { SquaresFourIcon, JoystickIcon, PlusIcon, GearIcon, GameControllerIcon, ListIcon } from "@phosphor-icons/react";
+import { SquaresFourIcon, JoystickIcon, ComputerTowerIcon , GearIcon, GameControllerIcon, ListIcon } from "@phosphor-icons/react";
 
 export default function SideBar({ currentPath = "/dashboard", children }: { currentPath: string; children: React.ReactNode; }) {
     const navigation = [
         { name: "Dashboard",    href: "/dashboard",     icon: SquaresFourIcon },
         { name: "Games",        href: "/games",         icon: JoystickIcon },
-        { name: "Add Game",     href: "/add",           icon: PlusIcon },
+        { name: "Consoles",     href: "/consoles",      icon: ComputerTowerIcon },
         { name: "Settings",     href: "/settings",      icon: GearIcon },
     ];
     return (
