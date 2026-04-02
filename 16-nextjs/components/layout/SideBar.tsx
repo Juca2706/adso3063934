@@ -9,7 +9,6 @@ export default function SideBar({ currentPath = "/dashboard", children }: { curr
         { name: "Dashboard",    href: "/dashboard",     icon: SquaresFourIcon },
         { name: "Games",        href: "/games",         icon: JoystickIcon },
         { name: "Consoles",     href: "/consoles",      icon: ComputerTowerIcon },
-        { name: "Settings",     href: "/settings",      icon: GearIcon },
     ];
     return (
         <div className="drawer lg:drawer-open">

@@ -3,6 +3,7 @@ import { StackProvider, StackTheme } from "@stackframe/stack";
 import { stackClientApp } from "../stack/client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       ><StackProvider app={stackClientApp}><StackTheme>
+        <Toaster
+          theme="dark"
+          richColors
+          closeButton
+          toastOptions={{
+            style: { background: '#1d232a', border: '1px solid rgba(255,255,255,0.1)' }
+          }}
+        />
         {children}
       </StackTheme></StackProvider></body>
     </html>

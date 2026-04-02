@@ -1,0 +1,208 @@
+'use client'
+import { useActionState, useState, useEffect } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { updateConsole } from "@/app/actions/console-actions";
+import Link from "next/link";
+import {
+    Type, Factory, Calendar, Monitor, AlignLeft,
+    Image as ImageIcon, PencilLine, UploadCloud, XCircle, Save
+} from "lucide-react";
+
+export default function ConsoleEdit({ consoleData }: { consoleData: any }) {
+    const [state, formAction, isPending] = useActionState(updateConsole, null);
+    // Manejo inteligente de la previsualización: si es nueva (blob) o la del servidor
+    const [preview, setPreview] = useState<string | null>(
+        consoleData.image ? `/uploads/${consoleData.image}` : null
+    );
+
+    const router = useRouter();
+
+    useEffect(() => {
+        if (state?.success) {
+            toast.success("¡Consola actualizada!", {
+                description: "Los cambios técnicos se guardaron con éxito.",
+            });
+            router.push("/consoles");
+        } else if (state?.error) {
+            toast.error(state.error);
+        }
+    }, [state, router]);
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setPreview(URL.createObjectURL(file));
+        }
+    };
+
+    return (
+        <div className="max-w-5xl mx-auto pt-4 pb-12 px-4 md:px-6">
+            <form action={formAction} className="bg-base-300 p-6 md:p-10 rounded-[3rem] shadow-2xl border border-white/5 relative overflow-hidden">
+
+                {/* ID oculto indispensable para el update */}
+                <input type="hidden" name="id" value={consoleData.id} />
+
+                {/* Glow Background Decor */}
+                <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+                {/* Header Estilizado */}
+                <div className="flex items-center gap-4 mb-8">
+                    <div className="p-3 bg-primary/20 rounded-2xl text-primary">
+                        <PencilLine size={32} />
+                    </div>
+                    <div>
+                        <h2 className="text-3xl font-black text-white tracking-tighter uppercase italic">Edit Console</h2>
+                        <p className="text-[10px] text-primary font-bold tracking-[0.2em] uppercase opacity-70 italic">
+                            ID: {consoleData.id} • Games Next JS
+                        </p>
+                    </div>
+                </div>
+
+                {state?.error && (
+                    <div className="alert alert-error shadow-lg rounded-2xl font-bold mb-6">
+                        <span>{state.error}</span>
+                    </div>
+                )}
+
+                {/* Main Two-Column Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+                    {/* LEFT COLUMN: Hardware Info */}
+                    <div className="space-y-5">
+                        <div className="form-control">
+                            <label className="label gap-2 justify-start text-primary font-bold uppercase text-[10px] tracking-widest">
+                                <Type size={14} /> System Name
+                            </label>
+                            <input
+                                name="name"
+                                defaultValue={consoleData.name}
+                                className="input input-bordered bg-base-100/50 rounded-2xl focus:border-primary border-white/10 transition-all w-full"
+                                required
+                            />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label gap-2 justify-start text-primary font-bold uppercase text-[10px] tracking-widest">
+                                <Factory size={14} /> Manufacturer
+                            </label>
+                            <input
+                                name="manufacturer"
+                                defaultValue={consoleData.manufacturer}
+                                className="input input-bordered bg-base-100/50 rounded-2xl border-white/10 w-full"
+                                required
+                            />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label gap-2 justify-start text-primary font-bold uppercase text-[10px] tracking-widest">
+                                <Calendar size={14} /> Release Date
+                            </label>
+                            <input
+                                name="releasedate"
+                                type="date"
+                                defaultValue={consoleData.releasedate ? new Date(consoleData.releasedate).toISOString().substring(0, 10) : ""}
+                                className="input input-bordered bg-base-100/50 rounded-2xl border-white/10 w-full"
+                                required
+                            />
+                        </div>
+
+                        <div className="p-6 bg-primary/5 rounded-[2rem] border border-primary/10 flex items-center gap-4 mt-6">
+                            <Monitor className="text-primary animate-pulse" size={40} />
+                            <div>
+                                <p className="text-[9px] text-white/40 uppercase leading-tight">From here you can modify the information or specifications of a platform or console if you wish.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* RIGHT COLUMN: Description & Image */}
+                    <div className="flex flex-col gap-8">
+                        <div className="form-control flex-1">
+                            <label className="label gap-2 justify-start text-primary font-bold uppercase text-[10px] tracking-widest">
+                                <AlignLeft size={14} /> Description
+                            </label>
+                            <textarea
+                                name="description"
+                                defaultValue={consoleData.description}
+                                className="textarea textarea-bordered bg-base-100/50 rounded-3xl border-white/10 w-full h-full min-h-[150px] resize-none p-5 text-sm leading-relaxed"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label gap-2 justify-start text-primary font-bold uppercase text-[10px] tracking-widest">
+                                <ImageIcon size={14} /> System Image
+                            </label>
+                            <div className="relative group">
+                                <div className="flex flex-col md:flex-row items-center gap-6 p-6 bg-base-100/30 rounded-[2rem] border-2 border-dashed border-white/10 group-hover:border-primary/50 transition-colors">
+                                    {/* Preview Box (Formato Consola) */}
+                                    <div className="w-44 h-32 bg-base-300 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden shadow-2xl flex-shrink-0 relative">
+                                        {preview ? (
+                                            <img
+                                                src={preview.startsWith('blob:') ? preview : preview}
+                                                alt="Preview"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <div className="text-center opacity-20">
+                                                <UploadCloud size={32} className="mx-auto mb-2" />
+                                                <span className="text-[8px] uppercase font-black">No Image</span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Input & Info */}
+                                    <div className="flex-1 space-y-3 w-full">
+                                        <p className="text-[11px] text-white/50 italic text-center md:text-left">
+                                            Replace the current hardware photo or leave it empty to keep it.
+                                        </p>
+                                        <input
+                                            type="file"
+                                            name="image"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            className="file-input file-input-bordered file-input-primary w-full file-input-sm rounded-xl"
+                                        />
+                                        <div className="flex justify-between px-1">
+                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">WEBP, JPG</span>
+                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">MAX 5MB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Submit Action */}
+                <div className="pt-8 flex justify-center gap-4">
+                    <Link
+                        href="/consoles"
+                        className="btn btn-outline btn-accent px-8 py-2.5 h-auto min-h-0 rounded-full text-sm font-bold opacity-60 hover:opacity-100 border border-white hover:border-white/20 transition-all duration-300 flex items-center gap-2"
+                    >
+                        <XCircle size={18} />
+                        CANCEL
+                    </Link>
+
+                    <button
+                        type="submit"
+                        disabled={isPending}
+                        className="btn btn-primary px-10 py-2.5 h-auto min-h-0 rounded-full text-sm font-black italic tracking-tight shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 border-none flex items-center gap-2"
+                    >
+                        {isPending ? (
+                            <div className="flex items-center gap-2">
+                                <span className="loading loading-spinner loading-xs"></span>
+                                <span className="text-xs uppercase">Saving...</span>
+                            </div>
+                        ) : (
+                            <>
+                                <Save size={18} />
+                                UPDATE CONSOLE
+                            </>
+                        )}
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+}
