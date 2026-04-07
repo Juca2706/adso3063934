@@ -37,7 +37,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
     return (
         <div className="relative group w-full">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500"></div>
+            <div className="absolute -inset-0.5 bg-linear-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500"></div>
 
             <div className="relative flex items-center">
                 {/* 2. Ahora SearchIcon sí tendrá contenido porque viene de 'Search' */}

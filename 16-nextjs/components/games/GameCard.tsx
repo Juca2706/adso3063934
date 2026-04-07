@@ -23,7 +23,7 @@ export default function GameModal({ game }: { game: any }) {
                 <div className="modal-box bg-[#1a1d23] border border-white/10 p-0 overflow-hidden max-w-xl shadow-2xl rounded-[2.5rem]">
                     <div className="relative h-40 w-full">
                         <img src={'/uploads/' + game.cover} className="w-full h-full object-cover opacity-30" alt="banner" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1d23] to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#1a1d23] to-transparent" />
                     </div>
 
                     <div className="px-8 pb-8 -mt-12 relative text-left">

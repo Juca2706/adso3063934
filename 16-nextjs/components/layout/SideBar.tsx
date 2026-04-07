@@ -30,7 +30,7 @@ export default function SideBar({ currentPath = "/dashboard", children }: { curr
                 <div className="p-4">{children}</div>
             </div>
 
-            <div className="drawer-side z-[999] is-drawer-close:overflow-visible">
+            <div className="drawer-side z-999 is-drawer-close:overflow-visible">
                 <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                 <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
                     <div className="menu w-full grow space-y-2">

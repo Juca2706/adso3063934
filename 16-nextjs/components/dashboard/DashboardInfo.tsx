@@ -25,13 +25,13 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/5 pb-10">
                 <div className="flex items-center gap-5">
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-indigo-600/20 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                        <div className="relative p-4 bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/10 shadow-2xl">
+                        <div className="absolute -inset-1 bg-linear-to-r from-purple-500/20 to-indigo-600/20 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                        <div className="relative p-4 bg-white/3 backdrop-blur-sm rounded-2xl border border-white/10 shadow-2xl">
                             <LayoutDashboard className="text-indigo-300" size={28} />
                         </div>
                     </div>
                     <div>
-                        <h1 className="text-3xl md:text-4xl font-black tracking-tighter italic uppercase bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-400">
+                        <h1 className="text-3xl md:text-4xl font-black tracking-tighter italic uppercase bg-clip-text text-transparent bg-linear-to-r from-white via-gray-100 to-gray-400">
                             Dashboard
                         </h1>
                         <p className="text-gray-400 text-[10px] font-bold tracking-[0.4em] uppercase flex items-center gap-2 mt-1">
@@ -40,7 +40,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full shadow-inner group transition-all duration-500 hover:border-emerald-500/30">
+                <div className="flex items-center gap-3 px-4 py-2 bg-white/3 backdrop-blur-md border border-white/10 rounded-full shadow-inner group transition-all duration-500 hover:border-emerald-500/30">
                     <div className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -55,7 +55,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
 
                 {/* CARD JUEGOS - DEGRADADO ÍNDIGO */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-[#0a0b10] to-[#1a1c2e] border border-white/10 p-8 rounded-[2.5rem] transition-all duration-500 hover:border-indigo-400/20 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(99,102,241,0.2)]">
+                <div className="group relative overflow-hidden bg-linear-to-br from-[#0a0b10] to-[#1a1c2e] border border-white/10 p-8 rounded-[2.5rem] transition-all duration-500 hover:border-indigo-400/20 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(99,102,241,0.2)]">
                     <div className="absolute inset-0 bg-gradient-radial from-indigo-500/5 via-transparent to-transparent opacity-50"></div>
 
                     <div className="relative flex items-center justify-between z-10">
@@ -63,7 +63,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                             <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.2em] mb-2 transition-colors group-hover:text-indigo-300">
                                 Securities
                             </p>
-                            <h2 className="text-6xl md:text-7xl font-black italic tracking-tighter bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent transition-transform duration-500">
+                            <h2 className="text-6xl md:text-7xl font-black italic tracking-tighter bg-linear-to-b from-white to-gray-400 bg-clip-text text-transparent transition-transform duration-500">
                                 <CountUp end={totalGames} duration={2.5} />
                             </h2>
                         </div>
@@ -74,7 +74,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                 </div>
 
                 {/* CARD CONSOLAS - DEGRADADO CIAN */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-[#0a0b10] to-[#0e2229] border border-white/10 p-8 rounded-[2.5rem] transition-all duration-500 hover:border-cyan-400/20 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(34,211,238,0.2)]">
+                <div className="group relative overflow-hidden bg-linear-to-br from-[#0a0b10] to-[#0e2229] border border-white/10 p-8 rounded-[2.5rem] transition-all duration-500 hover:border-cyan-400/20 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(34,211,238,0.2)]">
                     <div className="absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent opacity-50"></div>
 
                     <div className="relative flex items-center justify-between z-10">
@@ -82,7 +82,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                             <p className="text-gray-500 text-[11px] font-black uppercase tracking-[0.2em] mb-2 transition-colors group-hover:text-cyan-300">
                                 Platforms
                             </p>
-                            <h2 className="text-6xl md:text-7xl font-black italic tracking-tighter bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent transition-transform duration-500">
+                            <h2 className="text-6xl md:text-7xl font-black italic tracking-tighter bg-linear-to-b from-white to-gray-400 bg-clip-text text-transparent transition-transform duration-500">
                                 <CountUp end={totalConsoles} duration={2.5} />
                             </h2>
                         </div>
@@ -97,7 +97,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
 
                 {/* BALANCE GENERAL - DEGRADADO PÚRPURA */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-[#0a0b10] to-[#1e1435] border border-white/10 p-8 rounded-[2.5rem] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30">
+                <div className="group relative overflow-hidden bg-linear-to-br from-[#0a0b10] to-[#1e1435] border border-white/10 p-8 rounded-[2.5rem] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30">
                     <div className="absolute inset-0 bg-gradient-radial from-purple-500/5 via-transparent to-transparent opacity-50"></div>
 
                     <div className="relative flex items-center justify-between mb-10 z-10">
@@ -109,7 +109,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                         </div>
                     </div>
 
-                    <div className="h-[350px] w-full relative z-10">
+                    <div className="h-87.5 w-full relative z-10">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie
@@ -132,7 +132,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                 </div>
 
                 {/* POR PLATAFORMA - DEGRADADO AZUL NOCHE */}
-                <div className="group relative overflow-hidden bg-gradient-to-br from-[#0a0b10] to-[#0f172a] border border-white/10 p-8 rounded-[2.5rem] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/30">
+                <div className="group relative overflow-hidden bg-linear-to-br from-[#0a0b10] to-[#0f172a] border border-white/10 p-8 rounded-[2.5rem] shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/30">
                     <div className="absolute inset-0 bg-gradient-radial from-blue-500/5 via-transparent to-transparent opacity-50"></div>
 
                     <div className="relative flex items-center justify-between mb-10 z-10">
@@ -144,7 +144,7 @@ export default function DashboardInfo({ totalGames, totalConsoles, gamesByConsol
                         </div>
                     </div>
 
-                    <div className="h-[350px] w-full relative z-10">
+                    <div className="h-87.5 w-full relative z-10">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
                                 <Pie

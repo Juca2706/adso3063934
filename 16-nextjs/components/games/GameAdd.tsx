@@ -122,7 +122,7 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
                             <textarea
                                 name="description"
                                 placeholder="Write the game's lore or main features..."
-                                className="textarea textarea-bordered bg-base-100/50 rounded-3xl border-white/10 w-full h-full min-h-[150px] resize-none p-5 text-sm leading-relaxed"
+                                className="textarea textarea-bordered bg-base-100/50 rounded-3xl border-white/10 w-full h-full min-h-37.5 resize-none p-5 text-sm leading-relaxed"
                                 required
                             ></textarea>
                         </div>
@@ -132,9 +132,9 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
                                 <ImageIcon size={14} /> Visual Cover
                             </label>
                             <div className="relative group">
-                                <div className="flex flex-col md:flex-row items-center gap-6 p-6 bg-base-100/30 rounded-[2rem] border-2 border-dashed border-white/10 group-hover:border-primary/50 transition-colors">
+                                <div className="flex flex-col md:flex-row items-center gap-6 p-6 bg-base-100/30 rounded-4xl border-2 border-dashed border-white/10 group-hover:border-primary/50 transition-colors">
                                     {/* Preview Box */}
-                                    <div className="w-32 h-44 bg-base-300 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden shadow-2xl flex-shrink-0 relative">
+                                    <div className="w-32 h-44 bg-base-300 rounded-2xl border border-white/5 flex items-center justify-center overflow-hidden shadow-2xl shrink-0 relative">
                                         {preview ? (
                                             <img src={preview} alt="Preview" className="w-full h-full object-cover" />
                                         ) : (

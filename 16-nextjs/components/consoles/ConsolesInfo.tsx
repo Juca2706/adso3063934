@@ -40,7 +40,7 @@ export default async function ConsolesInfo({
 
     return (
         <div className='w-full min-h-screen p-4 md:p-10'>
-            <div className='w-full max-w-[1400px] mx-auto'>
+            <div className='w-full max-w-350 mx-auto'>
 
                 {/* 1. CABECERA CON ESTILO GAMES */}
                 <div className='flex flex-col lg:flex-row items-center justify-between mb-12 border-b border-white/5 pb-10 gap-8'>
@@ -60,7 +60,7 @@ export default async function ConsolesInfo({
                     <div className='flex-1 max-w-2xl w-full px-0 lg:px-10 transition-all duration-500 focus-within:max-w-3xl'>
                         <div className='relative group'>
                             {/* El resplandor de fondo */}
-                            <div className='absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500'></div>
+                            <div className='absolute -inset-1 bg-linear-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500'></div>
                             <div className='relative'>
                                 <Suspense fallback={<div className="h-14 w-full bg-white/5 animate-pulse rounded-2xl" />}>
                                     <Search key={query} placeholder="Search name, manufacturer..." />
@@ -83,14 +83,14 @@ export default async function ConsolesInfo({
                     <>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                             {consoles.map((item: any) => (
-                                <div key={item.id} className="group relative flex flex-col h-full w-full overflow-hidden rounded-[2rem] bg-[#1a1d23] border border-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
-                                    <figure className="relative aspect-[16/9] w-full overflow-hidden bg-[#0f1115]">
+                                <div key={item.id} className="group relative flex flex-col h-full w-full overflow-hidden rounded-4xl bg-[#1a1d23] border border-white/5 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20">
+                                    <figure className="relative aspect-video w-full overflow-hidden bg-[#0f1115]">
                                         <img
                                             src={'/uploads/' + item.image}
                                             alt={item.name}
                                             className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1d23] via-transparent to-transparent" />
+                                        <div className="absolute inset-0 bg-linear-to-t from-[#1a1d23] via-transparent to-transparent" />
                                     </figure>
 
                                     <div className="flex flex-col flex-1 p-6 md:p-8">
@@ -131,7 +131,7 @@ export default async function ConsolesInfo({
                     </>
                 ) : (
                     /* MENSAJE CUANDO NO HAY RESULTADOS (Igual que en Games) */
-                    <div className="flex flex-col items-center justify-center py-24 bg-white/[0.02] rounded-[3rem] border border-dashed border-white/10 mt-10">
+                    <div className="flex flex-col items-center justify-center py-24 bg-white/2 rounded-[3rem] border border-dashed border-white/10 mt-10">
                         <div className="p-5 bg-white/5 rounded-full mb-6">
                             <Info size={48} className="text-gray-600" />
                         </div>

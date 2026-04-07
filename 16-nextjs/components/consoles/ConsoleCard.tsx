@@ -25,7 +25,7 @@ export default function ConsoleCard({ console }: { console: any }) {
                     {/* Banner */}
                     <div className="relative h-40 w-full">
                         <img src={'/uploads/' + console.image} className="w-full h-full object-cover opacity-30" alt="banner" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1d23] to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#1a1d23] to-transparent" />
                     </div>
 
                     {/* Contenido */}

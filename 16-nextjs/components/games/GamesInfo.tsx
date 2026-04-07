@@ -65,7 +65,7 @@ export default async function GamesInfo({
 
     return (
         <div className='w-full min-h-screen p-4 md:p-10'>
-            <div className='w-full max-w-[1400px] mx-auto'>
+            <div className='w-full max-w-350 mx-auto'>
 
                 {/* 1. CABECERA*/}
                 <div className='flex flex-col lg:flex-row items-center justify-between mb-12 border-b border-white/5 pb-10 gap-8'>
@@ -85,7 +85,7 @@ export default async function GamesInfo({
                     <div className='flex-1 max-w-2xl w-full px-0 lg:px-10 transition-all duration-500 focus-within:max-w-3xl'>
                         <div className='relative group'>
                             {/* El resplandor de fondo cuando el buscador está activo */}
-                            <div className='absolute -inset-1 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500'></div>
+                            <div className='absolute -inset-1 bg-linear-to-r from-purple-600/20 to-blue-600/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500'></div>
                             <div className='relative'>
                                 <Suspense fallback={<div className="h-14 w-full bg-white/5 animate-pulse rounded-2xl" />}>
                                     <Search key={query} placeholder="Search title, genre, developer..." />
@@ -120,7 +120,7 @@ export default async function GamesInfo({
                     <>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                             {games.map((game) => (
-                                <div key={game.id} className="group relative w-full overflow-hidden rounded-[2rem] bg-[#1a1d23] shadow-2xl transition-all duration-500 hover:shadow-purple-500/20 border border-white/5">
+                                <div key={game.id} className="group relative w-full overflow-hidden rounded-4xl bg-[#1a1d23] shadow-2xl transition-all duration-500 hover:shadow-purple-500/20 border border-white/5">
 
                                     {/* BOTONES DE ACCIÓN */}
                                     <div className="absolute top-4 left-4 z-20 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
@@ -145,11 +145,11 @@ export default async function GamesInfo({
                                         </span>
                                     </div>
 
-                                    <figure className="aspect-[3/2] w-full overflow-hidden">
+                                    <figure className="aspect-3/2 w-full overflow-hidden">
                                         <img src={'/uploads/' + game.cover} alt={game.title} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                                     </figure>
 
-                                    <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black via-black/60 to-transparent">
+                                    <div className="absolute bottom-0 left-0 w-full p-6 bg-linear-to-t from-black via-black/60 to-transparent">
                                         <div className="flex flex-col gap-1.5">
                                             <h2 className="text-xl md:text-2xl font-black text-white leading-tight">{game.title}</h2>
                                             <div className="flex items-center gap-x-3 text-xs font-bold text-gray-300">
@@ -178,7 +178,7 @@ export default async function GamesInfo({
                     </>
                 ) : (
                     /* MENSAJE CUANDO NO HAY RESULTADOS */
-                    <div className="flex flex-col items-center justify-center py-24 bg-white/[0.02] rounded-[3rem] border border-dashed border-white/10 mt-10">
+                    <div className="flex flex-col items-center justify-center py-24 bg-white/2 rounded-[3rem] border border-dashed border-white/10 mt-10">
                         <div className="p-5 bg-white/5 rounded-full mb-6">
                             <Info size={48} className="text-gray-600" />
                         </div>
