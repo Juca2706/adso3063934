@@ -86,12 +86,6 @@ export default function ConsoleAdd() {
                             <input name="manufacturer" placeholder="Sony, Nintendo, Microsoft..." className="input input-bordered bg-base-100/50 rounded-2xl border-white/10 w-full" required />
                             {state?.fields?.manufacturer && <span className="text-error text-[10px] mt-1 italic">{state.fields.manufacturer}</span>}
                         </div>
-
-                        {/* Box Decorativo / Hardware Icon */}
-                        <div className="p-6 bg-white/5 rounded-[2rem] border border-white/5 flex items-center gap-4">
-                            <Monitor className="text-primary text-primary animate-pulse" size={40} />
-                            <p className="text-[10px] text-white/30 uppercase font-bold leading-tight">From here you can add a new platform or console if you wish.</p>
-                        </div>
                     </div>
 
                     {/* RIGHT COLUMN: Description & Media */}
@@ -129,9 +123,6 @@ export default function ConsoleAdd() {
 
                                     {/* Input & Info */}
                                     <div className="flex-1 space-y-3 w-full">
-                                        <p className="text-[11px] text-white/50 italic text-center md:text-left">
-                                            Upload a high-quality image of the console hardware.
-                                        </p>
                                         <input
                                             type="file"
                                             name="image"
@@ -139,10 +130,6 @@ export default function ConsoleAdd() {
                                             onChange={handleImageChange}
                                             className="file-input file-input-bordered file-input-primary w-full file-input-sm rounded-xl"
                                         />
-                                        <div className="flex justify-between px-1">
-                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">Optimized JPG</span>
-                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">MAX 5MB</span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -151,19 +138,11 @@ export default function ConsoleAdd() {
                 </div>
 
                 {/* Submit Action */}
-                <div className="pt-8 flex justify-center gap-4">
-                    <Link
-                        href="/consoles"
-                        className="btn btn-outline btn-accent px-8 py-2.5 h-auto min-h-0 rounded-full text-sm font-bold opacity-60 hover:opacity-100 border border-white hover:border-white/20 transition-all duration-300 flex items-center gap-2"
-                    >
-                        <XCircle size={18} />
-                        CANCEL
-                    </Link>
-
+                <div className="pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="btn btn-primary px-10 py-2.5 h-auto min-h-0 rounded-full text-sm font-black italic tracking-tight shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 border-none flex items-center gap-2"
+                        className="btn btn-primary w-full md:w-auto px-10 py-2.5 h-auto min-h-0 rounded-full text-sm font-black italic tracking-tight shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 border-none flex items-center justify-center gap-2"
                     >
                         {isPending ? (
                             <div className="flex items-center gap-2">
@@ -177,6 +156,14 @@ export default function ConsoleAdd() {
                             </>
                         )}
                     </button>
+
+                    <Link
+                        href="/consoles"
+                        className="btn btn-outline btn-accent w-full md:w-auto px-8 py-2.5 h-auto min-h-0 rounded-full text-sm font-bold opacity-60 hover:opacity-100 border border-white hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                        <XCircle size={18} />
+                        CANCEL
+                    </Link>
                 </div>
             </form>
         </div>

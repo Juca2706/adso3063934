@@ -8,22 +8,15 @@ import GamesInfo from "@/components/games/GamesInfo";
 export default async function GamesPage({
     searchParams
 }: {
-    searchParams: Promise<{ query?: string; page?: string }>
+    searchParams: Promise<{ query?: string; page?: string; console?: string }>
 }) {
-    const user = await stackServerApp.getUser();
-
-    if (!user) {
-        redirect('/');
-    }
-
-    // 2. Esperamos los parámetros para usarlos en la "key"
     const params = await searchParams;
 
     return (
         <SideBar currentPath={"/games"}>
-            {/* 3. PASAMOS LOS PARÁMETROS Y LA KEY */}
             <GamesInfo
-                key={params.query || 'default'}
+                // Agregamos params.console a la key para que React sepa que debe re-renderizar
+                key={`${params.query}-${params.console || 'all'}`}
                 searchParams={searchParams}
             />
         </SideBar>

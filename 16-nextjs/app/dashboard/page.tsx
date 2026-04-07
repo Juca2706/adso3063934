@@ -11,17 +11,35 @@ export default async function DashboardPage() {
         redirect('/');
     }
 
-    // Obtenemos los conteos directamente de la base de datos Neon DB
-    const [totalGames, totalConsoles] = await Promise.all([
+    const [totalGames, totalConsoles, gamesByConsoleRaw] = await Promise.all([
         prisma.game.count(),
-        prisma.console.count()
+        prisma.console.count(),
+        prisma.console.findMany({
+            select: {
+                name: true,
+                _count: { select: { games: true } }
+            }
+        })
     ]);
+
+    const gamesByConsole = gamesByConsoleRaw.map(c => ({
+        name: c.name,
+        value: c._count.games
+    })).filter(c => c.value > 0);
+
+    // Los datos para la segunda gráfica (Juegos vs Consolas)
+    const inventorySummary = [
+        { name: 'Juegos', value: totalGames },
+        { name: 'Consolas', value: totalConsoles }
+    ];
 
     return (
         <SideBar currentPath={"/dashboard"}>
             <DashboardInfo
                 totalGames={totalGames}
                 totalConsoles={totalConsoles}
+                gamesByConsole={gamesByConsole}
+                inventorySummary={inventorySummary}
             />
         </SideBar>
     );

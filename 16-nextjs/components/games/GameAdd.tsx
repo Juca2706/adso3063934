@@ -147,9 +147,6 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
 
                                     {/* Input & Info */}
                                     <div className="flex-1 space-y-3 w-full">
-                                        <p className="text-[11px] text-white/50 italic text-center md:text-left">
-                                            Click the button below to upload the official game cover art.
-                                        </p>
                                         <input
                                             type="file"
                                             name="cover"
@@ -157,10 +154,6 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
                                             onChange={handleImageChange}
                                             className="file-input file-input-bordered file-input-primary w-full file-input-sm rounded-xl"
                                         />
-                                        <div className="flex justify-between px-1">
-                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">PNG, JPG, WEBP</span>
-                                            <span className="text-[9px] font-bold text-primary opacity-50 uppercase tracking-tighter">MAX 5MB</span>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -169,19 +162,11 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
                 </div>
 
                 {/* Submit Action */}
-                <div className="pt-8 flex justify-center gap-4">
-                    <Link
-                        href="/games"
-                        className="btn btn-outline btn-accent px-8 py-2.5 h-auto min-h-0 rounded-full text-sm font-bold opacity-60 hover:opacity-100 border border-white hover:border-white/20 transition-all duration-300 flex items-center gap-2"
-                    >
-                        <XCircle size={18} />
-                        CANCEL
-                    </Link>
-
+                <div className="pt-8 flex flex-col md:flex-row justify-center items-center gap-4 w-full px-4 md:px-0">
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="btn btn-primary px-10 py-2.5 h-auto min-h-0 rounded-full text-sm font-black italic tracking-tight shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 border-none flex items-center gap-2"
+                        className="btn btn-primary w-full md:w-auto px-10 py-3 h-auto min-h-0 rounded-full text-sm font-black italic tracking-tight shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 border-none flex items-center justify-center gap-2"
                     >
                         {isPending ? (
                             <div className="flex items-center gap-2">
@@ -191,10 +176,19 @@ export default function GameAdd({ consoles }: { consoles: any[] }) {
                         ) : (
                             <>
                                 <Save size={18} />
+                                {/* Cambia el texto según el archivo (SAVE NEW GAME o UPDATE GAME) */}
                                 SAVE NEW GAME
                             </>
                         )}
                     </button>
+
+                    <Link
+                        href="/games"
+                        className="btn btn-outline btn-accent w-full md:w-auto px-8 py-3 h-auto min-h-0 rounded-full text-sm font-bold opacity-60 hover:opacity-100 border border-white hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                        <XCircle size={18} />
+                        CANCEL
+                    </Link>
                 </div>
             </form>
         </div>

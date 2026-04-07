@@ -8,23 +8,47 @@ import Search from '../ui/Search';
 import Pagination from '../ui/Pagination';
 import Link from 'next/link';
 import DeleteGameButton from './DeleteGameButton';
+import ConsoleFilter from '../ui/ConsoleFilter';
 
-export default async function GamesInfo({ searchParams }: { searchParams?: Promise<{ query?: string; page?: string }> }) {
+export default async function GamesInfo({
+    searchParams
+}: {
+    searchParams?: Promise<{ query?: string; page?: string; console?: string }>
+}) {
     const params = await searchParams;
     const query = params?.query || '';
+    const consoleFilter = params?.console || ''; // Capturamos el filtro
     const currentPage = Number(params?.page) || 1;
     const itemsPerPage = 12;
 
-    const whereCondition = {
-        OR: [
-            { title: { contains: query, mode: 'insensitive' as const } },
-            { developer: { contains: query, mode: 'insensitive' as const } },
-            { genre: { contains: query, mode: 'insensitive' as const } },
-            { console: { name: { contains: query, mode: 'insensitive' as const } } },
-        ],
-    };
+    // 1. OBTENER LAS CONSOLAS (Vienen de la DB con ID número)
+    const consolesFromDB = await prisma.console.findMany({
+        orderBy: { name: 'asc' }
+    });
 
-    console.log("--> LLEGÓ QUERY:", query);
+    // 2. CONVERTIR ID A STRING (Para que ConsoleFilter no dé error)
+    const consoles = consolesFromDB.map(c => ({
+        ...c,               // Mantenemos el nombre, imagen, etc.
+        id: c.id.toString() // Convertimos el 1 en "1"
+    }));
+
+    // 2. CONSTRUIR LA CONDICIÓN (Búsqueda + Filtro)
+    const whereCondition: any = {
+        AND: [
+            // Condición de búsqueda (Query)
+            query ? {
+                OR: [
+                    { title: { contains: query, mode: 'insensitive' } },
+                    { developer: { contains: query, mode: 'insensitive' } },
+                    { genre: { contains: query, mode: 'insensitive' } },
+                ]
+            } : {},
+            // Condición de Filtro de Consola
+            consoleFilter ? {
+                console: { name: consoleFilter }
+            } : {}
+        ]
+    };
 
     const [games, totalGames] = await Promise.all([
         prisma.game.findMany({
@@ -77,6 +101,17 @@ export default async function GamesInfo({ searchParams }: { searchParams?: Promi
                             <span>ADD NEW GAME</span>
                         </a>
                     </div>
+                </div>
+
+                {/* 2. NUEVA SECCIÓN DE FILTROS (FUERA DE LA CABECERA) */}
+                <div className="mb-12 flex flex-col gap-4 animate-in fade-in slide-in-from-left duration-700">
+                    <div className="flex items-center gap-2">
+                        <div className="w-1 h-4 bg-purple-500 rounded-full"></div>
+                        <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.3em]">
+                            Select a console to filter the games or use the search bar to find specific titles, genres, or developers.
+                        </p>
+                    </div>
+                    <ConsoleFilter consoles={consoles} />
                 </div>
 
 

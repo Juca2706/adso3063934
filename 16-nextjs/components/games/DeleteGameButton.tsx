@@ -71,7 +71,7 @@ export default function DeleteGameButton({ id, title }: { id: number, title: str
                             onClick={handleExecuteDelete}
                             className="flex-1 px-6 py-4 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-bold transition-all shadow-xl shadow-red-600/30 uppercase text-xs tracking-widest"
                         >
-                            Eliminar ahora
+                            Confirmar
                         </button>
                     </div>
                 </div>
