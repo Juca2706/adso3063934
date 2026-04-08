@@ -28,10 +28,10 @@ export default function Handler({ params }: { params: Promise<{ stack: string[] 
       <div className={`
         bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl
         flex flex-col transition-all duration-500 overflow-hidden
-        ${isSettings ? "w-full max-w-5xl min-h-[500px]" : "w-full max-w-md"}
+        ${isSettings ? "w-full max-w-5xl min-h-125" : "w-full max-w-md"}
       `}>
 
-        <div className="p-6 md:p-10 flex-grow">
+        <div className="p-6 md:p-10 grow">
           <StackHandler fullPage={false} />
         </div>
 
