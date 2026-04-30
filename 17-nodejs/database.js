@@ -18,24 +18,28 @@ db.serialize(() => {
         full_name TEXT NOT NULL,
         alias TEXT,
         age INTEGER,
-        actor_name TEXT
+        actor_name TEXT,
+        image_path TEXT
     )`);
 
     // 4. Tabla de Carros (CARS)
     // Aquí agregamos la relación character_id al final
-    db.run(`CREATE TABLE IF NOT EXISTS cars(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,   
-        engine TEXT,
-        power TEXT,
-        torque TEXT,
-        acceleration REAL,
-        top_speed INTEGER,
-        transmission TEXT,
-        drivetrain TEXT,
-        character_id INTEGER,
-        FOREIGN KEY (character_id) REFERENCES characters(id) ON DELETE SET NULL
-    )`);
+    db.run(`CREATE TABLE IF NOT EXISTS cars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    engine TEXT,
+    power TEXT,
+    torque TEXT,
+    acceleration TEXT,
+    top_speed TEXT,
+    transmission TEXT,
+    drivetrain TEXT,
+    image_path TEXT,
+    character_id INTEGER,
+    FOREIGN KEY (character_id) REFERENCES characters(id) ON DELETE SET NULL
+)`, (err) => {
+        if (err) console.error("Error al crear tabla cars:", err.message);
+    });
 
     // 5. Tabla de Tokens closed with logout
     db.run(`CREATE TABLE IF NOT EXISTS blacklisted_tokens(
