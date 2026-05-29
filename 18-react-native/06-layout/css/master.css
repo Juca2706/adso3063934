@@ -1,0 +1,271 @@
+/* F O N T S */
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker&family=Nosifer&display=swap');
+
+/* ASIGNAR TIPOGRAFÍA A LOS TÍTULOS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Nosifer', sans-serif;
+    font-weight: 400;
+    /* Nosifer usualmente solo tiene un peso */
+    letter-spacing: 2px;
+    /* Un pequeño espacio entre letras le queda genial a esta fuente */
+}
+
+/* ASIGNAR TIPOGRAFÍA AL TEXTO GENERAL */
+body,
+p,
+a,
+li,
+span {
+    font-family: 'New Rocker', system-ui;
+    font-weight: 400;
+    line-height: 1.6;
+    /* Mejora la legibilidad del texto */
+}
+
+/* B O D Y */
+body {
+    color: #E0D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 100dvh;
+    background-color: #403833;
+
+    /* M A I N */
+    main {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        background-color: black;
+        border-radius: 5px;
+        position: relative;
+        overflow: auto;
+        height: 874px;
+        width: 402px;
+
+        /* H I D E */
+        &.hide {
+            display: none;
+        }
+
+        /* W E L C O M E */
+        &#welcome {
+            background: url(../imgs/bg-fondo.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            /* AJUSTES ESPECÍFICOS PARA EL LOGO */
+            .logo-header {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                /* Centra el contenido del header */
+                margin-top: 25px;
+                /* <--- ESTO EMPUJA EL LOGO HACIA ABAJO DESDE EL BORDE SUPERIOR */
+
+                .main-logo {
+                    width: 280px;
+                    /* Ancho sugerido para que se vea idéntico al de tu maqueta */
+                    height: auto;
+                    /* Mantiene la proporción de la imagen sin deformar */
+                    object-fit: contain;
+                }
+            }
+
+            /* CONTENEDOR CENTRAL: TARJETA DE BIENVENIDA */
+            .welcome-card {
+                background-color: rgba(28, 23, 20, 0.70);
+                /* Tono base translúcido */
+
+                /* EFECTO DE DESENFOQUE CSS PURO */
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                /* Soporte para Safari en iOS */
+
+                width: 360px;
+                height: 400px;
+                margin: 30px auto 0 auto;
+                border-radius: 10px;
+                /* Mantenemos tu padding exacto */
+                padding: 25px 16px;
+                box-sizing: border-box;
+
+                /* Flexbox interno controlado */
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            /* 1. CONTENEDOR DEL CARRUSEL (La ventana ahora es del tamaño exacto del cuadrito) */
+            .carousel-container {
+                width: 210px;
+                /* <--- CLAVE 1: Tamaño compacto del visor. Cambiar si quieres el cuadro más grande o chico */
+                height: 180px;
+                /* <--- CLAVE 2: Altura igual al ancho para mantenerlo perfectamente cuadrado */
+                margin: 0 auto;
+                /* <--- CLAVE 3: Centra el cuadrito en la tarjeta, dejando ver el contenedor principal a los lados */
+
+                overflow: hidden;
+                overflow-x: auto;
+                /* Mantiene la física de scroll manual o por script */
+                scroll-behavior: smooth;
+
+                /* Efecto magnético obligatorio */
+                scroll-snap-type: x mandatory;
+
+                /* Oculta la barra de scroll de forma estricta */
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                border-radius: 12px;
+                /* Curvatura limpia para el cuadrito */
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            /* 2. TRACK DEL CARRUSEL (La fila horizontal libre de paddings innecesarios) */
+            .carousel-track {
+                display: flex;
+                width: max-content;
+                gap: 0;
+                /* <--- CAMBIO CLAVE 2: Eliminamos los espacios intermedios para que las fotos queden en bloque continuo */
+                padding: 0;
+                /* <--- CAMBIO CLAVE 3: Quitamos los paddings artificiales, la foto se centrará sola por su ancho */
+            }
+
+            /* 3. CADA ITEM DEL CARRUSEL (Se acopla exactamente a la ventana del contenedor) */
+            .carousel-item {
+                width: 210px;
+                /* <--- CLAVE 4: Mismo ancho exacto que el contenedor padre */
+                height: 180px;
+                /* <--- Mismo alto exacto */
+                overflow: hidden;
+                flex-shrink: 0;
+                scroll-snap-align: center;
+                /* Enclava la imagen en el centro exacto de la ventana */
+
+                /* Transición suave */
+                transition: transform 0.4s ease, opacity 0.4s ease;
+
+                &.active-item {
+                    opacity: 1;
+                }
+
+                &.side-item {
+                    opacity: 1;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    /* Recorta la imagen perfectamente dentro del cuadrito */
+                }
+            }
+
+            /* 4. TEXTOS DE LA TARJETA (Control absoluto del espaciado) */
+            .card-content {
+                margin-top: 25px;
+                padding: 0 25px;
+
+                h2 {
+                    font-size: 1.5rem;
+                    color: #F8F8FF;
+                    text-align: center;
+                    margin: 0 0 6px 0;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                }
+
+                p {
+                    font-family: 'New Rocker', system-ui;
+                    font-size: 1.1rem;
+                    color: #E0D9D9;
+                    line-height: 1.4;
+                    margin: 0;
+                    text-align: left;
+                }
+            }
+
+            /* 5. NAVEGACIÓN Y BOTONES DE AUTENTICACIÓN (Exactamente 402px de extremo a extremo) */
+            .auth-navigation {
+                display: flex;
+                justify-content: content;
+                gap: 0;
+                /* <--- CLAVE 1: Sin espacios intermedios para que se junten en el centro */
+
+                position: absolute;
+                bottom: 0;
+                /* <--- CLAVE 2: Totalmente al ras del piso de la pantalla */
+                left: 0;
+                /* <--- CLAVE 3: Alineado desde el extremo izquierdo */
+
+                width: 100%;
+                /* Toma los 402px completos del main padre */
+                padding: 0;
+                /* <--- CLAVE 4: Sin espacios a los lados para tocar los bordes */
+                box-sizing: border-box;
+
+                /* Estilos base para los enlaces/botones */
+                a {
+                    flex: 1;
+                    /* <--- Se dividen el ancho en partes iguales (201px cada uno automáticamente) */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+
+                    height: 60px;
+                    /* <--- Tu altura exacta solicitada */
+                    border-radius: 0;
+                    /* <--- Sin curvas en las esquinas exteriores para acoplarse a la pantalla */
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    text-decoration: none;
+                    letter-spacing: 0.5px;
+                    transition: all 0.25s ease;
+                }
+
+                i {
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                }
+
+                /* BOTÓN SIGN IN (Borde Blanco #F8F8FF) */
+                .btn-signin {
+                    background-color: transparent;
+                    border: 3px solid #F8F8FF;
+                    color: #F8F8FF;
+                    text-shadow: 0 0 4px rgba(248, 248, 255, 0.1);
+
+                    &:hover,
+                    &:active {
+                        background-color: rgba(248, 248, 255, 0.1);
+                    }
+                }
+
+                /* BOTÓN SIGN UP (Borde Naranja #FF8800) */
+                .btn-signup {
+                    background-color: transparent;
+                    border: 3px solid #FF8800;
+                    color: #FF8800;
+                    text-shadow: 0 0 4px rgba(255, 136, 0, 0.3);
+
+                    &:hover,
+                    &:active {
+                        background-color: rgba(255, 136, 0, 0.15);
+                    }
+                }
+            }
+        }
+
+    }
+}

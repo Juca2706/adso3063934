@@ -5,15 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout: Fast & Furious</title>
+    <link rel="stylesheet" href="css/master.css">
 </head>
 
 <body>
-    <!-- WELCOME -->
+    <!-- VIEW: WELCOME -->
     <main id="welcome">
+        <!-- Logo -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious Saga" class="main-logo">
+        </header>
 
+        <!-- Tarjeta de Bienvenida -->
+        <section class="welcome-card">
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item side-item">
+                        <img src="imgs/carrusel-img1.jpg" alt="Carrusel Img 1">
+                    </div>
+                    <div class="carousel-item active-item">
+                        <img src="imgs/carrusel-img2.jpg" alt="Carrusel Img 2">
+                    </div>
+                    <div class="carousel-item side-item">
+                        <img src="imgs/carrusel-img3.jpg" alt="Carrusel Img 3">
+                    </div>
+                    <div class="carousel-item side-item">
+                        <img src="imgs/carrusel-img4.jpg" alt="Carrusel Img 4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-content">
+                <h2>¡WELCOME!</h2>
+                <p>Join us and discover the most iconic cars from the “Fast & Furious” saga and the characters who drove
+                    them.</p>
+            </div>
+
+        </section>
+
+        <!-- Botones (Sing In, Sing Up) -->
+        <nav class="auth-navigation">
+            <a href="javascript:;" class="btn-signin">
+                <i class="ph ph-sign-in"></i> Sing In
+            </a>
+            <a href="javascript:;" class="btn-signup">
+                <i class="ph ph-user-circle-plus"></i> Sing Up
+            </a>
+        </nav>
     </main>
 
+    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".carousel-container");
+            const track = document.querySelector(".carousel-track");
+            const items = document.querySelectorAll(".carousel-item");
 
+            let currentIndex = 1; // Empezamos en la segunda imagen (la que tienes como active-item de inicio)
+            let autoScrollInterval;
+
+            // FUNCIÓN 1: Actualiza las clases dinámicas analizando la posición real del scroll
+            function updateActiveStyles() {
+                const containerCenter = container.getBoundingClientRect().left + (container.offsetWidth / 2);
+
+                items.forEach((item) => {
+                    const itemBox = item.getBoundingClientRect();
+                    const itemCenter = itemBox.left + (itemBox.width / 2);
+
+                    // Si el centro de la foto está cerca del centro del contenedor, es la activa
+                    if (Math.abs(containerCenter - itemCenter) < itemBox.width / 2) {
+                        item.classList.remove("side-item");
+                        item.classList.add("active-item");
+                    } else {
+                        item.classList.remove("active-item");
+                        item.classList.add("side-item");
+                    }
+                });
+            }
+
+            // FUNCIÓN 2: Mueve el scroll de forma automática al siguiente ítem
+            function startAutoScroll() {
+                autoScrollInterval = setInterval(() => {
+                    currentIndex++;
+                    if (currentIndex >= items.length) {
+                        currentIndex = 0; // Reinicia al inicio al llegar al final
+                    }
+
+                    const targetItem = items[currentIndex];
+                    const targetScroll = targetItem.offsetLeft - (container.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+
+                    container.scrollTo({
+                        left: targetScroll,
+                        behavior: "smooth"
+                    });
+                }, 3000); // Se ejecuta cada 3 segundos automáticamente
+            }
+
+            // FUNCIÓN 3: Detiene el auto-scroll si el usuario interactúa con el dedo
+            function resetAutoScroll() {
+                clearInterval(autoScrollInterval);
+                startAutoScroll();
+            }
+
+            // EVENTOS: Escuchar el movimiento del dedo en el celular
+            container.addEventListener("scroll", () => {
+                updateActiveStyles();
+            });
+
+            container.addEventListener("touchstart", () => {
+                clearInterval(autoScrollInterval); // Si mete el dedo, frena el auto-giro temporalmente
+            });
+
+            container.addEventListener("touchend", () => {
+                resetAutoScroll(); // Al soltar el dedo, retoma el auto-giro pasados 3 segundos
+            });
+
+            // Inicialización del Carrusel al cargar la pantalla
+            updateActiveStyles();
+            startAutoScroll();
+        });
+    </script>
 </body>
 
 </html>
