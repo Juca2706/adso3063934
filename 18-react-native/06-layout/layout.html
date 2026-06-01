@@ -10,7 +10,7 @@
 
 <body>
     <!-- VIEW: WELCOME -->
-    <main id="welcome">
+    <main id="welcome" class="hide">
         <!-- Logo -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious Saga" class="main-logo">
@@ -47,12 +47,80 @@
         <!-- Botones (Sing In, Sing Up) -->
         <nav class="auth-navigation">
             <a href="javascript:;" class="btn-signin">
-                <i class="ph ph-sign-in"></i> Sing In
+                <i class="ph ph-sign-in"></i> Sign In
             </a>
             <a href="javascript:;" class="btn-signup">
-                <i class="ph ph-user-circle-plus"></i> Sing Up
+                <i class="ph ph-user-circle-plus"></i> Sign Up
             </a>
         </nav>
+    </main>
+
+    <!-- VIEW: LOGIN -->
+    <main id="login" class="hide">
+        <!-- Logo y Boton de Regreso -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+
+            <a href="javascript:;" class="btn-back-welcome">
+                <span class="icon-box">
+                    <i class="ph ph-house-line"></i>
+                </span>
+                <span class="btn-text">Home</span>
+            </a>
+        </header>
+
+        <!-- Formulario de Incio de Sesion -->
+        <section class="auth-card">
+            <div class="card-icon-signin">
+                <i class="ph ph-sign-in"></i>
+            </div>
+            <div class="card-header">
+                <h2>Sign In</h2>
+            </div>
+
+            <form class="auth-form" onsubmit="return false;">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <span class="icon-circle">
+                            <i class="ph ph-signature"></i>
+                        </span>
+                        <input type="text" id="login-username" placeholder="Username" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <span class="icon-circle">
+                            <i class="ph ph-keyhole"></i>
+                        </span>
+                        <input type="password" id="login-password" placeholder="Password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-signin">
+                    <i class="ph ph-sign-in"></i> Sign In
+                </button>
+            </form>
+
+            <div class="card-footer">
+                <span class="footer-text">You don't have an account?</span>
+                <a href="javascript:;" class="link-forgot">Sign Up</a>
+            </div>
+        </section>
+    </main>
+
+    <main id="register">
+        <!-- Logo y Boton de Regreso -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+
+            <a href="javascript:;" class="btn-back-welcome">
+                <span class="icon-box">
+                    <i class="ph ph-house-line"></i>
+                </span>
+                <span class="btn-text">Home</span>
+            </a>
+        </header>
     </main>
 
     <script src="js/app.js"></script>
