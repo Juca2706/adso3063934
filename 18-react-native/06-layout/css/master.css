@@ -360,7 +360,7 @@ body {
                 }
             }
 
-            /* TARJETA DE AUTENTICACIÓN */
+            /* TARJETA DE INICIO DE SESION */
             .auth-card {
                 background-color: rgba(28, 23, 20, 0.70);
                 backdrop-filter: blur(10px);
@@ -494,8 +494,8 @@ body {
                         border: 2px solid #F8F8FF;
                         border-radius: 20px;
                         color: #F8F8FF;
-                        font-size: 1.2rem;
-                        font-weight: 800;
+                        font-size: 1.3rem;
+                        font-weight: 500;
                         align-self: center;
                         /* Centra el botón en la columna */
                         display: flex;
@@ -506,7 +506,7 @@ body {
                         transition: all 0.25s ease;
 
                         i {
-                            font-size: 1.2rem;
+                            font-size: 1.5rem;
                             font-weight: 500;
                         }
 
@@ -518,11 +518,9 @@ body {
                     }
                 }
 
-                /* <- AQUÍ CIERRA EL FORMULARIO CORRECTAMENTE */
-
                 /* CONTENEDOR INFERIOR DE LA TARJETA (Ya no está amarrado al botón) */
                 .card-footer {
-                    margin-top: 20px;
+                    margin-top: 25px;
                     /* Esto empuja el contenedor hacia abajo separándolo del botón */
                     display: flex;
                     justify-content: center;
@@ -532,17 +530,17 @@ body {
 
                     /* Texto de la pregunta (Gris sutil) */
                     .footer-text {
-                        font-size: 1rem;
+                        font-size: 1.05rem;
                         color: #F8F8FF;
                         font-weight: 500;
                     }
 
                     /* Enlace de acción (Naranja Tuning sin subrayar) */
                     .link-forgot {
-                        font-size: 1rem;
+                        font-size: 1.05rem;
                         color: #FF8800;
                         /* Color naranja directo de tu paleta */
-                        font-weight: 700;
+                        font-weight: 500;
                         text-decoration: none;
                         /* QUITA EL SUBRAYADO POR DEFECTO */
                         transition: color 0.25s ease, text-decoration 0.25s ease;
@@ -637,6 +635,288 @@ body {
                         font-size: 1.2rem;
                         font-weight: 800;
                         letter-spacing: 0.8px;
+                    }
+                }
+
+                /* LOGO EN EL EXTREMO DERECHO */
+                .main-logo {
+                    width: 140px;
+                    /* Tamaño controlado para que no opaque al botón */
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+
+            /* TARJETA DE REGISTRO */
+            .auth-card {
+                background-color: rgba(28, 23, 20, 0.70);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+
+                width: 360px;
+                margin: 120px auto 0 auto;
+                border-radius: 10px;
+                border-top: 6px solid #FF8800;
+                padding: 25px 20px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                /* Icono de login que sobresale en la parte superior */
+                .card-icon-signup {
+                    width: 140px;
+                    height: 140px;
+                    background-color: rgba(0, 0, 0, 0.964);
+                    backdrop-filter: blur(40px);
+                    -webkit-backdrop-filter: blur(40px);
+                    /* Tu naranja vibrante */
+                    border-radius: 50%;
+
+                    /* FLEXBOX: Asegura el centrado matemático exacto del icono */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    /* EL TRUCO DE LA MAQUETA: */
+                    margin-top: -95px;
+                    /* Margen negativo para empujarlo hacia arriba y que monte el borde */
+                    margin-bottom: 25px;
+                    /* Despega el círculo del título "Sign In" */
+
+                    /* Sombra sutil para darle volumen sobre el fondo oscuro (opcional pero recomendado) */
+                    box-shadow: 0 4px 15px #f8f8ff3d;
+
+                    /* Icono de Phosphor Icons interno */
+                    i {
+                        font-size: 4.5rem;
+                        /* ¡Agrandado! Antes tenías 1.6rem. Ahora llenará el círculo con jerarquía */
+                        color: #F8F8FF;
+                        /* El color oscuro de contraste */
+                        display: block;
+                        /* Evita desfases raros de línea en elementos inline */
+                    }
+                }
+
+                .card-header {
+                    h2 {
+                        font-size: 1.6rem;
+                        color: #FF8800;
+                        margin: 0 0 20px 0;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                        text-transform: uppercase;
+                    }
+                }
+
+                /* FORMULARIO */
+                .auth-form-register {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    .input-group-register {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+
+                        .input-wrapper-register {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+
+                            .icon-circle {
+                                position: absolute;
+                                left: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 28px;
+                                height: 28px;
+                                border-radius: 50%;
+                                z-index: 2;
+
+                                i {
+                                    font-size: 1.2rem;
+                                    color: #F8F8FF;
+                                }
+                            }
+
+                            input {
+                                width: 100%;
+                                height: 52px;
+                                background-color: rgba(0, 0, 0, 0.6);
+                                border: 1px solid #444;
+                                border-radius: 6px;
+                                padding: 0 20px 0 44px;
+                                box-sizing: border-box;
+                                color: #F8F8FF;
+                                font-size: 0.9rem;
+                                transition: border-color 0.25s ease;
+
+                                &::placeholder {
+                                    color: #f8f8ffa7;
+                                    font-size: 1rem;
+                                    font-family: 'New Rocker', system-ui;
+                                    /* Hace que use exactamente la misma tipografía que el input o el resto de la web */
+                                    font-weight: 500;
+                                    /* Puedes controlar qué tan gruesa se ve la letra (400, 500, etc.) */
+                                    text-transform: none;
+                                }
+
+                                &:focus {
+                                    outline: none;
+                                    border-color: #F8F8FF;
+                                }
+                            }
+                        }
+                    }
+
+                    /* BOTÓN DE SIGN IN */
+                    .btn-signup {
+                        margin-top: 10px;
+                        width: 50%;
+                        height: 40px;
+                        background-color: transparent;
+                        border: 2px solid #FF8800;
+                        border-radius: 20px;
+                        color: #FF8800;
+                        font-size: 1.3rem;
+                        font-weight: 500;
+                        align-self: center;
+                        /* Centra el botón en la columna */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        transition: all 0.25s ease;
+
+                        i {
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                        }
+
+                        &:hover {
+                            background-color: #FF8800;
+                            color: #F8F8FF;
+                            transform: translateY(-1px);
+                        }
+                    }
+                }
+
+                /* CONTENEDOR INFERIOR DE LA TARJETA (Ya no está amarrado al botón) */
+                .card-footer {
+                    margin-top: 25px;
+                    /* Esto empuja el contenedor hacia abajo separándolo del botón */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 6px;
+                    width: 100%;
+
+                    /* Texto de la pregunta (Gris sutil) */
+                    .footer-text {
+                        font-size: 1.05rem;
+                        color: #F8F8FF;
+                        font-weight: 500;
+                    }
+
+                    /* Enlace de acción (Naranja Tuning sin subrayar) */
+                    .link-forgot {
+                        font-size: 1.05rem;
+                        color: #FF8800;
+                        /* Color naranja directo de tu paleta */
+                        font-weight: 500;
+                        text-decoration: none;
+                        /* QUITA EL SUBRAYADO POR DEFECTO */
+                        transition: color 0.25s ease, text-decoration 0.25s ease;
+
+                        /* Efecto interactivo al pasar el cursor */
+                        &:hover {
+                            color: #FF8800;
+                            /* Cambia a blanco al pasar el mouse por encima */
+                            text-decoration: underline;
+                            /* Aparece el subrayado sutil solo en hover */
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        /* D A S H B O A R D */
+        &#dashboard {
+            background: url(../imgs/bg-fondo.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            .logo-header {
+                width: 100%;
+                max-width: 402px;
+                /* Ancho total del main */
+                margin: 10px auto 0 auto;
+                padding: 0 20px 0 4px;
+                box-sizing: border-box;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                /* Botón a la izquierda, Logo a la derecha */
+
+                /* BOTÓN COMPUESTO "HOME" */
+                .btn-logout {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    /* Espacio entre la caja del icono y el texto HOME */
+
+                    height: 36px;
+                    /* Altura regulada para que se vea estilizado */
+                    padding: 8px;
+                    /* Padding reducido a la izquierda para pegar la caja negra al borde */
+                    background-color: transparent;
+                    /* Fondo translúcido sutil */
+                    border-radius: 20px;
+                    /* Esquinas sutilmente redondeadas */
+
+                    color: #1C0D02;
+                    /* Texto en naranja */
+                    text-decoration: none;
+                    transition: all 0.25s ease;
+
+                    /* EFECTO HOVER DE MOVIMIENTO */
+                    &:hover {
+                        transform: translateX(-4px);
+                        /* Lo desplaza sutilmente a la izquierda */
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                        /* Le da un poquito de profundidad */
+                    }
+
+                    /* El cuadrito negro interno para el icono */
+                    .icon-box {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 36px;
+                        height: 36px;
+                        background-color: transparent;
+                        /* Tono base translúcido */
+
+                        /* EFECTO DE DESENFOQUE CSS PURO */
+                        /* backdrop-filter: blur(10px);
+                        -webkit-backdrop-filter: blur(10px); */
+                        /* Soporte para Safari en iOS */
+                        /* Fondo negro puro */
+                        /* border-radius: 20px; */
+                        /* Un poco menos redondo que el botón externo */
+
+                        i {
+                            font-size: 1.8rem;
+                            color: #F8F8FF;
+                        }
                     }
                 }
 

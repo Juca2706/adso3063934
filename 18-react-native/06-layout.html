@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>06- Layout</title>
+    <link rel="shortcut icon" href="../Images/react-native.ico" type="imagen/x-icon">
+    <link rel="stylesheet" href="../css/master.css">
+    <!-- Estilos para el efecto Hover Deportivo (Ponlo idealmente en tu <head> o arriba del div) -->
+    <style>
+        .btn-nitro-launch {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #835ed8;
+            /* Naranja Burnout */
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Exo 2', sans-serif;
+            /* Tipografía automotriz */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid #835ed8;
+            padding: 12px 28px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(131, 94, 216, 0.2);
+        }
+
+        .btn-nitro-launch:hover {
+            color: #ffffff;
+            background: #835ed8;
+            box-shadow: 0 0 20px #835ed8, 0 0 40px rgba(131, 94, 216, 0.5);
+            /* Efecto neón/nitro */
+            transform: scale(1.05) skewX(-8deg);
+            /* Inclinación de velocidad en el hover */
+        }
+
+        .btn-nitro-launch i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-nitro-launch:hover i {
+            transform: translateX(5px);
+            /* El icono se mueve hacia adelante al pasar el mouse */
+        }
+    </style>
+</head>
+
+<body class="react-native">
+    <nav class="nav">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
+
+    </nav>
+
+    <main>
+
+        <header class="header">
+
+            <h1 style="color: white;">06- Layout</h1>
+
+            <p style="color: white;">Non-functional prototype of the system and its sections implemented in HTML, CSS and JS.</p>
+
+        </header>
+
+        <section class="section">
+
+            <h3 style="color: white;">Result Preview:</h3>
+
+            <!-- Contenedor del iframe para controlarlo con CSS -->
+            <div class="iframe-container"
+                style="margin: 20px 0; border: 3px dashed #835ed8; border-radius: 8px; overflow: hidden; background: #000;">
+                <iframe src="06-layout/layout.html" width="100%" height="600px" style="border: none;"
+                    title="Layout Fast and Furious"></iframe>
+            </div>
+
+            <!-- Contenedor Centrado -->
+            <div class="action-link" style="margin: 30px 0; text-align: center; width: 100%;">
+                <a href="06-layout/layout.html" target="_blank" class="btn-nitro-launch">
+                    Open Layout's <i class="ph ph-caret-circle-right"></i>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</body>
+
+</html>

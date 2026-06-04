@@ -109,7 +109,8 @@
         </section>
     </main>
 
-    <main id="register">
+    <!-- VIEW: REGISTER -->
+    <main id="register" class="hide">
         <!-- Logo y Boton de Regreso -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
@@ -121,7 +122,73 @@
                 <span class="btn-text">Home</span>
             </a>
         </header>
+
+        <!-- Formulario de Registro -->
+        <section class="auth-card">
+            <div class="card-icon-signup">
+                <i class="ph ph-user-circle-plus"></i>
+            </div>
+            <div class="card-header">
+                <h2>Sign Up</h2>
+            </div>
+
+            <form class="auth-form-register" onsubmit="return false;">
+                <div class="input-group-register">
+                    <div class="input-wrapper-register">
+                        <span class="icon-circle">
+                            <i class="ph ph-signature"></i>
+                        </span>
+                        <input type="text" id="register-username" placeholder="Username" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="input-group-register">
+                    <div class="input-wrapper-register">
+                        <span class="icon-circle">
+                            <i class="ph ph-keyhole"></i>
+                        </span>
+                        <input type="password" id="register-password" placeholder="Password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-signup">
+                    <i class="ph ph-user-circle-plus"></i> Sign Up
+                </button>
+            </form>
+
+            <div class="card-footer">
+                <span class="footer-text">Do you already have an account?</span>
+                <a href="javascript:;" class="link-forgot">Sign In</a>
+            </div>
+        </section>
     </main>
+
+    <!-- VIEW: DASHBOARD -->
+    <main id="dashboard">
+        <!-- Logo y Boton de Cerrar Sesion -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+
+            <a href="javascript:;" class="btn-logout">
+                <span class="icon-box">
+                    <i class="ph ph-sign-out"></i>
+                </span>
+            </a>
+        </header>
+
+        <!-- Panel Estadisticos -->
+        <section class="stats-panel">
+            <div class="card-icon-signup">
+                <i class="ph ph-user-circle-plus"></i>
+            </div>
+            <div class="card-header">
+                <h2>Sign Up</h2>
+            </div>
+
+        </section>
+
+    </main>
+
 
     <script src="js/app.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
