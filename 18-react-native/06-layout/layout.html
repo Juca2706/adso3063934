@@ -164,11 +164,10 @@
     </main>
 
     <!-- VIEW: DASHBOARD -->
-    <main id="dashboard">
+    <main id="dashboard" class="hide">
         <!-- Logo y Boton de Cerrar Sesion -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-
             <a href="javascript:;" class="btn-logout">
                 <span class="icon-box">
                     <i class="ph ph-sign-out"></i>
@@ -176,17 +175,376 @@
             </a>
         </header>
 
-        <!-- Panel Estadisticos -->
-        <section class="stats-panel">
-            <div class="card-icon-signup">
-                <i class="ph ph-user-circle-plus"></i>
-            </div>
-            <div class="card-header">
-                <h2>Sign Up</h2>
+        <!-- Contenido scrolleable -->
+        <div class="dashboard-scroll-content">
+
+            <!-- Título Dashboard -->
+            <section class="dashboard-title">
+                <div class="dashboard-grid-icon">
+                    <i class="ph ph-squares-four"></i>
+                </div>
+                <h2>Dashboard</h2>
+            </section>
+
+            <!-- Panel Estadisticos -->
+            <section class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 class="stat-label">TOTAL CHARACTERS</h3>
+                        <span class="stat-number">12</span>
+                    </div>
+                    <div class="stat-icon-box">
+                        <i class="ph ph-person"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h3 class="stat-label">TOTAL AUTOMOBILES</h3>
+                        <span class="stat-number">44</span>
+                    </div>
+                    <div class="stat-icon-box">
+                        <i class="ph ph-car"></i>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Gráfico -->
+                <div class="chart-card">
+                    <div class="chart-icon">
+                        <i class="ph ph-chart-pie-slice"></i>
+                    </div>
+                </div>
+
+                <!-- Espaciado para que el nav flotante no tape contenido -->
+                <div class="bottom-spacer"></div>
+            </section>
+
+        </div>
+
+        <!-- Bottom Navigation FLOTANTE -->
+        <nav class="bottom-nav">
+            <a href="javascript:;" class="nav-item active" data-nav="dashboard">
+                <div class="nav-pill">
+                    <i class="ph ph-squares-four"></i>
+                </div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="characters">
+                <div class="nav-pill">
+                    <i class="ph ph-person"></i>
+                </div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                <div class="nav-pill">
+                    <i class="ph ph-car"></i>
+                </div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="profile">
+                <div class="nav-pill">
+                    <i class="ph ph-user-circle"></i>
+                </div>
+            </a>
+        </nav>
+    </main>
+
+    <!-- VIEW: CHARACTERS -->
+    <main id="characters" class="hide">
+        <!-- Logo y Boton de Cerrar Sesion -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+            <a href="javascript:;" class="btn-logout">
+                <span class="icon-box">
+                    <i class="ph ph-sign-out"></i>
+                </span>
+            </a>
+        </header>
+
+        <!-- Contenido scrolleable -->
+        <div class="characters-scroll-content">
+            <!-- Título Characters -->
+            <section class="characters-title">
+                <div class="characters-grid-icon">
+                    <i class="ph ph-person"></i>
+                </div>
+                <h2>Characters</h2>
+            </section>
+
+            <!-- Botón Agregar -->
+            <div class="characters-actions">
+                <button class="btn-new-character" id="btn-open-add">
+                    <i class="ph ph-plus-circle"></i> New Character
+                </button>
             </div>
 
-        </section>
+            <!-- Lista de personajes -->
+            <section class="characters-list" id="characters-list">
 
+                <!-- CARD PERSONAJE (se repetirá dinámicamente) -->
+                <div class="character-card">
+                    <div class="card-actions">
+                        <button class="card-btn btn-edit" title="Edit">
+                            <i class="ph ph-pencil-simple"></i>
+                        </button>
+                        <button class="card-btn btn-view" title="View">
+                            <i class="ph ph-eye"></i>
+                        </button>
+                        <button class="card-btn btn-delete" title="Delete">
+                            <i class="ph ph-trash"></i>
+                        </button>
+                    </div>
+                    <img src="imgs/dom.jpg" alt="Character" class="card-img">
+                </div>
+
+                <div class="character-card">
+                    <div class="card-actions">
+                        <button class="card-btn btn-edit" title="Edit">
+                            <i class="ph ph-pencil-simple"></i>
+                        </button>
+                        <button class="card-btn btn-view" title="View">
+                            <i class="ph ph-eye"></i>
+                        </button>
+                        <button class="card-btn btn-delete" title="Delete">
+                            <i class="ph ph-trash"></i>
+                        </button>
+                    </div>
+                    <img src="imgs/o'conner.jpg" alt="Character" class="card-img">
+                </div>
+
+            </section>
+
+            <div class="bottom-spacer"></div>
+        </div>
+
+        <!-- MENU -->
+        <nav class="bottom-nav">
+            <a href="javascript:;" class="nav-item" data-nav="dashboard">
+                <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item active" data-nav="characters">
+                <div class="nav-pill"><i class="ph ph-person"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                <div class="nav-pill"><i class="ph ph-car"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="profile">
+                <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
+            </a>
+        </nav>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- MODAL: ADD NEW CHARACTER               -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="modal-overlay hide" id="modal-add">
+            <div class="modal-card">
+                <div class="modal-header add">
+                    <span class="modal-header-icon">
+                        <i class="ph ph-plus-circle"></i>
+                    </span>
+                    <h3>Add New Character</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-signature"></i> Character Name:
+                        </label>
+                        <input type="text" id="add-name" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-scribble-loop"></i> Alias:
+                        </label>
+                        <input type="text" id="add-alias" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-cake"></i> Age:
+                        </label>
+                        <input type="number" id="add-age" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-signature"></i> Actor Name:
+                        </label>
+                        <input type="text" id="add-actor" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-image"></i> Image:
+                        </label>
+                        <!-- ZONA DE PREVISUALIZACIÓN -->
+                        <div class="img-upload-zone" id="add-upload-zone">
+                            <div class="img-upload-placeholder" id="add-upload-placeholder">
+                                <i class="ph ph-cloud-arrow-up"></i>
+                                <span>Click or drag to upload</span>
+                            </div>
+                            <img src="" alt="" class="img-upload-preview hide" id="add-preview">
+                            <input type="file" id="add-image" accept="image/*" class="img-upload-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn btn-save" id="btn-add-save">
+                        <i class="ph ph-floppy-disk"></i> Save
+                    </button>
+                    <button class="modal-btn btn-cancel" id="btn-add-cancel">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- MODAL: EDIT CHARACTER                  -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="modal-overlay hide" id="modal-edit">
+            <div class="modal-card">
+                <div class="modal-header edit">
+                    <span class="modal-header-icon">
+                        <i class="ph ph-pencil-simple"></i>
+                    </span>
+                    <h3>Edit Character</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-signature"></i> Character Name:
+                        </label>
+                        <input type="text" id="edit-name" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-scribble-loop"></i> Alias:
+                        </label>
+                        <input type="text" id="edit-alias" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-cake"></i> Age:
+                        </label>
+                        <input type="number" id="edit-age" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-signature"></i> Actor Name:
+                        </label>
+                        <input type="text" id="edit-actor" placeholder="">
+                    </div>
+                    <div class="modal-field">
+                        <label>
+                            <i class="ph ph-image"></i> Image:
+                        </label>
+                        <div class="img-upload-zone" id="edit-upload-zone">
+                            <div class="img-upload-placeholder" id="edit-upload-placeholder">
+                                <i class="ph ph-cloud-arrow-up"></i>
+                                <span>Click or drag to upload</span>
+                            </div>
+                            <img src="" alt="" class="img-upload-preview hide" id="edit-preview">
+                            <input type="file" id="edit-image" accept="image/*" class="img-upload-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn btn-save" id="btn-edit-save">
+                        <i class="ph ph-floppy-disk"></i> Save Changes
+                    </button>
+                    <button class="modal-btn btn-cancel" id="btn-edit-cancel">
+                        <i class="ph ph-x-circle"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- MODAL: SHOW CHARACTER                  -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="modal-overlay hide" id="modal-show">
+            <div class="modal-card modal-card-show">
+                <div class="modal-header show">
+                    <span class="modal-header-icon">
+                        <i class="ph ph-eye"></i>
+                    </span>
+                    <h3>Show Character</h3>
+                    <button class="modal-close-x" id="btn-show-close">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+
+                <!-- HERO: imagen cubre todo el cuerpo con degradado -->
+                <div class="show-hero-full">
+                    <img src="imgs/dom.jpg" alt="" id="show-img" class="show-hero-full-img">
+                    <!-- Gradiente oscuro encima -->
+                    <div class="show-hero-gradient"></div>
+                    <!-- Nombre y alias flotando sobre la imagen -->
+                    <div class="show-hero-info">
+                        <h2 id="show-name">DOMINIC TORETTO</h2>
+                        <span class="show-alias" id="show-alias">Dom</span>
+                    </div>
+                </div>
+
+                <!-- Info cards -->
+                <div class="show-details">
+                    <div class="show-info-card">
+                        <span class="show-info-label">
+                            <i class="ph ph-signature"></i> ACTOR NAME
+                        </span>
+                        <span class="show-info-value" id="show-actor">Vin Diesel</span>
+                    </div>
+                    <div class="show-info-card">
+                        <span class="show-info-label">
+                            <i class="ph ph-cake"></i> AGE
+                        </span>
+                        <span class="show-info-value" id="show-age">48 Years old</span>
+                    </div>
+
+                    <!-- Carrusel de autos — arrastrable -->
+                    <div class="show-cars-row" id="show-cars">
+                        <img src="imgs/carrusel-img1.jpg" alt="Car" class="show-car-thumb">
+                        <img src="imgs/carrusel-img2.jpg" alt="Car" class="show-car-thumb">
+                        <img src="imgs/carrusel-img3.jpg" alt="Car" class="show-car-thumb">
+                        <img src="imgs/carrusel-img4.jpg" alt="Car" class="show-car-thumb">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- VIEW: AUTOMOBILES -->
+    <main id="automobiles">
+        <!-- Logo y Boton de Cerrar Sesion -->
+        <header class="logo-header">
+            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+            <a href="javascript:;" class="btn-logout">
+                <span class="icon-box">
+                    <i class="ph ph-sign-out"></i>
+                </span>
+            </a>
+        </header>
+
+        <!-- Contenido scrolleable -->
+        <div class="automobiles-scroll-content">
+            <!-- Título Automobiles -->
+            <section class="automobiles-title">
+                <div class="automobiles-grid-icon">
+                    <i class="ph ph-car"></i>
+                </div>
+                <h2>Automobiles</h2>
+            </section>
+        </div>
+
+        <!-- MENU -->
+        <nav class="bottom-nav">
+            <a href="javascript:;" class="nav-item" data-nav="dashboard">
+                <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item active" data-nav="characters">
+                <div class="nav-pill"><i class="ph ph-person"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                <div class="nav-pill"><i class="ph ph-car"></i></div>
+            </a>
+            <a href="javascript:;" class="nav-item" data-nav="profile">
+                <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
+            </a>
+        </nav>
     </main>
 
 
@@ -261,6 +619,138 @@
             updateActiveStyles();
             startAutoScroll();
         });
+
+        // NAV: efecto de cambio activo con animación
+        document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+            item.addEventListener('click', function () {
+                // Quita activo de todos
+                document.querySelectorAll('.bottom-nav .nav-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                // Aplica activo al clickeado
+                this.classList.add('active');
+            });
+        });
+
+        // ═══════════════════════════════════
+        // CHARACTERS — MODALES
+        // ═══════════════════════════════════
+
+        // Abrir modal ADD
+        document.getElementById('btn-open-add')?.addEventListener('click', () => {
+            document.getElementById('modal-add').classList.remove('hide');
+        });
+
+        // Cerrar modal ADD
+        document.getElementById('btn-add-cancel')?.addEventListener('click', () => {
+            document.getElementById('modal-add').classList.add('hide');
+        });
+
+        // Cerrar modal EDIT
+        document.getElementById('btn-edit-cancel')?.addEventListener('click', () => {
+            document.getElementById('modal-edit').classList.add('hide');
+        });
+
+        // Cerrar modal SHOW
+        document.getElementById('btn-show-close')?.addEventListener('click', () => {
+            document.getElementById('modal-show').classList.add('hide');
+        });
+
+        // Botones de las cards — Edit y View
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('modal-edit').classList.remove('hide');
+            });
+        });
+
+        document.querySelectorAll('.btn-view').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('modal-show').classList.remove('hide');
+            });
+        });
+
+        // Cerrar modal al hacer click en el overlay
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.add('hide');
+                }
+            });
+        });
+
+        // ═══════════════════════════════════════
+        // IMAGE UPLOAD PREVIEW — Add y Edit
+        // ═══════════════════════════════════════
+        function setupImageUpload(inputId, previewId, placeholderId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const placeholder = document.getElementById(placeholderId);
+
+            if (!input) return;
+
+            input.addEventListener('change', function () {
+                const file = this.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hide');
+                    placeholder.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        setupImageUpload('add-image', 'add-preview', 'add-upload-placeholder');
+        setupImageUpload('edit-image', 'edit-preview', 'edit-upload-placeholder');
+
+        // ═══════════════════════════════════════
+        // CARRUSEL ARRASTRABLE — show cars
+        // ═══════════════════════════════════════
+        const carsRow = document.getElementById('show-cars');
+        if (carsRow) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            carsRow.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carsRow.classList.add('grabbing');
+                startX = e.pageX - carsRow.offsetLeft;
+                scrollLeft = carsRow.scrollLeft;
+            });
+
+            carsRow.addEventListener('mouseleave', () => {
+                isDown = false;
+                carsRow.classList.remove('grabbing');
+            });
+
+            carsRow.addEventListener('mouseup', () => {
+                isDown = false;
+                carsRow.classList.remove('grabbing');
+            });
+
+            carsRow.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carsRow.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carsRow.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch support
+            carsRow.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - carsRow.offsetLeft;
+                scrollLeft = carsRow.scrollLeft;
+            });
+
+            carsRow.addEventListener('touchmove', (e) => {
+                const x = e.touches[0].pageX - carsRow.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carsRow.scrollLeft = scrollLeft - walk;
+            });
+        }
     </script>
 </body>
 
