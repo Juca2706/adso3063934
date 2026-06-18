@@ -56,12 +56,12 @@
     </main>
 
     <!-- VIEW: LOGIN -->
-    <main id="login">
+    <main id="login" class="hide">
         <!-- Logo y Boton de Regreso -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
 
-            <a href="javascript:;" class="btn-back-welcome btn-back">
+            <a href="javascript:;" class="btn-back-welcome">
                 <span class="icon-box">
                     <i class="ph ph-house-line"></i>
                 </span>
@@ -110,12 +110,12 @@
     </main>
 
     <!-- VIEW: REGISTER -->
-    <main id="register">
+    <main id="register" class="hide">
         <!-- Logo y Boton de Regreso -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
 
-            <a href="javascript:;" class="btn-back-welcome btn-back">
+            <a href="javascript:;" class="btn-back-welcome">
                 <span class="icon-box">
                     <i class="ph ph-house-line"></i>
                 </span>
@@ -164,7 +164,7 @@
     </main>
 
     <!-- VIEW: DASHBOARD -->
-    <main id="dashboard">
+    <main id="dashboard" class="hide">
         <!-- Logo y Boton de Cerrar Sesion -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
@@ -238,7 +238,7 @@
                     <i class="ph ph-car"></i>
                 </div>
             </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
+            <a href="javascript:;" class="nav-item" data-nav="profile">
                 <div class="nav-pill">
                     <i class="ph ph-user-circle"></i>
                 </div>
@@ -247,7 +247,7 @@
     </main>
 
     <!-- VIEW: CHARACTERS -->
-    <main id="characters">
+    <main id="characters" class="hide">
         <!-- Logo y Boton de Cerrar Sesion -->
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
@@ -281,10 +281,10 @@
                 <!-- CARD PERSONAJE (se repetirá dinámicamente) -->
                 <div class="character-card">
                     <div class="card-actions">
-                        <button class="card-btn btn-edit char-action" title="Edit">
+                        <button class="card-btn btn-edit" title="Edit">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
-                        <button class="card-btn btn-view char-action" title="View">
+                        <button class="card-btn btn-view" title="View">
                             <i class="ph ph-eye"></i>
                         </button>
                         <button class="card-btn btn-delete" title="Delete">
@@ -325,7 +325,7 @@
             <a href="javascript:;" class="nav-item" data-nav="automobiles">
                 <div class="nav-pill"><i class="ph ph-car"></i></div>
             </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
+            <a href="javascript:;" class="nav-item" data-nav="profile">
                 <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
             </a>
         </nav>
@@ -508,7 +508,7 @@
     </main>
 
     <!-- VIEW: AUTOMOBILES -->
-    <main id="automobiles">
+    <main id="automobiles" class="hide">
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
             <a href="javascript:;" class="btn-logout">
@@ -551,10 +551,10 @@
 
                 <div class="automobile-card">
                     <div class="card-actions">
-                        <button class="card-btn btn-edit auto-action" title="Edit">
+                        <button class="card-btn btn-edit" title="Edit">
                             <i class="ph ph-pencil-simple"></i>
                         </button>
-                        <button class="card-btn btn-view auto-action" title="View">
+                        <button class="card-btn btn-view" title="View">
                             <i class="ph ph-eye"></i>
                         </button>
                         <button class="card-btn btn-delete" title="Delete">
@@ -580,7 +580,7 @@
             <a href="javascript:;" class="nav-item active" data-nav="automobiles">
                 <div class="nav-pill"><i class="ph ph-car"></i></div>
             </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
+            <a href="javascript:;" class="nav-item" data-nav="profile">
                 <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
             </a>
         </nav>
@@ -799,7 +799,7 @@
     </main>
 
     <!-- VIEW: MY PROFILE -->
-    <main id="my-profile">
+    <main id="my-profile" class="hide">
         <header class="logo-header">
             <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
             <a href="javascript:;" class="btn-logout">
@@ -899,7 +899,7 @@
             <a href="javascript:;" class="nav-item" data-nav="automobiles">
                 <div class="nav-pill"><i class="ph ph-car"></i></div>
             </a>
-            <a href="javascript:;" class="nav-item active" data-nav="my-profile">
+            <a href="javascript:;" class="nav-item active" data-nav="profile">
                 <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
             </a>
         </nav>
@@ -993,48 +993,44 @@
         // CHARACTERS — MODALES
         // ═══════════════════════════════════
 
+        // Abrir modal ADD
         document.getElementById('btn-open-add')?.addEventListener('click', () => {
-            lockScroll();
             document.getElementById('modal-add').classList.remove('hide');
         });
 
+        // Cerrar modal ADD
         document.getElementById('btn-add-cancel')?.addEventListener('click', () => {
             document.getElementById('modal-add').classList.add('hide');
-            unlockScroll();
         });
 
+        // Cerrar modal EDIT
         document.getElementById('btn-edit-cancel')?.addEventListener('click', () => {
             document.getElementById('modal-edit').classList.add('hide');
-            unlockScroll();
         });
 
+        // Cerrar modal SHOW
         document.getElementById('btn-show-close')?.addEventListener('click', () => {
             document.getElementById('modal-show').classList.add('hide');
-            unlockScroll();
         });
 
-        // Botones de las cards — Edit y View (Characters)
-        document.querySelectorAll('#characters-list .btn-edit').forEach(btn => {
+        // Botones de las cards — Edit y View
+        document.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => {
-                lockScroll();
                 document.getElementById('modal-edit').classList.remove('hide');
             });
         });
 
-        document.querySelectorAll('#characters-list .btn-view').forEach(btn => {
+        document.querySelectorAll('.btn-view').forEach(btn => {
             btn.addEventListener('click', () => {
-                lockScroll();
                 document.getElementById('modal-show').classList.remove('hide');
             });
         });
 
-        // Cerrar modal al hacer click en el overlay — Characters
-        ['modal-add', 'modal-edit', 'modal-show'].forEach(id => {
-            const overlay = document.getElementById(id);
-            overlay?.addEventListener('click', (e) => {
+        // Cerrar modal al hacer click en el overlay
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
                 if (e.target === overlay) {
                     overlay.classList.add('hide');
-                    unlockScroll();
                 }
             });
         });
@@ -1117,47 +1113,46 @@
         // AUTOMOBILES — MODALES
         // ═══════════════════════════════════
 
+        // Abrir modal ADD
         document.getElementById('auto-btn-open-add')?.addEventListener('click', () => {
-            lockScroll();
             document.getElementById('auto-modal-add').classList.remove('hide');
         });
 
+        // Cerrar modal ADD
         document.getElementById('auto-btn-add-cancel')?.addEventListener('click', () => {
             document.getElementById('auto-modal-add').classList.add('hide');
-            unlockScroll();
         });
 
+        // Cerrar modal EDIT
         document.getElementById('auto-btn-edit-cancel')?.addEventListener('click', () => {
             document.getElementById('auto-modal-edit').classList.add('hide');
-            unlockScroll();
         });
 
+        // Cerrar modal SHOW
         document.getElementById('auto-btn-show-close')?.addEventListener('click', () => {
             document.getElementById('auto-modal-show').classList.add('hide');
-            unlockScroll();
         });
 
+        // Botones de las cards de automobiles — Edit y View
+        // (Usamos #automobiles-list para no afectar los botones de characters)
         document.querySelectorAll('#automobiles-list .btn-edit').forEach(btn => {
             btn.addEventListener('click', () => {
-                lockScroll();
                 document.getElementById('auto-modal-edit').classList.remove('hide');
             });
         });
 
         document.querySelectorAll('#automobiles-list .btn-view').forEach(btn => {
             btn.addEventListener('click', () => {
-                lockScroll();
                 document.getElementById('auto-modal-show').classList.remove('hide');
             });
         });
 
-        // Cerrar modal al hacer click en el overlay — Automobiles
+        // Cerrar modal al hacer click en el overlay (solo los de automobiles)
         ['auto-modal-add', 'auto-modal-edit', 'auto-modal-show'].forEach(id => {
             const overlay = document.getElementById(id);
             overlay?.addEventListener('click', (e) => {
                 if (e.target === overlay) {
                     overlay.classList.add('hide');
-                    unlockScroll();
                 }
             });
         });
