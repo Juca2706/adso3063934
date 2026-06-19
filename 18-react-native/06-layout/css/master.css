@@ -40,6 +40,13 @@ body {
     min-height: 100dvh;
     background-color: #403833;
 
+    /* WRAPPER que reserva el espacio ya escalado */
+    .device-frame {
+        width: 402px;
+        height: 874px;
+        position: relative;
+    }
+
     /* M A I N */
     main {
         &::-webkit-scrollbar {
@@ -60,22 +67,17 @@ body {
 
         background-color: black;
         border-radius: 5px;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
         overflow-y: auto;
         overflow-x: hidden;
         width: 402px;
         height: 874px;
 
-        /*
-     * ESCALADO PROPORCIONAL AUTOMÁTICO:
-     * Calcula el factor de escala según el lado más limitante (ancho o alto).
-     * Si la pantalla es 375px de ancho → factor = 375/402 = 0.93
-     * Si la pantalla es 667px de alto  → factor = 667/874 = 0.76
-     * Usa el más pequeño para que el main nunca se salga.
-     * Las medidas internas (402px, 874px, modales, etc.) NO cambian.
-     */
-        zoom: min(calc(100vw / 402),
-            calc(100dvh / 874));
+        /* ESCALA TODO EL CONTENIDO VISUALMENTE, SIN TOCAR NINGUNA MEDIDA INTERNA */
+        transform: scale(var(--device-scale, 1));
+        transform-origin: top left;
 
         &.hide {
             display: none;

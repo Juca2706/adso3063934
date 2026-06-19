@@ -170,3 +170,32 @@ function unlockScroll() {
     const activeMain = views[currentView];
     activeMain.style.overflowY = "auto";
 }
+
+// ───────────────────────────────────────
+// ESCALADO RESPONSIVE DEL DISPOSITIVO SIMULADO
+// ───────────────────────────────────────
+function updateDeviceScale() {
+    const DESIGN_WIDTH = 402;
+    const DESIGN_HEIGHT = 874;
+
+    const availableWidth = window.innerWidth;
+    const availableHeight = window.innerHeight;
+
+    const scale = Math.min(
+        1, // nunca crece más de su tamaño original
+        availableWidth / DESIGN_WIDTH,
+        availableHeight / DESIGN_HEIGHT
+    );
+
+    document.documentElement.style.setProperty('--device-scale', scale);
+
+    // Ajusta el wrapper para que el espacio reservado sea el ya escalado
+    document.querySelectorAll('.device-frame').forEach(frame => {
+        frame.style.width = `${DESIGN_WIDTH * scale}px`;
+        frame.style.height = `${DESIGN_HEIGHT * scale}px`;
+    });
+}
+
+window.addEventListener('resize', updateDeviceScale);
+window.addEventListener('DOMContentLoaded', updateDeviceScale);
+updateDeviceScale(); // ejecuta inmediatamente también

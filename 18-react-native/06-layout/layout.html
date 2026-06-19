@@ -9,901 +9,904 @@
 </head>
 
 <body>
-    <!-- VIEW: WELCOME -->
-    <main id="welcome">
-        <!-- Logo -->
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious Saga" class="main-logo">
-        </header>
+    <div class="device-frame">
+        <!-- VIEW: WELCOME -->
+        <main id="welcome">
+            <!-- Logo -->
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious Saga" class="main-logo">
+            </header>
 
-        <!-- Tarjeta de Bienvenida -->
-        <section class="welcome-card">
+            <!-- Tarjeta de Bienvenida -->
+            <section class="welcome-card">
 
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-item side-item">
-                        <img src="imgs/carrusel-img1.jpg" alt="Carrusel Img 1">
-                    </div>
-                    <div class="carousel-item active-item">
-                        <img src="imgs/carrusel-img2.jpg" alt="Carrusel Img 2">
-                    </div>
-                    <div class="carousel-item side-item">
-                        <img src="imgs/carrusel-img3.jpg" alt="Carrusel Img 3">
-                    </div>
-                    <div class="carousel-item side-item">
-                        <img src="imgs/carrusel-img4.jpg" alt="Carrusel Img 4">
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-content">
-                <h2>¡WELCOME!</h2>
-                <p>Join us and discover the most iconic cars from the “Fast & Furious” saga and the characters who drove
-                    them.</p>
-            </div>
-
-        </section>
-
-        <!-- Botones (Sing In, Sing Up) -->
-        <nav class="auth-navigation">
-            <a href="javascript:;" class="btn-signin">
-                <i class="ph ph-sign-in"></i> Sign In
-            </a>
-            <a href="javascript:;" class="btn-signup">
-                <i class="ph ph-user-circle-plus"></i> Sign Up
-            </a>
-        </nav>
-    </main>
-
-    <!-- VIEW: LOGIN -->
-    <main id="login">
-        <!-- Logo y Boton de Regreso -->
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-
-            <a href="javascript:;" class="btn-back-welcome btn-back">
-                <span class="icon-box">
-                    <i class="ph ph-house-line"></i>
-                </span>
-                <span class="btn-text">Home</span>
-            </a>
-        </header>
-
-        <!-- Formulario de Incio de Sesion -->
-        <section class="auth-card">
-            <div class="card-icon-signin">
-                <i class="ph ph-sign-in"></i>
-            </div>
-            <div class="card-header">
-                <h2>Sign In</h2>
-            </div>
-
-            <form class="auth-form" onsubmit="return false;">
-                <div class="input-group">
-                    <div class="input-wrapper">
-                        <span class="icon-circle">
-                            <i class="ph ph-signature"></i>
-                        </span>
-                        <input type="text" id="login-username" placeholder="Username" autocomplete="off">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-item side-item">
+                            <img src="imgs/carrusel-img1.jpg" alt="Carrusel Img 1">
+                        </div>
+                        <div class="carousel-item active-item">
+                            <img src="imgs/carrusel-img2.jpg" alt="Carrusel Img 2">
+                        </div>
+                        <div class="carousel-item side-item">
+                            <img src="imgs/carrusel-img3.jpg" alt="Carrusel Img 3">
+                        </div>
+                        <div class="carousel-item side-item">
+                            <img src="imgs/carrusel-img4.jpg" alt="Carrusel Img 4">
+                        </div>
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <div class="input-wrapper">
-                        <span class="icon-circle">
-                            <i class="ph ph-keyhole"></i>
-                        </span>
-                        <input type="password" id="login-password" placeholder="Password">
-                    </div>
+                <div class="card-content">
+                    <h2>¡WELCOME!</h2>
+                    <p>Join us and discover the most iconic cars from the “Fast & Furious” saga and the characters who
+                        drove
+                        them.</p>
                 </div>
 
-                <button type="submit" class="btn-signin">
-                    <i class="ph ph-sign-in"></i> Sign In
-                </button>
-            </form>
-
-            <div class="card-footer">
-                <span class="footer-text">You don't have an account?</span>
-                <a href="javascript:;" class="link-forgot">Sign Up</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- VIEW: REGISTER -->
-    <main id="register">
-        <!-- Logo y Boton de Regreso -->
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-
-            <a href="javascript:;" class="btn-back-welcome btn-back">
-                <span class="icon-box">
-                    <i class="ph ph-house-line"></i>
-                </span>
-                <span class="btn-text">Home</span>
-            </a>
-        </header>
-
-        <!-- Formulario de Registro -->
-        <section class="auth-card">
-            <div class="card-icon-signup">
-                <i class="ph ph-user-circle-plus"></i>
-            </div>
-            <div class="card-header">
-                <h2>Sign Up</h2>
-            </div>
-
-            <form class="auth-form-register" onsubmit="return false;">
-                <div class="input-group-register">
-                    <div class="input-wrapper-register">
-                        <span class="icon-circle">
-                            <i class="ph ph-signature"></i>
-                        </span>
-                        <input type="text" id="register-username" placeholder="Username" autocomplete="off">
-                    </div>
-                </div>
-
-                <div class="input-group-register">
-                    <div class="input-wrapper-register">
-                        <span class="icon-circle">
-                            <i class="ph ph-keyhole"></i>
-                        </span>
-                        <input type="password" id="register-password" placeholder="Password">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-signup">
-                    <i class="ph ph-user-circle-plus"></i> Sign Up
-                </button>
-            </form>
-
-            <div class="card-footer">
-                <span class="footer-text">Do you already have an account?</span>
-                <a href="javascript:;" class="link-forgot">Sign In</a>
-            </div>
-        </section>
-    </main>
-
-    <!-- VIEW: DASHBOARD -->
-    <main id="dashboard">
-        <!-- Logo y Boton de Cerrar Sesion -->
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-            <a href="javascript:;" class="btn-logout">
-                <span class="icon-box">
-                    <i class="ph ph-sign-out"></i>
-                </span>
-            </a>
-        </header>
-
-        <!-- Contenido scrolleable -->
-        <div class="dashboard-scroll-content">
-
-            <!-- Título Dashboard -->
-            <section class="dashboard-title">
-                <div class="dashboard-grid-icon">
-                    <i class="ph ph-squares-four"></i>
-                </div>
-                <h2>Dashboard</h2>
             </section>
 
-            <!-- Panel Estadisticos -->
-            <section class="stats-panel">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <h3 class="stat-label">TOTAL CHARACTERS</h3>
-                        <span class="stat-number">12</span>
+            <!-- Botones (Sing In, Sing Up) -->
+            <nav class="auth-navigation">
+                <a href="javascript:;" class="btn-signin">
+                    <i class="ph ph-sign-in"></i> Sign In
+                </a>
+                <a href="javascript:;" class="btn-signup">
+                    <i class="ph ph-user-circle-plus"></i> Sign Up
+                </a>
+            </nav>
+        </main>
+
+        <!-- VIEW: LOGIN -->
+        <main id="login">
+            <!-- Logo y Boton de Regreso -->
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+
+                <a href="javascript:;" class="btn-back-welcome btn-back">
+                    <span class="icon-box">
+                        <i class="ph ph-house-line"></i>
+                    </span>
+                    <span class="btn-text">Home</span>
+                </a>
+            </header>
+
+            <!-- Formulario de Incio de Sesion -->
+            <section class="auth-card">
+                <div class="card-icon-signin">
+                    <i class="ph ph-sign-in"></i>
+                </div>
+                <div class="card-header">
+                    <h2>Sign In</h2>
+                </div>
+
+                <form class="auth-form" onsubmit="return false;">
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <span class="icon-circle">
+                                <i class="ph ph-signature"></i>
+                            </span>
+                            <input type="text" id="login-username" placeholder="Username" autocomplete="off">
+                        </div>
                     </div>
-                    <div class="stat-icon-box">
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <span class="icon-circle">
+                                <i class="ph ph-keyhole"></i>
+                            </span>
+                            <input type="password" id="login-password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-signin">
+                        <i class="ph ph-sign-in"></i> Sign In
+                    </button>
+                </form>
+
+                <div class="card-footer">
+                    <span class="footer-text">You don't have an account?</span>
+                    <a href="javascript:;" class="link-forgot">Sign Up</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- VIEW: REGISTER -->
+        <main id="register">
+            <!-- Logo y Boton de Regreso -->
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+
+                <a href="javascript:;" class="btn-back-welcome btn-back">
+                    <span class="icon-box">
+                        <i class="ph ph-house-line"></i>
+                    </span>
+                    <span class="btn-text">Home</span>
+                </a>
+            </header>
+
+            <!-- Formulario de Registro -->
+            <section class="auth-card">
+                <div class="card-icon-signup">
+                    <i class="ph ph-user-circle-plus"></i>
+                </div>
+                <div class="card-header">
+                    <h2>Sign Up</h2>
+                </div>
+
+                <form class="auth-form-register" onsubmit="return false;">
+                    <div class="input-group-register">
+                        <div class="input-wrapper-register">
+                            <span class="icon-circle">
+                                <i class="ph ph-signature"></i>
+                            </span>
+                            <input type="text" id="register-username" placeholder="Username" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="input-group-register">
+                        <div class="input-wrapper-register">
+                            <span class="icon-circle">
+                                <i class="ph ph-keyhole"></i>
+                            </span>
+                            <input type="password" id="register-password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-signup">
+                        <i class="ph ph-user-circle-plus"></i> Sign Up
+                    </button>
+                </form>
+
+                <div class="card-footer">
+                    <span class="footer-text">Do you already have an account?</span>
+                    <a href="javascript:;" class="link-forgot">Sign In</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- VIEW: DASHBOARD -->
+        <main id="dashboard">
+            <!-- Logo y Boton de Cerrar Sesion -->
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+                <a href="javascript:;" class="btn-logout">
+                    <span class="icon-box">
+                        <i class="ph ph-sign-out"></i>
+                    </span>
+                </a>
+            </header>
+
+            <!-- Contenido scrolleable -->
+            <div class="dashboard-scroll-content">
+
+                <!-- Título Dashboard -->
+                <section class="dashboard-title">
+                    <div class="dashboard-grid-icon">
+                        <i class="ph ph-squares-four"></i>
+                    </div>
+                    <h2>Dashboard</h2>
+                </section>
+
+                <!-- Panel Estadisticos -->
+                <section class="stats-panel">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3 class="stat-label">TOTAL CHARACTERS</h3>
+                            <span class="stat-number">12</span>
+                        </div>
+                        <div class="stat-icon-box">
+                            <i class="ph ph-person"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <h3 class="stat-label">TOTAL AUTOMOBILES</h3>
+                            <span class="stat-number">44</span>
+                        </div>
+                        <div class="stat-icon-box">
+                            <i class="ph ph-car"></i>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Gráfico -->
+                    <div class="chart-card">
+                        <div class="chart-icon">
+                            <i class="ph ph-chart-pie-slice"></i>
+                        </div>
+                    </div>
+
+                    <!-- Espaciado para que el nav flotante no tape contenido -->
+                    <div class="bottom-spacer"></div>
+                </section>
+
+            </div>
+
+            <!-- Bottom Navigation FLOTANTE -->
+            <nav class="bottom-nav">
+                <a href="javascript:;" class="nav-item active" data-nav="dashboard">
+                    <div class="nav-pill">
+                        <i class="ph ph-squares-four"></i>
+                    </div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="characters">
+                    <div class="nav-pill">
                         <i class="ph ph-person"></i>
                     </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <h3 class="stat-label">TOTAL AUTOMOBILES</h3>
-                        <span class="stat-number">44</span>
-                    </div>
-                    <div class="stat-icon-box">
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                    <div class="nav-pill">
                         <i class="ph ph-car"></i>
                     </div>
-                </div>
-
-                <!-- Tarjeta Gráfico -->
-                <div class="chart-card">
-                    <div class="chart-icon">
-                        <i class="ph ph-chart-pie-slice"></i>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="my-profile">
+                    <div class="nav-pill">
+                        <i class="ph ph-user-circle"></i>
                     </div>
+                </a>
+            </nav>
+        </main>
+
+        <!-- VIEW: CHARACTERS -->
+        <main id="characters">
+            <!-- Logo y Boton de Cerrar Sesion -->
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+                <a href="javascript:;" class="btn-logout">
+                    <span class="icon-box">
+                        <i class="ph ph-sign-out"></i>
+                    </span>
+                </a>
+            </header>
+
+            <!-- Contenido scrolleable -->
+            <div class="characters-scroll-content">
+                <!-- Título Characters -->
+                <section class="characters-title">
+                    <div class="characters-grid-icon">
+                        <i class="ph ph-person"></i>
+                    </div>
+                    <h2>Characters</h2>
+                </section>
+
+                <!-- Botón Agregar -->
+                <div class="characters-actions">
+                    <button class="btn-new-character" id="btn-open-add">
+                        <i class="ph ph-plus-circle"></i> New Character
+                    </button>
                 </div>
 
-                <!-- Espaciado para que el nav flotante no tape contenido -->
+                <!-- Lista de personajes -->
+                <section class="characters-list" id="characters-list">
+
+                    <!-- CARD PERSONAJE (se repetirá dinámicamente) -->
+                    <div class="character-card">
+                        <div class="card-actions">
+                            <button class="card-btn btn-edit char-action" title="Edit">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
+                            <button class="card-btn btn-view char-action" title="View">
+                                <i class="ph ph-eye"></i>
+                            </button>
+                            <button class="card-btn btn-delete" title="Delete">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                        <img src="imgs/dom.jpg" alt="Character" class="card-img">
+                    </div>
+
+                    <div class="character-card">
+                        <div class="card-actions">
+                            <button class="card-btn btn-edit" title="Edit">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
+                            <button class="card-btn btn-view" title="View">
+                                <i class="ph ph-eye"></i>
+                            </button>
+                            <button class="card-btn btn-delete" title="Delete">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                        <img src="imgs/o'conner.jpg" alt="Character" class="card-img">
+                    </div>
+
+                </section>
+
                 <div class="bottom-spacer"></div>
-            </section>
-
-        </div>
-
-        <!-- Bottom Navigation FLOTANTE -->
-        <nav class="bottom-nav">
-            <a href="javascript:;" class="nav-item active" data-nav="dashboard">
-                <div class="nav-pill">
-                    <i class="ph ph-squares-four"></i>
-                </div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="characters">
-                <div class="nav-pill">
-                    <i class="ph ph-person"></i>
-                </div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="automobiles">
-                <div class="nav-pill">
-                    <i class="ph ph-car"></i>
-                </div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
-                <div class="nav-pill">
-                    <i class="ph ph-user-circle"></i>
-                </div>
-            </a>
-        </nav>
-    </main>
-
-    <!-- VIEW: CHARACTERS -->
-    <main id="characters">
-        <!-- Logo y Boton de Cerrar Sesion -->
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-            <a href="javascript:;" class="btn-logout">
-                <span class="icon-box">
-                    <i class="ph ph-sign-out"></i>
-                </span>
-            </a>
-        </header>
-
-        <!-- Contenido scrolleable -->
-        <div class="characters-scroll-content">
-            <!-- Título Characters -->
-            <section class="characters-title">
-                <div class="characters-grid-icon">
-                    <i class="ph ph-person"></i>
-                </div>
-                <h2>Characters</h2>
-            </section>
-
-            <!-- Botón Agregar -->
-            <div class="characters-actions">
-                <button class="btn-new-character" id="btn-open-add">
-                    <i class="ph ph-plus-circle"></i> New Character
-                </button>
             </div>
 
-            <!-- Lista de personajes -->
-            <section class="characters-list" id="characters-list">
+            <!-- MENU -->
+            <nav class="bottom-nav">
+                <a href="javascript:;" class="nav-item" data-nav="dashboard">
+                    <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item active" data-nav="characters">
+                    <div class="nav-pill"><i class="ph ph-person"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                    <div class="nav-pill"><i class="ph ph-car"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="my-profile">
+                    <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
+                </a>
+            </nav>
 
-                <!-- CARD PERSONAJE (se repetirá dinámicamente) -->
-                <div class="character-card">
-                    <div class="card-actions">
-                        <button class="card-btn btn-edit char-action" title="Edit">
-                            <i class="ph ph-pencil-simple"></i>
-                        </button>
-                        <button class="card-btn btn-view char-action" title="View">
-                            <i class="ph ph-eye"></i>
-                        </button>
-                        <button class="card-btn btn-delete" title="Delete">
-                            <i class="ph ph-trash"></i>
-                        </button>
-                    </div>
-                    <img src="imgs/dom.jpg" alt="Character" class="card-img">
-                </div>
-
-                <div class="character-card">
-                    <div class="card-actions">
-                        <button class="card-btn btn-edit" title="Edit">
-                            <i class="ph ph-pencil-simple"></i>
-                        </button>
-                        <button class="card-btn btn-view" title="View">
-                            <i class="ph ph-eye"></i>
-                        </button>
-                        <button class="card-btn btn-delete" title="Delete">
-                            <i class="ph ph-trash"></i>
-                        </button>
-                    </div>
-                    <img src="imgs/o'conner.jpg" alt="Character" class="card-img">
-                </div>
-
-            </section>
-
-            <div class="bottom-spacer"></div>
-        </div>
-
-        <!-- MENU -->
-        <nav class="bottom-nav">
-            <a href="javascript:;" class="nav-item" data-nav="dashboard">
-                <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item active" data-nav="characters">
-                <div class="nav-pill"><i class="ph ph-person"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="automobiles">
-                <div class="nav-pill"><i class="ph ph-car"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
-                <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
-            </a>
-        </nav>
-
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: ADD NEW CHARACTER               -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="modal-add">
-            <div class="modal-card">
-                <div class="modal-header add">
-                    <span class="modal-header-icon">
-                        <i class="ph ph-plus-circle"></i>
-                    </span>
-                    <h3>Add New Character</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-signature"></i> Character Name:
-                        </label>
-                        <input type="text" id="add-name" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-scribble-loop"></i> Alias:
-                        </label>
-                        <input type="text" id="add-alias" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-cake"></i> Age:
-                        </label>
-                        <input type="number" id="add-age" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-signature"></i> Actor Name:
-                        </label>
-                        <input type="text" id="add-actor" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-image"></i> Image:
-                        </label>
-                        <!-- ZONA DE PREVISUALIZACIÓN -->
-                        <div class="img-upload-zone" id="add-upload-zone">
-                            <div class="img-upload-placeholder" id="add-upload-placeholder">
-                                <i class="ph ph-cloud-arrow-up"></i>
-                                <span>Click or drag to upload</span>
-                            </div>
-                            <img src="" alt="" class="img-upload-preview hide" id="add-preview">
-                            <input type="file" id="add-image" accept="image/*" class="img-upload-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="modal-btn btn-save" id="btn-add-save">
-                        <i class="ph ph-floppy-disk"></i> Save
-                    </button>
-                    <button class="modal-btn btn-cancel" id="btn-add-cancel">
-                        <i class="ph ph-x-circle"></i> Cancel
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: EDIT CHARACTER                  -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="modal-edit">
-            <div class="modal-card">
-                <div class="modal-header edit">
-                    <span class="modal-header-icon">
-                        <i class="ph ph-pencil-simple"></i>
-                    </span>
-                    <h3>Edit Character</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-signature"></i> Character Name:
-                        </label>
-                        <input type="text" id="edit-name" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-scribble-loop"></i> Alias:
-                        </label>
-                        <input type="text" id="edit-alias" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-cake"></i> Age:
-                        </label>
-                        <input type="number" id="edit-age" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-signature"></i> Actor Name:
-                        </label>
-                        <input type="text" id="edit-actor" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label>
-                            <i class="ph ph-image"></i> Image:
-                        </label>
-                        <div class="img-upload-zone" id="edit-upload-zone">
-                            <div class="img-upload-placeholder" id="edit-upload-placeholder">
-                                <i class="ph ph-cloud-arrow-up"></i>
-                                <span>Click or drag to upload</span>
-                            </div>
-                            <img src="" alt="" class="img-upload-preview hide" id="edit-preview">
-                            <input type="file" id="edit-image" accept="image/*" class="img-upload-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="modal-btn btn-save" id="btn-edit-save">
-                        <i class="ph ph-floppy-disk"></i> Save Changes
-                    </button>
-                    <button class="modal-btn btn-cancel" id="btn-edit-cancel">
-                        <i class="ph ph-x-circle"></i> Cancel
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: SHOW CHARACTER                  -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="modal-show">
-            <div class="modal-card modal-card-show">
-                <div class="modal-header show">
-                    <span class="modal-header-icon">
-                        <i class="ph ph-eye"></i>
-                    </span>
-                    <h3>Show Character</h3>
-                    <button class="modal-close-x" id="btn-show-close">
-                        <i class="ph ph-x"></i>
-                    </button>
-                </div>
-
-                <!-- HERO: imagen cubre todo el cuerpo con degradado -->
-                <div class="show-hero-full">
-                    <img src="imgs/dom.jpg" alt="" id="show-img" class="show-hero-full-img">
-                    <!-- Gradiente oscuro encima -->
-                    <div class="show-hero-gradient"></div>
-                    <!-- Nombre y alias flotando sobre la imagen -->
-                    <div class="show-hero-info">
-                        <h2 id="show-name">DOMINIC TORETTO</h2>
-                        <span class="show-alias" id="show-alias">Dom</span>
-                    </div>
-                </div>
-
-                <!-- Info cards -->
-                <div class="show-details">
-                    <div class="show-info-card">
-                        <span class="show-info-label">
-                            <i class="ph ph-signature"></i> ACTOR NAME
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: ADD NEW CHARACTER               -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="modal-add">
+                <div class="modal-card">
+                    <div class="modal-header add">
+                        <span class="modal-header-icon">
+                            <i class="ph ph-plus-circle"></i>
                         </span>
-                        <span class="show-info-value" id="show-actor">Vin Diesel</span>
+                        <h3>Add New Character</h3>
                     </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label">
-                            <i class="ph ph-cake"></i> AGE
+                    <div class="modal-body">
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-signature"></i> Character Name:
+                            </label>
+                            <input type="text" id="add-name" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-scribble-loop"></i> Alias:
+                            </label>
+                            <input type="text" id="add-alias" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-cake"></i> Age:
+                            </label>
+                            <input type="number" id="add-age" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-signature"></i> Actor Name:
+                            </label>
+                            <input type="text" id="add-actor" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-image"></i> Image:
+                            </label>
+                            <!-- ZONA DE PREVISUALIZACIÓN -->
+                            <div class="img-upload-zone" id="add-upload-zone">
+                                <div class="img-upload-placeholder" id="add-upload-placeholder">
+                                    <i class="ph ph-cloud-arrow-up"></i>
+                                    <span>Click or drag to upload</span>
+                                </div>
+                                <img src="" alt="" class="img-upload-preview hide" id="add-preview">
+                                <input type="file" id="add-image" accept="image/*" class="img-upload-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="modal-btn btn-save" id="btn-add-save">
+                            <i class="ph ph-floppy-disk"></i> Save
+                        </button>
+                        <button class="modal-btn btn-cancel" id="btn-add-cancel">
+                            <i class="ph ph-x-circle"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: EDIT CHARACTER                  -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="modal-edit">
+                <div class="modal-card">
+                    <div class="modal-header edit">
+                        <span class="modal-header-icon">
+                            <i class="ph ph-pencil-simple"></i>
                         </span>
-                        <span class="show-info-value" id="show-age">48 Years old</span>
+                        <h3>Edit Character</h3>
                     </div>
-
-                    <!-- Carrusel de autos — arrastrable -->
-                    <div class="show-cars-row" id="show-cars">
-                        <img src="imgs/carrusel-img1.jpg" alt="Car" class="show-car-thumb">
-                        <img src="imgs/carrusel-img2.jpg" alt="Car" class="show-car-thumb">
-                        <img src="imgs/carrusel-img3.jpg" alt="Car" class="show-car-thumb">
-                        <img src="imgs/carrusel-img4.jpg" alt="Car" class="show-car-thumb">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- VIEW: AUTOMOBILES -->
-    <main id="automobiles">
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-            <a href="javascript:;" class="btn-logout">
-                <span class="icon-box">
-                    <i class="ph ph-sign-out"></i>
-                </span>
-            </a>
-        </header>
-
-        <div class="automobiles-scroll-content">
-            <section class="automobiles-title">
-                <div class="automobiles-grid-icon">
-                    <i class="ph ph-car"></i>
-                </div>
-                <h2>Automobiles</h2>
-            </section>
-
-            <div class="automobiles-actions">
-                <button class="btn-new-automobile" id="auto-btn-open-add">
-                    <i class="ph ph-plus-circle"></i> New Automobile
-                </button>
-            </div>
-
-            <section class="automobiles-list" id="automobiles-list">
-
-                <div class="automobile-card">
-                    <div class="card-actions">
-                        <button class="card-btn btn-edit" title="Edit">
-                            <i class="ph ph-pencil-simple"></i>
-                        </button>
-                        <button class="card-btn btn-view" title="View">
-                            <i class="ph ph-eye"></i>
-                        </button>
-                        <button class="card-btn btn-delete" title="Delete">
-                            <i class="ph ph-trash"></i>
-                        </button>
-                    </div>
-                    <img src="imgs/1970 Dodge Charger R-T.jpg" alt="Automobile" class="card-img">
-                </div>
-
-                <div class="automobile-card">
-                    <div class="card-actions">
-                        <button class="card-btn btn-edit auto-action" title="Edit">
-                            <i class="ph ph-pencil-simple"></i>
-                        </button>
-                        <button class="card-btn btn-view auto-action" title="View">
-                            <i class="ph ph-eye"></i>
-                        </button>
-                        <button class="card-btn btn-delete" title="Delete">
-                            <i class="ph ph-trash"></i>
-                        </button>
-                    </div>
-                    <img src="imgs/1970 Chevrolet Chevelle SS.jpg" alt="Automobile" class="card-img">
-                </div>
-
-            </section>
-
-            <div class="bottom-spacer"></div>
-        </div>
-
-        <!-- MENU -->
-        <nav class="bottom-nav">
-            <a href="javascript:;" class="nav-item" data-nav="dashboard">
-                <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="characters">
-                <div class="nav-pill"><i class="ph ph-person"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item active" data-nav="automobiles">
-                <div class="nav-pill"><i class="ph ph-car"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="my-profile">
-                <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
-            </a>
-        </nav>
-
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: ADD NEW AUTOMOBILE               -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="auto-modal-add">
-            <div class="modal-card">
-                <div class="modal-header add">
-                    <span class="modal-header-icon"><i class="ph ph-plus-circle"></i></span>
-                    <h3>Add New Automobile</h3>
-                </div>
-
-                <div class="modal-body modal-body-scroll">
-                    <div class="modal-field">
-                        <label><i class="ph ph-signature"></i> Name:</label>
-                        <input type="text" id="auto-add-name" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-engine"></i> Engine:</label>
-                        <input type="text" id="auto-add-engine" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-lightning"></i> Power:</label>
-                        <input type="text" id="auto-add-power" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-gauge"></i> Torque:</label>
-                        <input type="text" id="auto-add-torque" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-speedometer"></i> Acceleration:</label>
-                        <input type="text" id="auto-add-acceleration" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-wind"></i> Top Speed:</label>
-                        <input type="text" id="auto-add-topspeed" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-gear-six"></i> Transmission:</label>
-                        <input type="text" id="auto-add-transmission" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-tire"></i> Drivetrain:</label>
-                        <input type="text" id="auto-add-drivetrain" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-person"></i> Character:</label>
-                        <select id="auto-add-character" class="modal-select">
-                            <option value="">Select Character</option>
-                            <!-- Se llena dinámicamente con JS -->
-                        </select>
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-image"></i> Image:</label>
-                        <div class="img-upload-zone" id="auto-add-upload-zone">
-                            <div class="img-upload-placeholder" id="auto-add-upload-placeholder">
-                                <i class="ph ph-cloud-arrow-up"></i>
-                                <span>Click or drag to upload</span>
+                    <div class="modal-body">
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-signature"></i> Character Name:
+                            </label>
+                            <input type="text" id="edit-name" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-scribble-loop"></i> Alias:
+                            </label>
+                            <input type="text" id="edit-alias" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-cake"></i> Age:
+                            </label>
+                            <input type="number" id="edit-age" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-signature"></i> Actor Name:
+                            </label>
+                            <input type="text" id="edit-actor" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label>
+                                <i class="ph ph-image"></i> Image:
+                            </label>
+                            <div class="img-upload-zone" id="edit-upload-zone">
+                                <div class="img-upload-placeholder" id="edit-upload-placeholder">
+                                    <i class="ph ph-cloud-arrow-up"></i>
+                                    <span>Click or drag to upload</span>
+                                </div>
+                                <img src="" alt="" class="img-upload-preview hide" id="edit-preview">
+                                <input type="file" id="edit-image" accept="image/*" class="img-upload-input">
                             </div>
-                            <img src="" alt="" class="img-upload-preview hide" id="auto-add-preview">
-                            <input type="file" id="auto-add-image" accept="image/*" class="img-upload-input">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="modal-btn btn-save" id="btn-edit-save">
+                            <i class="ph ph-floppy-disk"></i> Save Changes
+                        </button>
+                        <button class="modal-btn btn-cancel" id="btn-edit-cancel">
+                            <i class="ph ph-x-circle"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: SHOW CHARACTER                  -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="modal-show">
+                <div class="modal-card modal-card-show">
+                    <div class="modal-header show">
+                        <span class="modal-header-icon">
+                            <i class="ph ph-eye"></i>
+                        </span>
+                        <h3>Show Character</h3>
+                        <button class="modal-close-x" id="btn-show-close">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+
+                    <!-- HERO: imagen cubre todo el cuerpo con degradado -->
+                    <div class="show-hero-full">
+                        <img src="imgs/dom.jpg" alt="" id="show-img" class="show-hero-full-img">
+                        <!-- Gradiente oscuro encima -->
+                        <div class="show-hero-gradient"></div>
+                        <!-- Nombre y alias flotando sobre la imagen -->
+                        <div class="show-hero-info">
+                            <h2 id="show-name">DOMINIC TORETTO</h2>
+                            <span class="show-alias" id="show-alias">Dom</span>
+                        </div>
+                    </div>
+
+                    <!-- Info cards -->
+                    <div class="show-details">
+                        <div class="show-info-card">
+                            <span class="show-info-label">
+                                <i class="ph ph-signature"></i> ACTOR NAME
+                            </span>
+                            <span class="show-info-value" id="show-actor">Vin Diesel</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label">
+                                <i class="ph ph-cake"></i> AGE
+                            </span>
+                            <span class="show-info-value" id="show-age">48 Years old</span>
+                        </div>
+
+                        <!-- Carrusel de autos — arrastrable -->
+                        <div class="show-cars-row" id="show-cars">
+                            <img src="imgs/carrusel-img1.jpg" alt="Car" class="show-car-thumb">
+                            <img src="imgs/carrusel-img2.jpg" alt="Car" class="show-car-thumb">
+                            <img src="imgs/carrusel-img3.jpg" alt="Car" class="show-car-thumb">
+                            <img src="imgs/carrusel-img4.jpg" alt="Car" class="show-car-thumb">
                         </div>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button class="modal-btn btn-save" id="auto-btn-add-save">
-                        <i class="ph ph-floppy-disk"></i> Save
-                    </button>
-                    <button class="modal-btn btn-cancel" id="auto-btn-add-cancel">
-                        <i class="ph ph-x-circle"></i> Cancel
-                    </button>
-                </div>
             </div>
-        </div>
+        </main>
 
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: EDIT AUTOMOBILE                  -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="auto-modal-edit">
-            <div class="modal-card">
-                <div class="modal-header edit">
-                    <span class="modal-header-icon"><i class="ph ph-pencil-simple"></i></span>
-                    <h3>Edit Automobile</h3>
+        <!-- VIEW: AUTOMOBILES -->
+        <main id="automobiles">
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+                <a href="javascript:;" class="btn-logout">
+                    <span class="icon-box">
+                        <i class="ph ph-sign-out"></i>
+                    </span>
+                </a>
+            </header>
+
+            <div class="automobiles-scroll-content">
+                <section class="automobiles-title">
+                    <div class="automobiles-grid-icon">
+                        <i class="ph ph-car"></i>
+                    </div>
+                    <h2>Automobiles</h2>
+                </section>
+
+                <div class="automobiles-actions">
+                    <button class="btn-new-automobile" id="auto-btn-open-add">
+                        <i class="ph ph-plus-circle"></i> New Automobile
+                    </button>
                 </div>
 
-                <div class="modal-body modal-body-scroll">
-                    <div class="modal-field">
-                        <label><i class="ph ph-signature"></i> Name:</label>
-                        <input type="text" id="auto-edit-name" placeholder="">
+                <section class="automobiles-list" id="automobiles-list">
+
+                    <div class="automobile-card">
+                        <div class="card-actions">
+                            <button class="card-btn btn-edit" title="Edit">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
+                            <button class="card-btn btn-view" title="View">
+                                <i class="ph ph-eye"></i>
+                            </button>
+                            <button class="card-btn btn-delete" title="Delete">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                        <img src="imgs/1970 Dodge Charger R-T.jpg" alt="Automobile" class="card-img">
                     </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-engine"></i> Engine:</label>
-                        <input type="text" id="auto-edit-engine" placeholder="">
+
+                    <div class="automobile-card">
+                        <div class="card-actions">
+                            <button class="card-btn btn-edit auto-action" title="Edit">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
+                            <button class="card-btn btn-view auto-action" title="View">
+                                <i class="ph ph-eye"></i>
+                            </button>
+                            <button class="card-btn btn-delete" title="Delete">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                        <img src="imgs/1970 Chevrolet Chevelle SS.jpg" alt="Automobile" class="card-img">
                     </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-lightning"></i> Power:</label>
-                        <input type="text" id="auto-edit-power" placeholder="">
+
+                </section>
+
+                <div class="bottom-spacer"></div>
+            </div>
+
+            <!-- MENU -->
+            <nav class="bottom-nav">
+                <a href="javascript:;" class="nav-item" data-nav="dashboard">
+                    <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="characters">
+                    <div class="nav-pill"><i class="ph ph-person"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item active" data-nav="automobiles">
+                    <div class="nav-pill"><i class="ph ph-car"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="my-profile">
+                    <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
+                </a>
+            </nav>
+
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: ADD NEW AUTOMOBILE               -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="auto-modal-add">
+                <div class="modal-card">
+                    <div class="modal-header add">
+                        <span class="modal-header-icon"><i class="ph ph-plus-circle"></i></span>
+                        <h3>Add New Automobile</h3>
                     </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-gauge"></i> Torque:</label>
-                        <input type="text" id="auto-edit-torque" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-speedometer"></i> Acceleration:</label>
-                        <input type="text" id="auto-edit-acceleration" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-wind"></i> Top Speed:</label>
-                        <input type="text" id="auto-edit-topspeed" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-gear-six"></i> Transmission:</label>
-                        <input type="text" id="auto-edit-transmission" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-tire"></i> Drivetrain:</label>
-                        <input type="text" id="auto-edit-drivetrain" placeholder="">
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-person"></i> Character:</label>
-                        <select id="auto-edit-character" class="modal-select">
-                            <option value="">Select Character</option>
-                        </select>
-                    </div>
-                    <div class="modal-field">
-                        <label><i class="ph ph-image"></i> Image:</label>
-                        <div class="img-upload-zone" id="auto-edit-upload-zone">
-                            <div class="img-upload-placeholder" id="auto-edit-upload-placeholder">
-                                <i class="ph ph-cloud-arrow-up"></i>
-                                <span>Click or drag to upload</span>
+
+                    <div class="modal-body modal-body-scroll">
+                        <div class="modal-field">
+                            <label><i class="ph ph-signature"></i> Name:</label>
+                            <input type="text" id="auto-add-name" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-engine"></i> Engine:</label>
+                            <input type="text" id="auto-add-engine" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-lightning"></i> Power:</label>
+                            <input type="text" id="auto-add-power" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-gauge"></i> Torque:</label>
+                            <input type="text" id="auto-add-torque" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-speedometer"></i> Acceleration:</label>
+                            <input type="text" id="auto-add-acceleration" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-wind"></i> Top Speed:</label>
+                            <input type="text" id="auto-add-topspeed" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-gear-six"></i> Transmission:</label>
+                            <input type="text" id="auto-add-transmission" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-tire"></i> Drivetrain:</label>
+                            <input type="text" id="auto-add-drivetrain" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-person"></i> Character:</label>
+                            <select id="auto-add-character" class="modal-select">
+                                <option value="">Select Character</option>
+                                <!-- Se llena dinámicamente con JS -->
+                            </select>
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-image"></i> Image:</label>
+                            <div class="img-upload-zone" id="auto-add-upload-zone">
+                                <div class="img-upload-placeholder" id="auto-add-upload-placeholder">
+                                    <i class="ph ph-cloud-arrow-up"></i>
+                                    <span>Click or drag to upload</span>
+                                </div>
+                                <img src="" alt="" class="img-upload-preview hide" id="auto-add-preview">
+                                <input type="file" id="auto-add-image" accept="image/*" class="img-upload-input">
                             </div>
-                            <img src="" alt="" class="img-upload-preview hide" id="auto-edit-preview">
-                            <input type="file" id="auto-edit-image" accept="image/*" class="img-upload-input">
                         </div>
                     </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button class="modal-btn btn-save" id="auto-btn-edit-save">
-                        <i class="ph ph-floppy-disk"></i> Save Changes
-                    </button>
-                    <button class="modal-btn btn-cancel" id="auto-btn-edit-cancel">
-                        <i class="ph ph-x-circle"></i> Cancel
-                    </button>
+                    <div class="modal-footer">
+                        <button class="modal-btn btn-save" id="auto-btn-add-save">
+                            <i class="ph ph-floppy-disk"></i> Save
+                        </button>
+                        <button class="modal-btn btn-cancel" id="auto-btn-add-cancel">
+                            <i class="ph ph-x-circle"></i> Cancel
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- ═══════════════════════════════════════ -->
-        <!-- MODAL: SHOW AUTOMOBILE                  -->
-        <!-- ═══════════════════════════════════════ -->
-        <div class="modal-overlay hide" id="auto-modal-show">
-            <div class="modal-card modal-card-show">
-                <div class="modal-header show">
-                    <span class="modal-header-icon"><i class="ph ph-eye"></i></span>
-                    <h3>Show Automobile</h3>
-                    <button class="modal-close-x" id="auto-btn-show-close">
-                        <i class="ph ph-x"></i>
-                    </button>
-                </div>
-
-                <div class="show-hero-full">
-                    <img src="imgs/1970 Dodge Charger R-T.jpg" alt="" id="auto-show-img" class="show-hero-full-img">
-                    <div class="show-hero-gradient"></div>
-                    <div class="show-hero-info">
-                        <h2 id="auto-show-name">1970 Dodge Charger R/T</h2>
-                    </div>
-                </div>
-
-                <div class="show-details">
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-engine"></i> ENGINE</span>
-                        <span class="show-info-value" id="auto-show-engine">Chrysler 426 Hemi V8 Supercharged</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-lightning"></i> POWER</span>
-                        <span class="show-info-value" id="auto-show-power">900 hp</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-gauge"></i> TORQUE</span>
-                        <span class="show-info-value" id="auto-show-torque">1,200 Nm</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-speedometer"></i> ACCELERATION</span>
-                        <span class="show-info-value" id="auto-show-acceleration">3.1 s (0–100)</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-wind"></i> TOP SPEED</span>
-                        <span class="show-info-value" id="auto-show-topspeed">280 km/h</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-gear-six"></i> TRANSMISSION</span>
-                        <span class="show-info-value" id="auto-show-transmission">4-Speed Manual</span>
-                    </div>
-                    <div class="show-info-card">
-                        <span class="show-info-label"><i class="ph ph-tire"></i> DRIVETRAIN</span>
-                        <span class="show-info-value" id="auto-show-drivetrain">RWD</span>
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: EDIT AUTOMOBILE                  -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="auto-modal-edit">
+                <div class="modal-card">
+                    <div class="modal-header edit">
+                        <span class="modal-header-icon"><i class="ph ph-pencil-simple"></i></span>
+                        <h3>Edit Automobile</h3>
                     </div>
 
-                    <!-- CARD DESTACADA: Personaje asociado con foto grande -->
-                    <div class="show-character-card">
-                        <img src="imgs/dom.jpg" alt="" id="auto-show-character-img" class="show-character-img">
-                        <div class="show-character-overlay"></div>
-                        <div class="show-character-info">
-                            <span class="show-info-label"><i class="ph ph-person"></i> OPERATED BY</span>
-                            <span class="show-info-value" id="auto-show-character">Dominic Toretto</span>
+                    <div class="modal-body modal-body-scroll">
+                        <div class="modal-field">
+                            <label><i class="ph ph-signature"></i> Name:</label>
+                            <input type="text" id="auto-edit-name" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-engine"></i> Engine:</label>
+                            <input type="text" id="auto-edit-engine" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-lightning"></i> Power:</label>
+                            <input type="text" id="auto-edit-power" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-gauge"></i> Torque:</label>
+                            <input type="text" id="auto-edit-torque" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-speedometer"></i> Acceleration:</label>
+                            <input type="text" id="auto-edit-acceleration" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-wind"></i> Top Speed:</label>
+                            <input type="text" id="auto-edit-topspeed" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-gear-six"></i> Transmission:</label>
+                            <input type="text" id="auto-edit-transmission" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-tire"></i> Drivetrain:</label>
+                            <input type="text" id="auto-edit-drivetrain" placeholder="">
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-person"></i> Character:</label>
+                            <select id="auto-edit-character" class="modal-select">
+                                <option value="">Select Character</option>
+                            </select>
+                        </div>
+                        <div class="modal-field">
+                            <label><i class="ph ph-image"></i> Image:</label>
+                            <div class="img-upload-zone" id="auto-edit-upload-zone">
+                                <div class="img-upload-placeholder" id="auto-edit-upload-placeholder">
+                                    <i class="ph ph-cloud-arrow-up"></i>
+                                    <span>Click or drag to upload</span>
+                                </div>
+                                <img src="" alt="" class="img-upload-preview hide" id="auto-edit-preview">
+                                <input type="file" id="auto-edit-image" accept="image/*" class="img-upload-input">
+                            </div>
                         </div>
                     </div>
 
+                    <div class="modal-footer">
+                        <button class="modal-btn btn-save" id="auto-btn-edit-save">
+                            <i class="ph ph-floppy-disk"></i> Save Changes
+                        </button>
+                        <button class="modal-btn btn-cancel" id="auto-btn-edit-cancel">
+                            <i class="ph ph-x-circle"></i> Cancel
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <!-- VIEW: MY PROFILE -->
-    <main id="my-profile">
-        <header class="logo-header">
-            <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
-            <a href="javascript:;" class="btn-logout">
-                <span class="icon-box">
-                    <i class="ph ph-sign-out"></i>
-                </span>
-            </a>
-        </header>
-
-        <div class="profile-scroll-content">
-            <section class="profile-title">
-                <div class="profile-grid-icon">
-                    <i class="ph ph-user-circle"></i>
-                </div>
-                <h2>My Profile</h2>
-            </section>
-
-            <section class="profile-info">
-
-                <!-- CARD USERNAME -->
-                <div class="profile-card">
-                    <div class="profile-card-row">
-                        <div class="profile-icon-box">
-                            <i class="ph ph-signature"></i>
-                        </div>
-                        <span class="profile-value" id="profile-username">Juan Camilo HG</span>
-                        <button class="profile-edit-btn" data-target="form-username">
-                            <i class="ph ph-pencil-simple"></i>
+            <!-- ═══════════════════════════════════════ -->
+            <!-- MODAL: SHOW AUTOMOBILE                  -->
+            <!-- ═══════════════════════════════════════ -->
+            <div class="modal-overlay hide" id="auto-modal-show">
+                <div class="modal-card modal-card-show">
+                    <div class="modal-header show">
+                        <span class="modal-header-icon"><i class="ph ph-eye"></i></span>
+                        <h3>Show Automobile</h3>
+                        <button class="modal-close-x" id="auto-btn-show-close">
+                            <i class="ph ph-x"></i>
                         </button>
                     </div>
 
-                    <!-- FORM DESPLEGABLE — USERNAME -->
-                    <div class="profile-form hide" id="form-username">
-                        <label class="profile-form-label">
-                            <i class="ph ph-signature"></i> New Username
-                        </label>
-                        <input type="text" id="input-new-username" placeholder="Username">
-                        <div class="profile-form-actions">
-                            <button class="profile-btn-save" id="btn-save-username">
-                                <i class="ph ph-floppy-disk"></i> Save Changes
-                            </button>
-                            <button class="profile-btn-cancel" data-target="form-username">
-                                <i class="ph ph-x-circle"></i> Cancel
-                            </button>
+                    <div class="show-hero-full">
+                        <img src="imgs/1970 Dodge Charger R-T.jpg" alt="" id="auto-show-img" class="show-hero-full-img">
+                        <div class="show-hero-gradient"></div>
+                        <div class="show-hero-info">
+                            <h2 id="auto-show-name">1970 Dodge Charger R/T</h2>
                         </div>
+                    </div>
+
+                    <div class="show-details">
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-engine"></i> ENGINE</span>
+                            <span class="show-info-value" id="auto-show-engine">Chrysler 426 Hemi V8 Supercharged</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-lightning"></i> POWER</span>
+                            <span class="show-info-value" id="auto-show-power">900 hp</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-gauge"></i> TORQUE</span>
+                            <span class="show-info-value" id="auto-show-torque">1,200 Nm</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-speedometer"></i> ACCELERATION</span>
+                            <span class="show-info-value" id="auto-show-acceleration">3.1 s (0–100)</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-wind"></i> TOP SPEED</span>
+                            <span class="show-info-value" id="auto-show-topspeed">280 km/h</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-gear-six"></i> TRANSMISSION</span>
+                            <span class="show-info-value" id="auto-show-transmission">4-Speed Manual</span>
+                        </div>
+                        <div class="show-info-card">
+                            <span class="show-info-label"><i class="ph ph-tire"></i> DRIVETRAIN</span>
+                            <span class="show-info-value" id="auto-show-drivetrain">RWD</span>
+                        </div>
+
+                        <!-- CARD DESTACADA: Personaje asociado con foto grande -->
+                        <div class="show-character-card">
+                            <img src="imgs/dom.jpg" alt="" id="auto-show-character-img" class="show-character-img">
+                            <div class="show-character-overlay"></div>
+                            <div class="show-character-info">
+                                <span class="show-info-label"><i class="ph ph-person"></i> OPERATED BY</span>
+                                <span class="show-info-value" id="auto-show-character">Dominic Toretto</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+            </div>
+        </main>
 
-                <!-- CARD PASSWORD -->
-                <div class="profile-card">
-                    <div class="profile-card-row">
-                        <div class="profile-icon-box">
-                            <i class="ph ph-lock-key"></i>
+        <!-- VIEW: MY PROFILE -->
+        <main id="my-profile">
+            <header class="logo-header">
+                <img src="imgs/logo-fastFurious.png" alt="Fast & Furious" class="main-logo">
+                <a href="javascript:;" class="btn-logout">
+                    <span class="icon-box">
+                        <i class="ph ph-sign-out"></i>
+                    </span>
+                </a>
+            </header>
+
+            <div class="profile-scroll-content">
+                <section class="profile-title">
+                    <div class="profile-grid-icon">
+                        <i class="ph ph-user-circle"></i>
+                    </div>
+                    <h2>My Profile</h2>
+                </section>
+
+                <section class="profile-info">
+
+                    <!-- CARD USERNAME -->
+                    <div class="profile-card">
+                        <div class="profile-card-row">
+                            <div class="profile-icon-box">
+                                <i class="ph ph-signature"></i>
+                            </div>
+                            <span class="profile-value" id="profile-username">Juan Camilo HG</span>
+                            <button class="profile-edit-btn" data-target="form-username">
+                                <i class="ph ph-pencil-simple"></i>
+                            </button>
                         </div>
-                        <span class="profile-value">••••••••••••••••</span>
-                        <button class="profile-edit-btn" data-target="form-password">
-                            <i class="ph ph-pencil-simple"></i>
-                        </button>
+
+                        <!-- FORM DESPLEGABLE — USERNAME -->
+                        <div class="profile-form hide" id="form-username">
+                            <label class="profile-form-label">
+                                <i class="ph ph-signature"></i> New Username
+                            </label>
+                            <input type="text" id="input-new-username" placeholder="Username">
+                            <div class="profile-form-actions">
+                                <button class="profile-btn-save" id="btn-save-username">
+                                    <i class="ph ph-floppy-disk"></i> Save Changes
+                                </button>
+                                <button class="profile-btn-cancel" data-target="form-username">
+                                    <i class="ph ph-x-circle"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- FORM DESPLEGABLE — PASSWORD -->
-                    <div class="profile-form hide" id="form-password">
-                        <label class="profile-form-label">
-                            <i class="ph ph-keyhole"></i> New Password
-                        </label>
-                        <input type="password" id="input-new-password" placeholder="••••••••••••••••">
-
-                        <label class="profile-form-label">
-                            <i class="ph ph-keyhole"></i> Confirm Password
-                        </label>
-                        <input type="password" id="input-confirm-password" placeholder="••••••••••••••••">
-
-                        <div class="profile-form-actions">
-                            <button class="profile-btn-save" id="btn-save-password">
-                                <i class="ph ph-floppy-disk"></i> Save Changes
-                            </button>
-                            <button class="profile-btn-cancel" data-target="form-password">
-                                <i class="ph ph-x-circle"></i> Cancel
+                    <!-- CARD PASSWORD -->
+                    <div class="profile-card">
+                        <div class="profile-card-row">
+                            <div class="profile-icon-box">
+                                <i class="ph ph-lock-key"></i>
+                            </div>
+                            <span class="profile-value">••••••••••••••••</span>
+                            <button class="profile-edit-btn" data-target="form-password">
+                                <i class="ph ph-pencil-simple"></i>
                             </button>
                         </div>
+
+                        <!-- FORM DESPLEGABLE — PASSWORD -->
+                        <div class="profile-form hide" id="form-password">
+                            <label class="profile-form-label">
+                                <i class="ph ph-keyhole"></i> New Password
+                            </label>
+                            <input type="password" id="input-new-password" placeholder="••••••••••••••••">
+
+                            <label class="profile-form-label">
+                                <i class="ph ph-keyhole"></i> Confirm Password
+                            </label>
+                            <input type="password" id="input-confirm-password" placeholder="••••••••••••••••">
+
+                            <div class="profile-form-actions">
+                                <button class="profile-btn-save" id="btn-save-password">
+                                    <i class="ph ph-floppy-disk"></i> Save Changes
+                                </button>
+                                <button class="profile-btn-cancel" data-target="form-password">
+                                    <i class="ph ph-x-circle"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-            </section>
+                </section>
 
-            <div class="bottom-spacer"></div>
-        </div>
+                <div class="bottom-spacer"></div>
+            </div>
 
-        <!-- MENU -->
-        <nav class="bottom-nav">
-            <a href="javascript:;" class="nav-item" data-nav="dashboard">
-                <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="characters">
-                <div class="nav-pill"><i class="ph ph-person"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item" data-nav="automobiles">
-                <div class="nav-pill"><i class="ph ph-car"></i></div>
-            </a>
-            <a href="javascript:;" class="nav-item active" data-nav="my-profile">
-                <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
-            </a>
-        </nav>
-    </main>
+            <!-- MENU -->
+            <nav class="bottom-nav">
+                <a href="javascript:;" class="nav-item" data-nav="dashboard">
+                    <div class="nav-pill"><i class="ph ph-squares-four"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="characters">
+                    <div class="nav-pill"><i class="ph ph-person"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item" data-nav="automobiles">
+                    <div class="nav-pill"><i class="ph ph-car"></i></div>
+                </a>
+                <a href="javascript:;" class="nav-item active" data-nav="my-profile">
+                    <div class="nav-pill"><i class="ph ph-user-circle"></i></div>
+                </a>
+            </nav>
+        </main>
+    </div>
 
     <script src="js/layout.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
