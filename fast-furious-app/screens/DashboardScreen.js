@@ -20,6 +20,7 @@ import { listCars } from "../services/carService";
 import { logoutRequest } from "../services/authService";
 import { getToken, removeToken } from "../utils/authStorage";
 import { notifySuccess, notifyError } from "../utils/notify";
+import { isSessionError, handleSessionExpired } from "../utils/sessionGuard";
 
 const PIE_COLORS = [
     "#FF8800",
@@ -32,7 +33,6 @@ const PIE_COLORS = [
     "#ffca28",
 ];
 
-// Convierte un porcentaje (0-1) en coordenadas sobre el círculo, para dibujar cada porción
 function getCoordinatesForPercent(percent, radius, cx, cy) {
     const x = cx + radius * Math.cos(2 * Math.PI * percent);
     const y = cy + radius * Math.sin(2 * Math.PI * percent);
@@ -51,11 +51,15 @@ export default function DashboardScreen({ navigation }) {
             setCharacters(charactersData);
             setCars(carsData);
         } catch (error) {
+            if (isSessionError(error.message)) {
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [navigation]);
 
     useFocusEffect(
         useCallback(() => {
@@ -91,7 +95,6 @@ export default function DashboardScreen({ navigation }) {
         );
     }
 
-    // Construye los datos del gráfico: cuántos autos tiene cada personaje
     const carsByCharacter = characters
         .map((character) => ({
             name: character.full_name,
@@ -109,7 +112,6 @@ export default function DashboardScreen({ navigation }) {
 
     const totalCarsInChart = carsByCharacter.reduce((sum, entry) => sum + entry.count, 0);
 
-    // Genera los "slices" del pie chart en SVG
     let cumulativePercent = 0;
     const radius = 80;
     const cx = 100;
@@ -158,7 +160,7 @@ export default function DashboardScreen({ navigation }) {
                 >
                     {/* TÍTULO */}
                     <View style={styles.titleSection}>
-                        <Ionicons name="grid-outline" size={70} color="#F8F8FF" />
+                        <Ionicons name="grid-outline" size={90} color="#F8F8FF" />
                         <Text style={styles.titleText}>Dashboard</Text>
                     </View>
 
@@ -299,6 +301,7 @@ const styles = StyleSheet.create({
     scrollContent: { flex: 1, paddingHorizontal: 16, paddingTop: 6 },
     titleSection: { alignItems: "center", gap: 6, marginBottom: 20 },
     titleText: {
+        fontFamily: "Nosifer-Regular",
         fontSize: 28,
         color: "#F8F8FF",
         fontWeight: "bold",
@@ -319,12 +322,14 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     statLabel: {
+        fontFamily: "Nosifer-Regular",
         fontSize: 12,
         color: "#F8F8FF",
         letterSpacing: 1.5,
         textAlign: "left",
     },
     statNumber: {
+        fontFamily: "NewRocker-Regular",
         fontSize: 36,
         color: "#FF8800",
         fontWeight: "bold",
@@ -348,6 +353,7 @@ const styles = StyleSheet.create({
         borderTopColor: "#FF8800",
     },
     chartTitle: {
+        fontFamily: "Nosifer-Regular",
         color: "#F8F8FF",
         fontSize: 15,
         fontWeight: "bold",
@@ -383,6 +389,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     legendText: {
+        fontFamily: "NewRocker-Regular",
         color: "#F8F8FF",
         fontSize: 12,
         flex: 1,
@@ -395,7 +402,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     modalBtn: { height: 42, borderRadius: 21, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-    modalBtnText: { color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
+    modalBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
 
     confirmCard: {
         width: 300,
@@ -406,7 +413,7 @@ const styles = StyleSheet.create({
     },
     confirmIconWrapper: { marginBottom: 14 },
     confirmIcon: { width: 64, height: 64, borderRadius: 32, justifyContent: "center", alignItems: "center" },
-    confirmTitle: { color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10 },
-    confirmMessage: { color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
+    confirmTitle: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
+    confirmMessage: { fontFamily: "NewRocker-Regular", color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
     confirmActions: { flexDirection: "row", gap: 10, width: "100%" },
 });

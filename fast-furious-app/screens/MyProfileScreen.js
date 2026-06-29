@@ -21,12 +21,12 @@ import { updateUsername, updatePassword } from "../services/profileService";
 import { logoutRequest } from "../services/authService";
 import { getToken, removeToken, saveToken } from "../utils/authStorage";
 import { notifySuccess, notifyError } from "../utils/notify";
+import { isSessionError, handleSessionExpired } from "../utils/sessionGuard";
 
 if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-// Decodifica el payload de un JWT sin verificar la firma (solo para leer datos, no para validar)
 function decodeJwtPayload(token) {
     try {
         const payload = token.split(".")[1];
@@ -93,12 +93,16 @@ export default function MyProfileScreen({ navigation }) {
         setSavingUsername(true);
         try {
             const data = await updateUsername(trimmed);
-            await saveToken(data.token); // reemplaza el token viejo por el nuevo, con el username actualizado
+            await saveToken(data.token);
             notifySuccess("Username updated successfully!");
             setUsername(trimmed);
             setNewUsername("");
             setOpenForm(null);
         } catch (error) {
+            if (isSessionError(error.message)) {
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setSavingUsername(false);
@@ -129,6 +133,10 @@ export default function MyProfileScreen({ navigation }) {
             setConfirmPassword("");
             setOpenForm(null);
         } catch (error) {
+            if (isSessionError(error.message)) {
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setSavingPassword(false);
@@ -167,7 +175,7 @@ export default function MyProfileScreen({ navigation }) {
                 >
                     {/* TÍTULO */}
                     <View style={styles.titleSection}>
-                        <Ionicons name="person-circle-outline" size={70} color="#F8F8FF" />
+                        <Ionicons name="person-circle-outline" size={90} color="#F8F8FF" />
                         <Text style={styles.titleText}>My Profile</Text>
                     </View>
 
@@ -370,7 +378,7 @@ const styles = StyleSheet.create({
     iconBox: { width: 36, height: 36, justifyContent: "center", alignItems: "center" },
     scrollContent: { flex: 1, paddingHorizontal: 16, paddingTop: 6 },
     titleSection: { alignItems: "center", gap: 6, marginBottom: 20 },
-    titleText: { fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
+    titleText: { fontFamily: "Nosifer-Regular", fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
 
     profileInfo: { gap: 14 },
     profileCard: {
@@ -394,6 +402,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     profileValue: {
+        fontFamily: "NewRocker-Regular",
         flex: 1,
         color: "#F8F8FF",
         fontSize: 15,
@@ -424,11 +433,13 @@ const styles = StyleSheet.create({
         marginTop: 6,
     },
     profileFormLabel: {
+        fontFamily: "Nosifer-Regular",
         color: "rgba(248,248,255,0.7)",
         fontSize: 11,
         letterSpacing: 1,
     },
     formInput: {
+        fontFamily: "NewRocker-Regular",
         backgroundColor: "rgba(0,0,0,0.5)",
         borderWidth: 1,
         borderColor: "#F8F8FF",
@@ -450,7 +461,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: 6,
     },
-    formBtnText: { color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
+    formBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
 
     modalOverlay: {
         flex: 1,
@@ -459,7 +470,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     modalBtn: { height: 42, borderRadius: 21, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-    modalBtnText: { color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
+    modalBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
 
     confirmCard: {
         width: 300,
@@ -470,7 +481,7 @@ const styles = StyleSheet.create({
     },
     confirmIconWrapper: { marginBottom: 14 },
     confirmIcon: { width: 64, height: 64, borderRadius: 32, justifyContent: "center", alignItems: "center" },
-    confirmTitle: { color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10 },
-    confirmMessage: { color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
+    confirmTitle: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
+    confirmMessage: { fontFamily: "NewRocker-Regular", color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
     confirmActions: { flexDirection: "row", gap: 10, width: "100%" },
 });

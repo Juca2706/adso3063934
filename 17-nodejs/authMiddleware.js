@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     try {
         const verified = jwt.verify(token, SECRET_KEY);
 
-        db.get( `SELECT id FROM blacklisted_tokens WHERE token = ?`, [token], (err, row) => {
+        db.get(`SELECT id FROM blacklisted_tokens WHERE token = ?`, [token], (err, row) => {
             if (err) return res.status(500).json({ error: 'Database error!' });
             if (row) return res.status(401).json({ error: 'Session closed. Login again!' });
 
@@ -21,7 +21,9 @@ module.exports = (req, res, next) => {
             next();
         });
     } catch (err) {
+        if (err.name === 'TokenExpiredError') {
+            return res.status(401).json({ error: 'Session expired. Please login again!' });
+        }
         res.status(400).json({ error: 'Invalid Token!' });
     }
-
 };

@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    btnBackText: { color: "#1C0D02", fontWeight: "bold", marginLeft: 8 },
+    btnBackText: {  fontFamily: "NewRocker-Regular", color: "#1C0D02", fontWeight: "bold", marginLeft: 8 },
     middleArea: { flex: 1, justifyContent: "center" },
     authCard: {
         backgroundColor: "rgba(28,23,20,0.70)",
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         marginTop: -100,
         marginBottom: 20,
     },
-    cardTitle: { fontSize: 20, color: "#F8F8FF", fontWeight: "bold", marginBottom: 20 },
+    cardTitle: { fontFamily: "Nosifer-Regular", fontSize: 20, color: "#F8F8FF", fontWeight: "bold", marginBottom: 20 },
     form: { width: "100%", gap: 16 },
     inputWrapper: {
         flexDirection: "row",
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 14,
     },
     inputIcon: { marginRight: 10 },
-    input: { flex: 1, color: "#F8F8FF", fontSize: 14 },
+    input: { fontFamily: "NewRocker-Regular", flex: 1, color: "#F8F8FF", fontSize: 14 },
     btnSignIn: {
         height: 40,
         borderWidth: 2,
@@ -195,8 +195,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 8,
     },
-    btnSignInText: { color: "#F8F8FF", fontWeight: "bold" },
+    btnSignInText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold" },
     cardFooter: { flexDirection: "row", marginTop: 24, gap: 6 },
-    footerText: { color: "#F8F8FF" },
-    link: { color: "#FF8800", fontWeight: "bold" },
+    footerText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF" },
+    link: { fontFamily: "NewRocker-Regular", color: "#FF8800", fontWeight: "bold" },
 });

@@ -77,6 +77,8 @@ app.post('/logout', auth, (req, res) => {
 app.put('/updateUsername', auth, (req, res) => {
     const { username } = req.body;
     const userId = req.user.id;
+    const oldToken = req.token;
+    const oldTokenExp = req.user.exp;
 
     if (!username || !username.trim()) {
         return res.status(400).json({ error: 'Username cannot be empty!' });
@@ -86,9 +88,15 @@ app.put('/updateUsername', auth, (req, res) => {
         if (err) return res.status(400).json({ error: 'Username already taken!' });
         if (this.changes === 0) return res.status(404).json({ error: 'User not found!' });
 
-        // Genera un token nuevo con el username actualizado
-        const newToken = jwt.sign({ id: userId, username }, SECRET_KEY, { expiresIn: '1h' });
-        res.json({ message: 'Username updated successfully!', username, token: newToken });
+        // Invalida el token viejo metiéndolo a la blacklist, igual que hace /logout
+        db.run(`INSERT INTO blacklisted_tokens (token, expires_at) VALUES (?, ?)`, [oldToken, oldTokenExp], (blacklistErr) => {
+            // Si falla insertar en blacklist, no detenemos el flujo — el username ya se actualizó correctamente
+            if (blacklistErr) console.error('Error blacklisting old token:', blacklistErr.message);
+
+            // Genera un token nuevo con el username actualizado
+            const newToken = jwt.sign({ id: userId, username }, SECRET_KEY, { expiresIn: '1h' });
+            res.json({ message: 'Username updated successfully!', username, token: newToken });
+        });
     });
 });
 

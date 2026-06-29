@@ -27,6 +27,7 @@ import { logoutRequest } from "../services/authService";
 import { getToken, removeToken } from "../utils/authStorage";
 import { buildImageUrl } from "../utils/imageUrl";
 import { notifySuccess, notifyError } from "../utils/notify";
+import { isSessionError, handleSessionExpired } from "../utils/sessionGuard";
 
 const EMPTY_FORM = { full_name: "", alias: "", age: "", actor_name: "", image: null };
 
@@ -53,11 +54,15 @@ export default function CharactersScreen({ navigation }) {
             const data = await listCharacters();
             setCharacters(data);
         } catch (error) {
+            if (isSessionError(error.message)) {
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [navigation]);
 
     useFocusEffect(
         useCallback(() => {
@@ -116,6 +121,11 @@ export default function CharactersScreen({ navigation }) {
             const filtered = allCars.filter((car) => car.character_id === character.id);
             setCharacterCars(filtered);
         } catch (error) {
+            if (isSessionError(error.message)) {
+                setShowModalVisible(false);
+                await handleSessionExpired(navigation);
+                return;
+            }
             setCharacterCars([]);
         }
     }
@@ -138,6 +148,11 @@ export default function CharactersScreen({ navigation }) {
             setAddModalVisible(false);
             await loadCharacters();
         } catch (error) {
+            if (isSessionError(error.message)) {
+                setAddModalVisible(false);
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setSaving(false);
@@ -157,6 +172,11 @@ export default function CharactersScreen({ navigation }) {
             setEditModalVisible(false);
             await loadCharacters();
         } catch (error) {
+            if (isSessionError(error.message)) {
+                setEditModalVisible(false);
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         } finally {
             setSaving(false);
@@ -173,6 +193,11 @@ export default function CharactersScreen({ navigation }) {
             setCharacterToDelete(null);
             await loadCharacters();
         } catch (error) {
+            if (isSessionError(error.message)) {
+                setDeleteModalVisible(false);
+                await handleSessionExpired(navigation);
+                return;
+            }
             notifyError(error.message);
         }
     }
@@ -217,7 +242,7 @@ export default function CharactersScreen({ navigation }) {
                 >
                     {/* TÍTULO */}
                     <View style={styles.titleSection}>
-                        <Ionicons name="person-outline" size={70} color="#F8F8FF" />
+                        <Ionicons name="person-outline" size={90} color="#F8F8FF" />
                         <Text style={styles.titleText}>Characters</Text>
                     </View>
 
@@ -584,7 +609,7 @@ const styles = StyleSheet.create({
     iconBox: { width: 36, height: 36, justifyContent: "center", alignItems: "center" },
     scrollContent: { flex: 1, paddingHorizontal: 16, paddingTop: 6 },
     titleSection: { alignItems: "center", gap: 6, marginBottom: 12 },
-    titleText: { fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
+    titleText: { fontFamily: "Nosifer-Regular", fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
 
     emptyState: {
         alignItems: "center",
@@ -617,7 +642,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 26,
         borderRadius: 22,
     },
-    btnNewText: { color: "#F8F8FF", fontWeight: "bold" },
+    btnNewText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold" },
 
     list: { gap: 12 },
     card: { borderRadius: 12, overflow: "hidden", position: "relative" },
@@ -648,10 +673,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "#FF8800",
     },
-    modalHeaderText: { color: "#F8F8FF", fontWeight: "bold", fontSize: 14 },
+    modalHeaderText: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 14 },
     modalBody: { padding: 16, maxHeight: 380 },
     labelRow: { flexDirection: "row", alignItems: "center", gap: 6, marginTop: 10, marginBottom: 4 },
-    fieldLabel: { color: "#F8F8FF" },
+    fieldLabel: { fontFamily: "NewRocker-Regular", color: "#F8F8FF" },
     fieldInput: {
         backgroundColor: "rgba(0,0,0,0.5)",
         borderWidth: 1,
@@ -660,6 +685,7 @@ const styles = StyleSheet.create({
         height: 40,
         paddingHorizontal: 12,
         color: "#F8F8FF",
+        fontFamily: "NewRocker-Regular",
     },
     uploadZone: {
         height: 160,
@@ -681,7 +707,7 @@ const styles = StyleSheet.create({
         borderTopColor: "rgba(255,255,255,0.12)",
     },
     modalBtn: { height: 42, borderRadius: 21, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
-    modalBtnText: { color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
+    modalBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
 
     modalCardShow: { width: 320 },
     showHero: { height: 220, position: "relative" },
@@ -690,7 +716,7 @@ const styles = StyleSheet.create({
     modalCloseXWrapper: { position: "absolute", top: 10, right: 10 },
     modalCloseX: { width: 26, height: 26, borderRadius: 6, justifyContent: "center", alignItems: "center" },
     showHeroInfo: { position: "absolute", bottom: 12, left: 14, right: 14 },
-    showHeroName: { color: "#F8F8FF", fontWeight: "bold", fontSize: 16, marginBottom: 6 },
+    showHeroName: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 16, marginBottom: 6 },
     showAliasBadge: {
         backgroundColor: "#2e7d32",
         alignSelf: "flex-start",
@@ -698,7 +724,7 @@ const styles = StyleSheet.create({
         paddingVertical: 3,
         borderRadius: 10,
     },
-    showAliasText: { color: "#F8F8FF", fontSize: 12 },
+    showAliasText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontSize: 12 },
     showDetails: { maxHeight: 260, padding: 14 },
     showInfoCard: {
         backgroundColor: "rgba(0,0,0,0.35)",
@@ -708,8 +734,8 @@ const styles = StyleSheet.create({
         padding: 10,
         marginBottom: 10,
     },
-    showInfoLabel: { color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: 1.5 },
-    showInfoValue: { color: "#F8F8FF", fontSize: 15, marginTop: 4 },
+    showInfoLabel: { fontFamily: "Nosifer-Regular", color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: 1.5 },
+    showInfoValue: { fontFamily: "NewRocker-Regular",color: "#F8F8FF", fontSize: 15, marginTop: 4 },
     noCarsBox: {
         alignItems: "center",
         backgroundColor: "rgba(0,0,0,0.25)",
@@ -734,7 +760,7 @@ const styles = StyleSheet.create({
     },
     confirmIconWrapper: { marginBottom: 14 },
     confirmIcon: { width: 64, height: 64, borderRadius: 32, justifyContent: "center", alignItems: "center" },
-    confirmTitle: { color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10 },
-    confirmMessage: { color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
+    confirmTitle: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
+    confirmMessage: { fontFamily: "NewRocker-Regular", color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
     confirmActions: { flexDirection: "row", gap: 10, width: "100%" },
 });
