@@ -12,13 +12,8 @@ const fs = require('fs');
 // Configuración de almacenamiento para Multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        if (req.path.includes('Character')) {
-            cb(null, 'images/characters/');
-        } else {
-            cb(null, 'images/cars/');
-        }
+        const dir = req.path.includes('Character') ? 'images/characters/' : 'images/cars/';
 
-        // ESTO CREA LA CARPETA SI NO EXISTE
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
@@ -75,6 +70,43 @@ app.post('/logout', auth, (req, res) => {
             VALUES (?, ?)`, [req.token, req.user.exp], (err) => {
         if (err) return res.status(400).json({ error: 'Session already closed!' });
         res.json({ message: 'Logged out successfully!' });
+    });
+});
+
+// PUT: /updateUsername
+app.put('/updateUsername', auth, (req, res) => {
+    const { username } = req.body;
+    const userId = req.user.id;
+
+    if (!username || !username.trim()) {
+        return res.status(400).json({ error: 'Username cannot be empty!' });
+    }
+
+    db.run(`UPDATE users SET username = ? WHERE id = ?`, [username, userId], function (err) {
+        if (err) return res.status(400).json({ error: 'Username already taken!' });
+        if (this.changes === 0) return res.status(404).json({ error: 'User not found!' });
+
+        // Genera un token nuevo con el username actualizado
+        const newToken = jwt.sign({ id: userId, username }, SECRET_KEY, { expiresIn: '1h' });
+        res.json({ message: 'Username updated successfully!', username, token: newToken });
+    });
+});
+
+// PUT: /updatePassword
+app.put('/updatePassword', auth, async (req, res) => {
+    const { newPassword } = req.body;
+    const userId = req.user.id;
+
+    if (!newPassword || newPassword.length < 4) {
+        return res.status(400).json({ error: 'Password must be at least 4 characters!' });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    db.run(`UPDATE users SET password = ? WHERE id = ?`, [hashedPassword, userId], function (err) {
+        if (err) return res.status(400).json({ error: 'Error updating password!' });
+        if (this.changes === 0) return res.status(404).json({ error: 'User not found!' });
+        res.json({ message: 'Password updated successfully!' });
     });
 });
 
