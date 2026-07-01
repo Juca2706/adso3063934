@@ -31,6 +31,10 @@ import { isSessionError, handleSessionExpired } from "../utils/sessionGuard";
 
 const EMPTY_FORM = { full_name: "", alias: "", age: "", actor_name: "", image: null };
 
+// Imágenes de placeholder por defecto
+const DEFAULT_CHARACTER_IMAGE = require("../assets/images/no-cover-characters.png");
+const DEFAULT_CAR_IMAGE = require("../assets/images/no-cover-automobiles.png");
+
 export default function CharactersScreen({ navigation }) {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -240,13 +244,11 @@ export default function CharactersScreen({ navigation }) {
                     contentContainerStyle={{ paddingBottom: 100 }}
                     showsVerticalScrollIndicator={false}
                 >
-                    {/* TÍTULO */}
                     <View style={styles.titleSection}>
                         <Ionicons name="person-outline" size={90} color="#F8F8FF" />
                         <Text style={styles.titleText}>Characters</Text>
                     </View>
 
-                    {/* BOTÓN NEW CHARACTER */}
                     <View style={styles.actionsRow}>
                         <TouchableOpacity onPress={openAddModal}>
                             <LinearGradient
@@ -261,7 +263,6 @@ export default function CharactersScreen({ navigation }) {
                         </TouchableOpacity>
                     </View>
 
-                    {/* LISTA DE PERSONAJES O ESTADO VACÍO */}
                     {characters.length === 0 ? (
                         <View style={styles.emptyState}>
                             <View style={styles.emptyIconWrapper}>
@@ -280,42 +281,24 @@ export default function CharactersScreen({ navigation }) {
                                         source={
                                             character.image_path
                                                 ? { uri: buildImageUrl(character.image_path) }
-                                                : require("../assets/images/dom.jpg")
+                                                : DEFAULT_CHARACTER_IMAGE
                                         }
                                         style={styles.cardImage}
                                         resizeMode="cover"
                                     />
-
                                     <View style={styles.cardActions}>
                                         <TouchableOpacity onPress={() => openEditModal(character)}>
-                                            <LinearGradient
-                                                colors={["#FFa733", "#FF8800"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#FFa733", "#FF8800"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="pencil" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
-
                                         <TouchableOpacity onPress={() => openShowModal(character)}>
-                                            <LinearGradient
-                                                colors={["#29b6f6", "#0288d1"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#29b6f6", "#0288d1"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="eye" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
-
                                         <TouchableOpacity onPress={() => openDeleteModal(character)}>
-                                            <LinearGradient
-                                                colors={["#ef5350", "#c62828"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#ef5350", "#c62828"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="trash" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
@@ -335,13 +318,11 @@ export default function CharactersScreen({ navigation }) {
                             <Ionicons name="add-circle-outline" size={22} color="#FF8800" />
                             <Text style={styles.modalHeaderText}>Add New Character</Text>
                         </View>
-
                         <ScrollView style={styles.modalBody}>
                             <FieldWithIcon icon="create-outline" label="Character Name:" value={addForm.full_name} onChangeText={(v) => setAddForm((p) => ({ ...p, full_name: v }))} />
                             <FieldWithIcon icon="text-outline" label="Alias:" value={addForm.alias} onChangeText={(v) => setAddForm((p) => ({ ...p, alias: v }))} />
                             <FieldWithIcon icon="calendar-outline" label="Age:" value={addForm.age} onChangeText={(v) => setAddForm((p) => ({ ...p, age: v }))} keyboardType="numeric" />
                             <FieldWithIcon icon="person-outline" label="Actor Name:" value={addForm.actor_name} onChangeText={(v) => setAddForm((p) => ({ ...p, actor_name: v }))} />
-
                             <View style={styles.labelRow}>
                                 <Ionicons name="image-outline" size={16} color="#F8F8FF" />
                                 <Text style={styles.fieldLabel}>Image:</Text>
@@ -357,7 +338,6 @@ export default function CharactersScreen({ navigation }) {
                                 )}
                             </TouchableOpacity>
                         </ScrollView>
-
                         <View style={styles.modalFooter}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleSaveAdd} disabled={saving}>
                                 <LinearGradient colors={["#4caf50", "#2e7d32"]} style={styles.modalBtn}>
@@ -384,13 +364,11 @@ export default function CharactersScreen({ navigation }) {
                             <Ionicons name="pencil-outline" size={22} color="#FF8800" />
                             <Text style={styles.modalHeaderText}>Edit Character</Text>
                         </View>
-
                         <ScrollView style={styles.modalBody}>
                             <FieldWithIcon icon="create-outline" label="Character Name:" value={editForm.full_name} onChangeText={(v) => setEditForm((p) => ({ ...p, full_name: v }))} />
                             <FieldWithIcon icon="text-outline" label="Alias:" value={editForm.alias} onChangeText={(v) => setEditForm((p) => ({ ...p, alias: v }))} />
                             <FieldWithIcon icon="calendar-outline" label="Age:" value={editForm.age} onChangeText={(v) => setEditForm((p) => ({ ...p, age: v }))} keyboardType="numeric" />
                             <FieldWithIcon icon="person-outline" label="Actor Name:" value={editForm.actor_name} onChangeText={(v) => setEditForm((p) => ({ ...p, actor_name: v }))} />
-
                             <View style={styles.labelRow}>
                                 <Ionicons name="image-outline" size={16} color="#F8F8FF" />
                                 <Text style={styles.fieldLabel}>Image (leave empty to keep current):</Text>
@@ -406,7 +384,6 @@ export default function CharactersScreen({ navigation }) {
                                 )}
                             </TouchableOpacity>
                         </ScrollView>
-
                         <View style={styles.modalFooter}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleSaveEdit} disabled={saving}>
                                 <LinearGradient colors={["#4caf50", "#2e7d32"]} style={styles.modalBtn}>
@@ -435,7 +412,7 @@ export default function CharactersScreen({ navigation }) {
                                     source={
                                         selectedCharacter.image_path
                                             ? { uri: buildImageUrl(selectedCharacter.image_path) }
-                                            : require("../assets/images/dom.jpg")
+                                            : DEFAULT_CHARACTER_IMAGE
                                     }
                                     style={styles.showHeroImg}
                                     resizeMode="cover"
@@ -445,10 +422,7 @@ export default function CharactersScreen({ navigation }) {
                                 colors={["rgba(0,0,0,0.1)", "rgba(28,23,20,0.92)"]}
                                 style={styles.showHeroGradient}
                             />
-                            <TouchableOpacity
-                                style={styles.modalCloseXWrapper}
-                                onPress={() => setShowModalVisible(false)}
-                            >
+                            <TouchableOpacity style={styles.modalCloseXWrapper} onPress={() => setShowModalVisible(false)}>
                                 <LinearGradient colors={["#FFa733", "#FF8800"]} style={styles.modalCloseX}>
                                     <Ionicons name="close" size={16} color="#F8F8FF" />
                                 </LinearGradient>
@@ -473,7 +447,6 @@ export default function CharactersScreen({ navigation }) {
                                 <Text style={styles.showInfoValue}>{selectedCharacter?.age} Years Old</Text>
                             </View>
 
-                            {/* CARRUSEL DE AUTOS O ESTADO VACÍO */}
                             {characterCars.length === 0 ? (
                                 <View style={styles.noCarsBox}>
                                     <Ionicons name="car-outline" size={28} color="rgba(255,136,0,0.5)" />
@@ -492,7 +465,7 @@ export default function CharactersScreen({ navigation }) {
                                             source={
                                                 car.image_path
                                                     ? { uri: buildImageUrl(car.image_path) }
-                                                    : require("../assets/images/carrusel-img1.jpg")
+                                                    : DEFAULT_CAR_IMAGE
                                             }
                                             style={styles.carThumb}
                                             resizeMode="cover"
@@ -514,16 +487,12 @@ export default function CharactersScreen({ navigation }) {
                                 <Ionicons name="warning-outline" size={32} color="#F8F8FF" />
                             </LinearGradient>
                         </View>
-
                         <Text style={styles.confirmTitle}>Delete Character?</Text>
                         <Text style={styles.confirmMessage}>
                             Are you sure you want to remove{" "}
-                            <Text style={{ fontWeight: "bold", color: "#FF8800" }}>
-                                {characterToDelete?.full_name}
-                            </Text>{" "}
+                            <Text style={{ fontWeight: "bold", color: "#FF8800" }}>{characterToDelete?.full_name}</Text>{" "}
                             from the family? This action cannot be undone.
                         </Text>
-
                         <View style={styles.confirmActions}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleConfirmDelete}>
                                 <LinearGradient colors={["#ef5350", "#c62828"]} style={styles.modalBtn}>
@@ -551,12 +520,8 @@ export default function CharactersScreen({ navigation }) {
                                 <Ionicons name="log-out-outline" size={32} color="#F8F8FF" />
                             </LinearGradient>
                         </View>
-
                         <Text style={styles.confirmTitle}>Sign Out?</Text>
-                        <Text style={styles.confirmMessage}>
-                            Are you sure you want to sign out of your account?
-                        </Text>
-
+                        <Text style={styles.confirmMessage}>Are you sure you want to sign out of your account?</Text>
                         <View style={styles.confirmActions}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleConfirmLogout}>
                                 <LinearGradient colors={["#FFa733", "#FF8800"]} style={styles.modalBtn}>
@@ -610,7 +575,6 @@ const styles = StyleSheet.create({
     scrollContent: { flex: 1, paddingHorizontal: 16, paddingTop: 6 },
     titleSection: { alignItems: "center", gap: 6, marginBottom: 12 },
     titleText: { fontFamily: "Nosifer-Regular", fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
-
     emptyState: {
         alignItems: "center",
         backgroundColor: "rgba(28,23,20,0.65)",
@@ -632,7 +596,6 @@ const styles = StyleSheet.create({
     },
     emptyTitle: { color: "#F8F8FF", fontSize: 17, fontWeight: "bold", marginBottom: 8 },
     emptyMessage: { color: "rgba(248,248,255,0.6)", fontSize: 13, textAlign: "center", lineHeight: 19 },
-
     actionsRow: { alignItems: "center", marginBottom: 18 },
     btnNew: {
         flexDirection: "row",
@@ -643,13 +606,11 @@ const styles = StyleSheet.create({
         borderRadius: 22,
     },
     btnNewText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold" },
-
     list: { gap: 12 },
     card: { borderRadius: 12, overflow: "hidden", position: "relative" },
     cardImage: { width: "100%", height: 250, backgroundColor: "#222" },
     cardActions: { position: "absolute", top: 10, left: 10, flexDirection: "row", gap: 8 },
     cardBtn: { width: 38, height: 38, borderRadius: 19, justifyContent: "center", alignItems: "center" },
-
     modalOverlay: {
         flex: 1,
         backgroundColor: "rgba(0,0,0,0.6)",
@@ -708,7 +669,6 @@ const styles = StyleSheet.create({
     },
     modalBtn: { height: 42, borderRadius: 21, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
     modalBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
-
     modalCardShow: { width: 320 },
     showHero: { height: 220, position: "relative" },
     showHeroImg: { width: "100%", height: "100%", position: "absolute" },
@@ -735,7 +695,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     showInfoLabel: { fontFamily: "Nosifer-Regular", color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: 1.5 },
-    showInfoValue: { fontFamily: "NewRocker-Regular",color: "#F8F8FF", fontSize: 15, marginTop: 4 },
+    showInfoValue: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontSize: 15, marginTop: 4 },
     noCarsBox: {
         alignItems: "center",
         backgroundColor: "rgba(0,0,0,0.25)",
@@ -750,7 +710,6 @@ const styles = StyleSheet.create({
     noCarsText: { color: "rgba(248,248,255,0.55)", fontSize: 12, textAlign: "center" },
     carsRow: { marginTop: 6 },
     carThumb: { width: 130, height: 85, borderRadius: 8 },
-
     confirmCard: {
         width: 300,
         backgroundColor: "rgba(28,23,20,0.97)",

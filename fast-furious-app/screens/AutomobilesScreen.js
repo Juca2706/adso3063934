@@ -42,6 +42,10 @@ const EMPTY_FORM = {
     image: null,
 };
 
+// Imágenes de placeholder por defecto
+const DEFAULT_CHARACTER_IMAGE = require("../assets/images/no-cover-characters.png");
+const DEFAULT_CAR_IMAGE = require("../assets/images/no-cover-automobiles.png");
+
 export default function AutomobilesScreen({ navigation }) {
     const [cars, setCars] = useState([]);
     const [characters, setCharacters] = useState([]);
@@ -52,8 +56,8 @@ export default function AutomobilesScreen({ navigation }) {
     const [showModalVisible, setShowModalVisible] = useState(false);
     const [deleteModalVisible, setDeleteModalVisible] = useState(false);
     const [logoutModalVisible, setLogoutModalVisible] = useState(false);
-    const [pickerView, setPickerView] = useState(false); // false = formulario, true = selector de personaje
-    const [pickerTargetForm, setPickerTargetForm] = useState(null); // "add" | "edit"
+    const [pickerView, setPickerView] = useState(false);
+    const [pickerTargetForm, setPickerTargetForm] = useState(null);
 
     const [selectedCar, setSelectedCar] = useState(null);
     const [carToDelete, setCarToDelete] = useState(null);
@@ -62,7 +66,6 @@ export default function AutomobilesScreen({ navigation }) {
     const [editForm, setEditForm] = useState(EMPTY_FORM);
     const [saving, setSaving] = useState(false);
 
-    // Carga autos y personajes (necesarios para el selector) en paralelo
     const loadData = useCallback(async () => {
         try {
             const [carsData, charactersData] = await Promise.all([listCars(), listCharacters()]);
@@ -109,7 +112,6 @@ export default function AutomobilesScreen({ navigation }) {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 0.7,
         });
-
         if (!result.canceled) {
             setForm((prev) => ({ ...prev, image: result.assets[0].uri }));
         }
@@ -177,7 +179,6 @@ export default function AutomobilesScreen({ navigation }) {
             notifyError("Vehicle name is required.");
             return;
         }
-
         setSaving(true);
         try {
             await createCar(addForm);
@@ -201,7 +202,6 @@ export default function AutomobilesScreen({ navigation }) {
             notifyError("Vehicle name is required.");
             return;
         }
-
         setSaving(true);
         try {
             await updateCar(editForm.id, editForm);
@@ -222,7 +222,6 @@ export default function AutomobilesScreen({ navigation }) {
 
     async function handleConfirmDelete() {
         if (!carToDelete) return;
-
         try {
             await deleteCar(carToDelete.id);
             notifySuccess("Vehicle removed from garage!");
@@ -279,28 +278,20 @@ export default function AutomobilesScreen({ navigation }) {
                     contentContainerStyle={{ paddingBottom: 100 }}
                     showsVerticalScrollIndicator={false}
                 >
-                    {/* TÍTULO */}
                     <View style={styles.titleSection}>
                         <Ionicons name="car-outline" size={90} color="#F8F8FF" />
                         <Text style={styles.titleText}>Automobiles</Text>
                     </View>
 
-                    {/* BOTÓN NEW AUTOMOBILE */}
                     <View style={styles.actionsRow}>
                         <TouchableOpacity onPress={openAddModal}>
-                            <LinearGradient
-                                colors={["#4caf50", "#2e7d32"]}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 1 }}
-                                style={styles.btnNew}
-                            >
+                            <LinearGradient colors={["#4caf50", "#2e7d32"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.btnNew}>
                                 <Ionicons name="add-circle-outline" size={20} color="#F8F8FF" />
                                 <Text style={styles.btnNewText}>New Automobile</Text>
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>
 
-                    {/* LISTA DE AUTOS O ESTADO VACÍO */}
                     {cars.length === 0 ? (
                         <View style={styles.emptyState}>
                             <View style={styles.emptyIconWrapper}>
@@ -319,42 +310,24 @@ export default function AutomobilesScreen({ navigation }) {
                                         source={
                                             car.image_path
                                                 ? { uri: buildImageUrl(car.image_path) }
-                                                : require("../assets/images/1970 Dodge Charger R-T.jpg")
+                                                : DEFAULT_CAR_IMAGE
                                         }
                                         style={styles.cardImage}
                                         resizeMode="cover"
                                     />
-
                                     <View style={styles.cardActions}>
                                         <TouchableOpacity onPress={() => openEditModal(car)}>
-                                            <LinearGradient
-                                                colors={["#FFa733", "#FF8800"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#FFa733", "#FF8800"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="pencil" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
-
                                         <TouchableOpacity onPress={() => openShowModal(car)}>
-                                            <LinearGradient
-                                                colors={["#29b6f6", "#0288d1"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#29b6f6", "#0288d1"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="eye" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
-
                                         <TouchableOpacity onPress={() => openDeleteModal(car)}>
-                                            <LinearGradient
-                                                colors={["#ef5350", "#c62828"]}
-                                                start={{ x: 0, y: 0 }}
-                                                end={{ x: 1, y: 1 }}
-                                                style={styles.cardBtn}
-                                            >
+                                            <LinearGradient colors={["#ef5350", "#c62828"]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={styles.cardBtn}>
                                                 <Ionicons name="trash" size={16} color="#F8F8FF" />
                                             </LinearGradient>
                                         </TouchableOpacity>
@@ -371,13 +344,11 @@ export default function AutomobilesScreen({ navigation }) {
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalCard}>
                         {pickerView && pickerTargetForm === "add" ? (
-                            // VISTA: SELECTOR DE PERSONAJE
                             <>
                                 <View style={styles.modalHeader}>
                                     <Ionicons name="people-outline" size={22} color="#FF8800" />
                                     <Text style={styles.modalHeaderText}>Select Character</Text>
                                 </View>
-
                                 {characters.length === 0 ? (
                                     <View style={[styles.noCarsBox, { margin: 14 }]}>
                                         <Ionicons name="people-outline" size={28} color="rgba(255,136,0,0.5)" />
@@ -386,16 +357,12 @@ export default function AutomobilesScreen({ navigation }) {
                                 ) : (
                                     <ScrollView style={{ maxHeight: 280 }}>
                                         {characters.map((character) => (
-                                            <TouchableOpacity
-                                                key={character.id}
-                                                style={styles.pickerItem}
-                                                onPress={() => selectCharacter(character)}
-                                            >
+                                            <TouchableOpacity key={character.id} style={styles.pickerItem} onPress={() => selectCharacter(character)}>
                                                 <Image
                                                     source={
                                                         character.image_path
                                                             ? { uri: buildImageUrl(character.image_path) }
-                                                            : require("../assets/images/dom.jpg")
+                                                            : DEFAULT_CHARACTER_IMAGE
                                                     }
                                                     style={styles.pickerItemImg}
                                                 />
@@ -404,7 +371,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         ))}
                                     </ScrollView>
                                 )}
-
                                 <View style={{ flexDirection: "row", gap: 10, padding: 14 }}>
                                     <TouchableOpacity style={{ flex: 1 }} onPress={clearCharacterSelection}>
                                         <LinearGradient colors={["#666", "#444"]} style={styles.modalBtn}>
@@ -419,13 +385,11 @@ export default function AutomobilesScreen({ navigation }) {
                                 </View>
                             </>
                         ) : (
-                            // VISTA: FORMULARIO NORMAL
                             <>
                                 <View style={styles.modalHeader}>
                                     <Ionicons name="add-circle-outline" size={22} color="#FF8800" />
                                     <Text style={styles.modalHeaderText}>Add New Automobile</Text>
                                 </View>
-
                                 <ScrollView style={styles.modalBody}>
                                     <FieldWithIcon icon="create-outline" label="Name:" value={addForm.name} onChangeText={(v) => setAddForm((p) => ({ ...p, name: v }))} />
                                     <FieldWithIcon icon="cog-outline" label="Engine:" value={addForm.engine} onChangeText={(v) => setAddForm((p) => ({ ...p, engine: v }))} />
@@ -435,7 +399,6 @@ export default function AutomobilesScreen({ navigation }) {
                                     <FieldWithIcon icon="airplane-outline" label="Top Speed:" value={addForm.top_speed} onChangeText={(v) => setAddForm((p) => ({ ...p, top_speed: v }))} />
                                     <FieldWithIcon icon="settings-outline" label="Transmission:" value={addForm.transmission} onChangeText={(v) => setAddForm((p) => ({ ...p, transmission: v }))} />
                                     <FieldWithIcon icon="sync-outline" label="Drivetrain:" value={addForm.drivetrain} onChangeText={(v) => setAddForm((p) => ({ ...p, drivetrain: v }))} />
-
                                     <View style={styles.labelRow}>
                                         <Ionicons name="person-outline" size={16} color="#F8F8FF" />
                                         <Text style={styles.fieldLabel}>Character:</Text>
@@ -446,7 +409,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         </Text>
                                         <Ionicons name="chevron-down" size={16} color="#FF8800" />
                                     </TouchableOpacity>
-
                                     <View style={styles.labelRow}>
                                         <Ionicons name="image-outline" size={16} color="#F8F8FF" />
                                         <Text style={styles.fieldLabel}>Image:</Text>
@@ -462,7 +424,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         )}
                                     </TouchableOpacity>
                                 </ScrollView>
-
                                 <View style={styles.modalFooter}>
                                     <TouchableOpacity style={{ flex: 1 }} onPress={handleSaveAdd} disabled={saving}>
                                         <LinearGradient colors={["#4caf50", "#2e7d32"]} style={styles.modalBtn}>
@@ -470,13 +431,7 @@ export default function AutomobilesScreen({ navigation }) {
                                             <Text style={styles.modalBtnText}>{saving ? "Saving..." : "Save"}</Text>
                                         </LinearGradient>
                                     </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => {
-                                            setAddModalVisible(false);
-                                            setPickerView(false);
-                                        }}
-                                    >
+                                    <TouchableOpacity style={{ flex: 1 }} onPress={() => { setAddModalVisible(false); setPickerView(false); }}>
                                         <LinearGradient colors={["#f44336", "#b71c1c"]} style={styles.modalBtn}>
                                             <Ionicons name="close-circle-outline" size={16} color="#F8F8FF" />
                                             <Text style={styles.modalBtnText}>Cancel</Text>
@@ -499,7 +454,6 @@ export default function AutomobilesScreen({ navigation }) {
                                     <Ionicons name="people-outline" size={22} color="#FF8800" />
                                     <Text style={styles.modalHeaderText}>Select Character</Text>
                                 </View>
-
                                 {characters.length === 0 ? (
                                     <View style={[styles.noCarsBox, { margin: 14 }]}>
                                         <Ionicons name="people-outline" size={28} color="rgba(255,136,0,0.5)" />
@@ -508,16 +462,12 @@ export default function AutomobilesScreen({ navigation }) {
                                 ) : (
                                     <ScrollView style={{ maxHeight: 280 }}>
                                         {characters.map((character) => (
-                                            <TouchableOpacity
-                                                key={character.id}
-                                                style={styles.pickerItem}
-                                                onPress={() => selectCharacter(character)}
-                                            >
+                                            <TouchableOpacity key={character.id} style={styles.pickerItem} onPress={() => selectCharacter(character)}>
                                                 <Image
                                                     source={
                                                         character.image_path
                                                             ? { uri: buildImageUrl(character.image_path) }
-                                                            : require("../assets/images/dom.jpg")
+                                                            : DEFAULT_CHARACTER_IMAGE
                                                     }
                                                     style={styles.pickerItemImg}
                                                 />
@@ -526,7 +476,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         ))}
                                     </ScrollView>
                                 )}
-
                                 <View style={{ flexDirection: "row", gap: 10, padding: 14 }}>
                                     <TouchableOpacity style={{ flex: 1 }} onPress={clearCharacterSelection}>
                                         <LinearGradient colors={["#666", "#444"]} style={styles.modalBtn}>
@@ -546,7 +495,6 @@ export default function AutomobilesScreen({ navigation }) {
                                     <Ionicons name="pencil-outline" size={22} color="#FF8800" />
                                     <Text style={styles.modalHeaderText}>Edit Automobile</Text>
                                 </View>
-
                                 <ScrollView style={styles.modalBody}>
                                     <FieldWithIcon icon="create-outline" label="Name:" value={editForm.name} onChangeText={(v) => setEditForm((p) => ({ ...p, name: v }))} />
                                     <FieldWithIcon icon="cog-outline" label="Engine:" value={editForm.engine} onChangeText={(v) => setEditForm((p) => ({ ...p, engine: v }))} />
@@ -556,7 +504,6 @@ export default function AutomobilesScreen({ navigation }) {
                                     <FieldWithIcon icon="airplane-outline" label="Top Speed:" value={editForm.top_speed} onChangeText={(v) => setEditForm((p) => ({ ...p, top_speed: v }))} />
                                     <FieldWithIcon icon="settings-outline" label="Transmission:" value={editForm.transmission} onChangeText={(v) => setEditForm((p) => ({ ...p, transmission: v }))} />
                                     <FieldWithIcon icon="sync-outline" label="Drivetrain:" value={editForm.drivetrain} onChangeText={(v) => setEditForm((p) => ({ ...p, drivetrain: v }))} />
-
                                     <View style={styles.labelRow}>
                                         <Ionicons name="person-outline" size={16} color="#F8F8FF" />
                                         <Text style={styles.fieldLabel}>Character:</Text>
@@ -567,7 +514,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         </Text>
                                         <Ionicons name="chevron-down" size={16} color="#FF8800" />
                                     </TouchableOpacity>
-
                                     <View style={styles.labelRow}>
                                         <Ionicons name="image-outline" size={16} color="#F8F8FF" />
                                         <Text style={styles.fieldLabel}>Image (leave empty to keep current):</Text>
@@ -583,7 +529,6 @@ export default function AutomobilesScreen({ navigation }) {
                                         )}
                                     </TouchableOpacity>
                                 </ScrollView>
-
                                 <View style={styles.modalFooter}>
                                     <TouchableOpacity style={{ flex: 1 }} onPress={handleSaveEdit} disabled={saving}>
                                         <LinearGradient colors={["#4caf50", "#2e7d32"]} style={styles.modalBtn}>
@@ -591,13 +536,7 @@ export default function AutomobilesScreen({ navigation }) {
                                             <Text style={styles.modalBtnText}>{saving ? "Saving..." : "Save Changes"}</Text>
                                         </LinearGradient>
                                     </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={{ flex: 1 }}
-                                        onPress={() => {
-                                            setEditModalVisible(false);
-                                            setPickerView(false);
-                                        }}
-                                    >
+                                    <TouchableOpacity style={{ flex: 1 }} onPress={() => { setEditModalVisible(false); setPickerView(false); }}>
                                         <LinearGradient colors={["#f44336", "#b71c1c"]} style={styles.modalBtn}>
                                             <Ionicons name="close-circle-outline" size={16} color="#F8F8FF" />
                                             <Text style={styles.modalBtnText}>Cancel</Text>
@@ -620,20 +559,14 @@ export default function AutomobilesScreen({ navigation }) {
                                     source={
                                         selectedCar.image_path
                                             ? { uri: buildImageUrl(selectedCar.image_path) }
-                                            : require("../assets/images/1970 Dodge Charger R-T.jpg")
+                                            : DEFAULT_CAR_IMAGE
                                     }
                                     style={styles.showHeroImg}
                                     resizeMode="cover"
                                 />
                             )}
-                            <LinearGradient
-                                colors={["rgba(0,0,0,0.1)", "rgba(28,23,20,0.92)"]}
-                                style={styles.showHeroGradient}
-                            />
-                            <TouchableOpacity
-                                style={styles.modalCloseXWrapper}
-                                onPress={() => setShowModalVisible(false)}
-                            >
+                            <LinearGradient colors={["rgba(0,0,0,0.1)", "rgba(28,23,20,0.92)"]} style={styles.showHeroGradient} />
+                            <TouchableOpacity style={styles.modalCloseXWrapper} onPress={() => setShowModalVisible(false)}>
                                 <LinearGradient colors={["#FFa733", "#FF8800"]} style={styles.modalCloseX}>
                                     <Ionicons name="close" size={16} color="#F8F8FF" />
                                 </LinearGradient>
@@ -652,14 +585,13 @@ export default function AutomobilesScreen({ navigation }) {
                             <ShowInfoRow icon="settings-outline" label="TRANSMISSION" value={selectedCar?.transmission} />
                             <ShowInfoRow icon="sync-outline" label="DRIVETRAIN" value={selectedCar?.drivetrain} />
 
-                            {/* CARD DESTACADA: PERSONAJE ASOCIADO O ESTADO VACÍO */}
                             {selectedCarCharacter ? (
                                 <View style={styles.characterCard}>
                                     <Image
                                         source={
                                             selectedCarCharacter.image_path
                                                 ? { uri: buildImageUrl(selectedCarCharacter.image_path) }
-                                                : require("../assets/images/dom.jpg")
+                                                : DEFAULT_CHARACTER_IMAGE
                                         }
                                         style={styles.characterCardImg}
                                         resizeMode="cover"
@@ -698,14 +630,12 @@ export default function AutomobilesScreen({ navigation }) {
                                 <Ionicons name="warning-outline" size={32} color="#F8F8FF" />
                             </LinearGradient>
                         </View>
-
                         <Text style={styles.confirmTitle}>Delete Vehicle?</Text>
                         <Text style={styles.confirmMessage}>
                             Are you sure you want to remove{" "}
                             <Text style={{ fontWeight: "bold", color: "#FF8800" }}>{carToDelete?.name}</Text>{" "}
                             from the garage? This action cannot be undone.
                         </Text>
-
                         <View style={styles.confirmActions}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleConfirmDelete}>
                                 <LinearGradient colors={["#ef5350", "#c62828"]} style={styles.modalBtn}>
@@ -733,12 +663,8 @@ export default function AutomobilesScreen({ navigation }) {
                                 <Ionicons name="log-out-outline" size={32} color="#F8F8FF" />
                             </LinearGradient>
                         </View>
-
                         <Text style={styles.confirmTitle}>Sign Out?</Text>
-                        <Text style={styles.confirmMessage}>
-                            Are you sure you want to sign out of your account?
-                        </Text>
-
+                        <Text style={styles.confirmMessage}>Are you sure you want to sign out of your account?</Text>
                         <View style={styles.confirmActions}>
                             <TouchableOpacity style={{ flex: 1 }} onPress={handleConfirmLogout}>
                                 <LinearGradient colors={["#FFa733", "#FF8800"]} style={styles.modalBtn}>
@@ -804,7 +730,6 @@ const styles = StyleSheet.create({
     scrollContent: { flex: 1, paddingHorizontal: 16, paddingTop: 6 },
     titleSection: { alignItems: "center", gap: 6, marginBottom: 12 },
     titleText: { fontFamily: "Nosifer-Regular", fontSize: 28, color: "#F8F8FF", fontWeight: "bold", letterSpacing: 2 },
-
     emptyState: {
         alignItems: "center",
         backgroundColor: "rgba(28,23,20,0.65)",
@@ -826,7 +751,6 @@ const styles = StyleSheet.create({
     },
     emptyTitle: { color: "#F8F8FF", fontSize: 17, fontWeight: "bold", marginBottom: 8 },
     emptyMessage: { color: "rgba(248,248,255,0.6)", fontSize: 13, textAlign: "center", lineHeight: 19 },
-
     actionsRow: { alignItems: "center", marginBottom: 18 },
     btnNew: {
         flexDirection: "row",
@@ -837,13 +761,11 @@ const styles = StyleSheet.create({
         borderRadius: 22,
     },
     btnNewText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold" },
-
     list: { gap: 12 },
     card: { borderRadius: 12, overflow: "hidden", position: "relative" },
     cardImage: { width: "100%", height: 250, backgroundColor: "#222" },
     cardActions: { position: "absolute", top: 10, left: 10, flexDirection: "row", gap: 8 },
     cardBtn: { width: 38, height: 38, borderRadius: 19, justifyContent: "center", alignItems: "center" },
-
     modalOverlay: {
         flex: 1,
         backgroundColor: "rgba(0,0,0,0.6)",
@@ -891,7 +813,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        fontFamily: "NewRocker-Regular",
     },
     selectFieldText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF" },
     uploadZone: {
@@ -915,7 +836,6 @@ const styles = StyleSheet.create({
     },
     modalBtn: { height: 42, borderRadius: 21, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
     modalBtnText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontWeight: "bold", fontSize: 13 },
-
     pickerCard: {
         width: 300,
         backgroundColor: "rgba(28,23,20,0.97)",
@@ -932,7 +852,6 @@ const styles = StyleSheet.create({
     },
     pickerItemImg: { width: 40, height: 40, borderRadius: 20, backgroundColor: "#222" },
     pickerItemText: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontSize: 14 },
-
     modalCardShow: { width: 320 },
     showHero: { height: 220, position: "relative" },
     showHeroImg: { width: "100%", height: "100%", position: "absolute" },
@@ -952,7 +871,6 @@ const styles = StyleSheet.create({
     },
     showInfoLabel: { fontFamily: "Nosifer-Regular", color: "rgba(255,255,255,0.5)", fontSize: 10, letterSpacing: 1.5 },
     showInfoValue: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontSize: 15, marginTop: 4 },
-
     noCarsBox: {
         alignItems: "center",
         backgroundColor: "rgba(0,0,0,0.25)",
@@ -965,7 +883,6 @@ const styles = StyleSheet.create({
         gap: 8,
     },
     noCarsText: { fontFamily: "NewRocker-Regular", color: "rgba(248,248,255,0.55)", fontSize: 12, textAlign: "center" },
-
     characterCard: {
         height: 130,
         borderRadius: 10,
@@ -978,7 +895,6 @@ const styles = StyleSheet.create({
     characterCardOverlay: { position: "absolute", width: "100%", height: "100%" },
     characterCardInfo: { position: "absolute", bottom: 12, left: 14, right: 14 },
     characterCardName: { fontFamily: "NewRocker-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginTop: 4 },
-
     confirmCard: {
         width: 300,
         backgroundColor: "rgba(28,23,20,0.97)",
@@ -988,7 +904,7 @@ const styles = StyleSheet.create({
     },
     confirmIconWrapper: { marginBottom: 14 },
     confirmIcon: { width: 64, height: 64, borderRadius: 32, justifyContent: "center", alignItems: "center" },
-    confirmTitle: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center"  },
+    confirmTitle: { fontFamily: "Nosifer-Regular", color: "#F8F8FF", fontSize: 18, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
     confirmMessage: { fontFamily: "NewRocker-Regular", color: "rgba(248,248,255,0.8)", fontSize: 13, textAlign: "center", lineHeight: 19, marginBottom: 20 },
     confirmActions: { flexDirection: "row", gap: 10, width: "100%" },
-}); 
+});
